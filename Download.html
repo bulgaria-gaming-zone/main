@@ -113,6 +113,73 @@
             margin: 20px 20px;
         }
 
+        /* Стил за секцията DOWNLOADS по дизайн */
+        .downloads-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .downloads-title {
+            color: #ffff00;
+            font-size: 28px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .download-box {
+            width: 100%;
+            background-color: #000000;
+            border: 1px solid #ffff00;
+            border-radius: 4px;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(255, 255, 0, 0.1);
+        }
+
+        .download-box-text {
+            color: #ffff00;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .download-icons-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .game-icon-link {
+            display: inline-block;
+            transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+        }
+
+        .game-icon-link:hover {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+
+        .icon-h3 {
+            height: 55px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .icon-vcmi {
+            height: 55px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
         footer {
             width: 100%;
             padding: 25px 20px;
@@ -156,7 +223,23 @@
 
     <!-- Основно съдържание -->
     <main class="main-content">
-        <!-- Секцията е празна по твое желание -->
+        <section id="downloads-section" class="downloads-section">
+            <h2 class="downloads-title">DOWNLOADS</h2>
+            
+            <div class="download-box">
+                <span class="download-box-text">Heroes III Original Files and VCMI</span>
+                <div class="download-icons-group">
+                    <!-- Heroes III Icon Link -->
+                    <a href="https://drive.google.com/file/d/1ZEOQJj_-BeJJ1R0DLN51bAbFi3HKtB-6/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download Heroes III Files">
+                        <img src="heroes_icon.png" alt="Heroes III" class="icon-h3">
+                    </a>
+                    <!-- VCMI Icon Link -->
+                    <a href="https://vcmi.eu/download/" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download VCMI">
+                        <img src="vcmi_icon.png" alt="VCMI" class="icon-vcmi">
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
