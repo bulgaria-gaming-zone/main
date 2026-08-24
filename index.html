@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BULGARIA | GaminG Zone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .header-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 10px;
+        }
+
+        .header-banner {
+            width: 100%;
+            max-width: 1920px;
+            height: auto;
+            display: block;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            margin: 50px 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-link-item {
+            display: inline-block;
+            transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+        }
+
+        .social-link-item:hover {
+            transform: scale(1.12);
+            filter: brightness(1.15);
+        }
+
+        .icon-fb {
+            width: 82px;
+            height: 81px;
+            display: block;
+        }
+
+        .icon-discord {
+            width: 90px;
+            height: 68px;
+            display: block;
+        }
+
+        .icon-download {
+            width: 81px;
+            height: 80px;
+            display: block;
+            cursor: default;
+            opacity: 0.8;
+        }
+
+        footer {
+            padding: 25px 20px;
+            text-align: center;
+            color: #ffff00;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-container">
+        <img src="header_banner.png" alt="GAMING BULGARIA ZONE Header" class="header-banner">
+    </header>
+
+    <main class="main-content">
+        <div class="social-links">
+            <!-- Facebook Link -->
+            <a href="https://www.facebook.com/groups/389530691674289/" target="_blank" rel="noopener noreferrer" class="social-link-item">
+                <img src="facebook_icon.png" alt="Facebook Group" class="icon-fb">
+            </a>
+
+            <!-- Discord Link -->
+            <a href="https://discord.gg/MAKyE9xC6" target="_blank" rel="noopener noreferrer" class="social-link-item">
+                <img src="discord_icon.png" alt="Discord Server" class="icon-discord">
+            </a>
+
+            <!-- Download Button (Inactive) -->
+            <a href="#" class="social-link-item" onclick="return false;">
+                <img src="download_icon.png" alt="Download File (SOON)" class="icon-download">
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 BULGARIA|GaminG Zone|&trade;
+    </footer>
+
+</body>
+</html>
