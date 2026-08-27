@@ -36,6 +36,7 @@
             width: 100%;
             max-width: 1920px;
             cursor: pointer;
+            overflow: hidden; /* Скрива извънгабаритните части при мобилно приближаване */
         }
 
         .header-banner {
@@ -48,6 +49,15 @@
         .header-link:hover .header-banner {
             transform: scale(1.01);
             filter: brightness(1.05);
+        }
+
+        /* Мобилен изглед: приближаване на централната част с 40% само за телефони */
+        @media (max-width: 768px) {
+            .header-banner {
+                transform: scale(1.4);
+                transform-origin: center center;
+                margin: 25px 0; /* Компенсация за височината при мащабиране */
+            }
         }
 
         /* Неподвижно меню точно под банера */
@@ -65,7 +75,7 @@
 
         .social-links {
             display: flex;
-            gap: 40px;
+            gap: 20px;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
@@ -82,18 +92,16 @@
             filter: brightness(1.15);
         }
 
-        /* Стандартен размер за Facebook, Discord и Download */
         .nav-icon {
-            width: 75px;
-            height: 75px;
+            width: 54px;
+            height: 54px;
             display: block;
             object-fit: contain;
         }
 
-        /* Зададен размер 95px на 87px за Home иконата */
         .icon-home {
-            width: 95px;
-            height: 87px;
+            width: 68.4px;
+            height: 62.6px;
             display: block;
             object-fit: contain;
         }
@@ -216,7 +224,7 @@
             text-align: center;
             color: #ffff00;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 12px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
             background-color: #000000;
