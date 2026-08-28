@@ -26,40 +26,79 @@
             position: relative;
         }
 
-        .top-banner {
+        /* Позициониране в горния ляв ъгъл */
+        .copy-link-box {
             position: absolute;
-            top: 50px;
-            right: 15%;
-            background-color: rgba(0, 0, 0, 0.75);
-            padding: 15px 30px;
-            text-align: left;
-            border-radius: 4px;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 12px 20px;
+            border-radius: 6px;
+            border: 1px solid #E2EC10;
+            cursor: pointer;
+            user-select: all;
+            transition: background-color 0.2s ease;
         }
 
-        .top-banner a {
+        .copy-link-box:hover {
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+
+        .copy-link-text {
             color: #E2EC10;
-            text-decoration: none;
-            font-size: 20px;
+            font-size: 16px;
             font-weight: bold;
-            text-transform: uppercase;
             letter-spacing: 0.5px;
-            display: inline-block;
         }
 
-        .top-banner a:hover {
-            color: #ffffff;
+        /* Съобщение при копиране */
+        .tooltip {
+            visibility: hidden;
+            background-color: #E2EC10;
+            color: #000;
+            text-align: center;
+            border-radius: 4px;
+            padding: 3px 8px;
+            position: absolute;
+            z-index: 1;
+            top: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .copy-link-box.active .tooltip {
+            visibility: visible;
+            opacity: 1;
         }
     </style>
 </head>
 <body>
 
     <div class="background-container">
-        <div class="top-banner">
-            <a href="https://bulgaria-gaming-zone.github.io/main/" target="_blank">
-                КЛИКНЕТЕ ТУК, ЗА ДА ПОСЕТИТЕ НАШИЯ САЙТ
-            </a>
+        <div class="copy-link-box" onclick="copyLink(this)">
+            <span class="copy-link-text" id="url-text">https://bulgaria-gaming-zone.github.io/main/</span>
+            <span class="tooltip">Копирано!</span>
         </div>
     </div>
+
+    <script>
+        function copyLink(container) {
+            const textToCopy = document.getElementById('url-text').innerText;
+            
+            // Копиране в клипборда
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // Показване на визуално потвърждение "Копирано!"
+                container.classList.add('active');
+                setTimeout(() => {
+                    container.classList.remove('active');
+                }, 1500);
+            });
+        }
+    </script>
 
 </body>
 </html>
