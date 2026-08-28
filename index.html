@@ -36,7 +36,7 @@
             width: 100%;
             max-width: 1920px;
             cursor: pointer;
-            overflow: hidden; /* Скрива извънгабаритните части при мобилно приближаване */
+            overflow: hidden;
         }
 
         .header-banner {
@@ -51,16 +51,14 @@
             filter: brightness(1.05);
         }
 
-        /* Мобилен изглед: допълнително увеличение с 30% (общо scale 1.82) за централно приближаване само на телефони */
         @media (max-width: 768px) {
             .header-banner {
                 transform: scale(1.82);
                 transform-origin: center center;
-                margin: 45px 0; /* Компенсация за височината при мащабиране */
+                margin: 45px 0;
             }
         }
 
-        /* Неподвижно меню точно под банера */
         .nav-menu-container {
             width: 100%;
             display: flex;
@@ -110,7 +108,6 @@
             opacity: 0.9;
         }
 
-        /* Основно съдържание */
         .main-content {
             width: 100%;
             max-width: 1200px;
@@ -122,7 +119,6 @@
             margin: 20px 20px;
         }
 
-        /* Стил за секцията */
         .downloads-section {
             width: 100%;
             display: flex;
@@ -184,6 +180,14 @@
             display: block;
         }
 
+        /* Увеличена височина за CS/HL иконата */
+        .icon-cshl {
+            height: 85px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
         footer {
             width: 100%;
             padding: 25px 20px;
@@ -205,32 +209,23 @@
         </a>
     </header>
 
-    <!-- Неподвижно меню с иконите точно под банера -->
     <nav class="nav-menu-container">
         <div class="social-links">
-            <!-- Home Link -->
             <a href="https://bulgaria-gaming-zone.github.io/main/" class="social-link-item" title="Начало">
                 <img src="home_icon.png" alt="Home" class="icon-home">
             </a>
-
-            <!-- Facebook Link -->
             <a href="https://www.facebook.com/groups/389530691674289/" target="_blank" rel="noopener noreferrer" class="social-link-item" title="Facebook Group">
                 <img src="facebook_icon.png" alt="Facebook" class="nav-icon">
             </a>
-
-            <!-- Discord Link -->
             <a href="https://discord.gg/yyG5CpQ" target="_blank" rel="noopener noreferrer" class="social-link-item" title="Discord Server">
                 <img src="discord_icon.png" alt="Discord" class="nav-icon">
             </a>
-
-            <!-- Download Button -->
             <a href="https://bulgaria-gaming-zone.github.io/main/Download.html" class="social-link-item" title="Download Menu">
                 <img src="download_icon.png" alt="Download" class="nav-icon icon-download">
             </a>
         </div>
     </nav>
 
-    <!-- Основно съдържание -->
     <main class="main-content">
         <section id="downloads-section" class="downloads-section">
             <h2 class="downloads-title">Добре дошли и приятна игра в нашите сървъри!</h2>
@@ -239,20 +234,8 @@
             <div class="download-box">
                 <span class="download-box-text">Terraria Server: bulgaria-gaming-zone.asuscomm.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Порт: 7775</span>
                 <div class="download-icons-group">
-                    <!-- Terraria Icon Link (Copies IP on click) -->
                     <a onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)" class="game-icon-link" title="Копирай линка за сървъра">
                         <img src="terraria_icon.png" alt="Terraria" class="icon-game">
-                    </a>
-                </div>
-            </div>
-
-            <!-- Half-Life Server Box -->
-            <div class="download-box">
-                <span class="download-box-text">Half-Life Server: bulgaria-gaming-zone.asuscomm.com</span>
-                <div class="download-icons-group">
-                    <!-- Half-Life Icon Link (Copies IP on click) -->
-                    <a onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)" class="game-icon-link" title="Копирай линка за сървъра">
-                        <img src="halflife_icon.png" alt="Half-Life" class="icon-game">
                     </a>
                 </div>
             </div>
@@ -261,9 +244,18 @@
             <div class="download-box">
                 <span class="download-box-text">RUNE 2000 Server: bulgaria-gaming-zone.asuscomm.com</span>
                 <div class="download-icons-group">
-                    <!-- Rune Icon Link (Copies IP on click) -->
                     <a onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)" class="game-icon-link" title="Копирай линка за сървъра">
                         <img src="rune_icon.png" alt="Rune" class="icon-game">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Half-Life & Counter-Strike 1.6 Servers Box -->
+            <div class="download-box">
+                <span class="download-box-text">Half-Life &amp; Counter-Strike 1.6 Servers: bulgaria-gaming-zone.asuscomm.com</span>
+                <div class="download-icons-group">
+                    <a onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)" class="game-icon-link" title="Копирай линка за сървъра">
+                        <img src="CS_HL_icon.png" alt="Half-Life & Counter-Strike 1.6" class="icon-cshl">
                     </a>
                 </div>
             </div>
