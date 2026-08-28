@@ -36,7 +36,7 @@
             width: 100%;
             max-width: 1920px;
             cursor: pointer;
-            overflow: hidden; /* Скрива извънгабаритните части при мобилно приближаване */
+            overflow: hidden;
         }
 
         .header-banner {
@@ -51,16 +51,14 @@
             filter: brightness(1.05);
         }
 
-        /* Мобилен изглед: допълнително увеличение с 30% (общо scale 1.82) за централно приближаване само на телефони */
         @media (max-width: 768px) {
             .header-banner {
                 transform: scale(1.82);
                 transform-origin: center center;
-                margin: 45px 0; /* Компенсация за височината при мащабиране */
+                margin: 45px 0;
             }
         }
 
-        /* Неподвижно меню точно под банера */
         .nav-menu-container {
             width: 100%;
             display: flex;
@@ -110,7 +108,6 @@
             opacity: 0.9;
         }
 
-        /* Основно съдържание */
         .main-content {
             width: 100%;
             max-width: 1200px;
@@ -122,7 +119,6 @@
             margin: 20px 20px;
         }
 
-        /* Стил за секцията ИЗТЕГЛЯНИЯ по дизайн */
         .downloads-section {
             width: 100%;
             display: flex;
@@ -158,6 +154,19 @@
             color: #ffff00;
             font-size: 20px;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        /* Увеличена икона в текста */
+        .inline-text-icon {
+            height: 36px;
+            width: auto;
+            vertical-align: middle;
+            display: inline-block;
+            margin: 0 4px;
         }
 
         .download-icons-group {
@@ -176,42 +185,7 @@
             filter: brightness(1.2);
         }
 
-        .icon-h3 {
-            height: 55px;
-            width: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        .icon-vcmi {
-            height: 55px;
-            width: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        .icon-ra2 {
-            height: 55px;
-            width: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        .icon-cncnet {
-            height: 55px;
-            width: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        .icon-terraria {
-            height: 55px;
-            width: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        .icon-rune {
+        .icon-h3, .icon-vcmi, .icon-ra2, .icon-cncnet, .icon-terraria, .icon-rune {
             height: 55px;
             width: auto;
             object-fit: contain;
@@ -239,32 +213,23 @@
         </a>
     </header>
 
-    <!-- Неподвижно меню с иконите точно под банера -->
     <nav class="nav-menu-container">
         <div class="social-links">
-            <!-- Home Link -->
             <a href="https://bulgaria-gaming-zone.github.io/main/" class="social-link-item" title="Начало">
                 <img src="home_icon.png" alt="Home" class="icon-home">
             </a>
-
-            <!-- Facebook Link -->
             <a href="https://www.facebook.com/groups/389530691674289/" target="_blank" rel="noopener noreferrer" class="social-link-item" title="Facebook Group">
                 <img src="facebook_icon.png" alt="Facebook" class="nav-icon">
             </a>
-
-            <!-- Discord Link -->
             <a href="https://discord.gg/yyG5CpQ" target="_blank" rel="noopener noreferrer" class="social-link-item" title="Discord Server">
                 <img src="discord_icon.png" alt="Discord" class="nav-icon">
             </a>
-
-            <!-- Download Button -->
             <a href="https://bulgaria-gaming-zone.github.io/main/Download.html" class="social-link-item" title="Download Menu">
                 <img src="download_icon.png" alt="Download" class="nav-icon icon-download">
             </a>
         </div>
     </nav>
 
-    <!-- Основно съдържание -->
     <main class="main-content">
         <section id="downloads-section" class="downloads-section">
             <h2 class="downloads-title">ИЗТЕГЛЯНИЯ</h2>
@@ -273,11 +238,9 @@
             <div class="download-box">
                 <span class="download-box-text">Heroes III Original Files and VCMI</span>
                 <div class="download-icons-group">
-                    <!-- Heroes III Icon Link -->
                     <a href="https://drive.google.com/file/d/1tK5Zhc8FJ5BB1vi8KgZNO5QntngwkVUD/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download Heroes III Files">
                         <img src="heroes_icon.png" alt="Heroes III" class="icon-h3">
                     </a>
-                    <!-- VCMI Icon Link -->
                     <a href="https://vcmi.eu/download/" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download VCMI">
                         <img src="vcmi_icon.png" alt="VCMI" class="icon-vcmi">
                     </a>
@@ -288,11 +251,9 @@
             <div class="download-box">
                 <span class="download-box-text">Red Alert 2 Original Files and CnCNet</span>
                 <div class="download-icons-group">
-                    <!-- Red Alert 2 Icon Link -->
                     <a href="https://drive.google.com/file/d/1D4_keMlTfIEl2B1teJ5lb71fsFSwkVry/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download Red Alert 2 Files">
                         <img src="ra2_icon.png" alt="Red Alert 2" class="icon-ra2">
                     </a>
-                    <!-- CnCNet Icon Link -->
                     <a href="https://cncnet.org/red-alert-2" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download CnCNet">
                         <img src="cncnet_icon.png" alt="CnCNet" class="icon-cncnet">
                     </a>
@@ -303,7 +264,6 @@
             <div class="download-box">
                 <span class="download-box-text">Terraria – v1.4.5.0 ( Парола на архива 1450 )</span>
                 <div class="download-icons-group">
-                    <!-- Terraria Icon Link (Нов линк) -->
                     <a href="https://drive.google.com/file/d/19wX6nEFKB-cmNL2KqIQEOE0JL8z2li1Q/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download Terraria">
                         <img src="terraria_icon.png" alt="Terraria" class="icon-terraria">
                     </a>
@@ -312,10 +272,13 @@
 
             <!-- RUNE 2000 Box -->
             <div class="download-box">
-                <span class="download-box-text">RUNE 2000</span>
+                <span class="download-box-text">
+                    RUNE 2000 ( Играта се стартира от 
+                    <img src="runeBGGZ.png" alt="Rune Icon" class="inline-text-icon"> 
+                    Play BULGARIA-GaminG-Zone.exe )
+                </span>
                 <div class="download-icons-group">
-                    <!-- RUNE 2000 Icon Link -->
-                    <a href="https://drive.google.com/file/d/1MYJvGigEWH9hdgCrymYb_mQP5Xx1B9Iv/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download RUNE 2000">
+                    <a href="https://drive.google.com/file/d/1p1zaBszO6AMfMtDjc0k8M-K_xm72xv1a/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download RUNE 2000">
                         <img src="rune_icon.png" alt="RUNE 2000" class="icon-rune">
                     </a>
                 </div>
