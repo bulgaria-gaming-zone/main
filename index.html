@@ -188,6 +188,74 @@
             display: block;
         }
 
+        /* --- СТИЛОВЕ ЗА ИНФО ИКОНАТА И ПОДСКАЗКАТА --- */
+        .info-container {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: -5px;
+        }
+
+        .info-badge {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid #ffff00;
+            color: #ffff00;
+            font-weight: bold;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: help;
+            user-select: none;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .info-badge:hover {
+            background-color: #ffff00;
+            color: #000000;
+        }
+
+        .info-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            width: 280px;
+            background-color: #111111;
+            color: #ffffff;
+            border: 1px solid #ffff00;
+            text-align: left;
+            border-radius: 6px;
+            padding: 10px 12px;
+            font-size: 13px;
+            line-height: 1.4;
+            position: absolute;
+            z-index: 100;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 15px rgba(255, 255, 0, 0.2);
+            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+            pointer-events: none;
+        }
+
+        .info-tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #ffff00 transparent transparent transparent;
+        }
+
+        .info-container:hover .info-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
         footer {
             width: 100%;
             padding: 25px 20px;
@@ -254,6 +322,12 @@
             <div class="download-box">
                 <span class="download-box-text">Half-Life &amp; Counter-Strike 1.6 Servers: bulgaria-gaming-zone.asuscomm.com</span>
                 <div class="download-icons-group">
+                    <div class="info-container">
+                        <span class="info-badge">!</span>
+                        <div class="info-tooltip">
+                            Всеки от Counter-Strike сървърите ни разполага със собствена ранг система. Можете лесно да проверявате статуса си за съответния сървър с командите: <strong>/rank</strong>, <strong>/rankstats</strong>, <strong>/top15</strong>
+                        </div>
+                    </div>
                     <a onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)" class="game-icon-link" title="Копирай линка за сървъра">
                         <img src="CS_HL_icon.png" alt="Half-Life & Counter-Strike 1.6" class="icon-cshl">
                     </a>
