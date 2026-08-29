@@ -26,22 +26,30 @@
             position: relative;
         }
 
-        /* Позициониране в горния ляв ъгъл */
-        .copy-link-box {
+        /* Общ контейнер за линка и информационния текст в горния ляв ъгъл */
+        .left-content-wrapper {
             position: absolute;
             top: 20px;
             left: 20px;
-            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Позициониране в горния ляв ъгъл с по-леко затъмнение */
+        .copy-link-box {
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 12px 20px;
             border-radius: 6px;
             border: 1px solid #E2EC10;
             cursor: pointer;
             user-select: all;
             transition: background-color 0.2s ease;
+            position: relative;
         }
 
         .copy-link-box:hover {
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: rgba(0, 0, 0, 0.7);
         }
 
         .copy-link-text {
@@ -74,14 +82,58 @@
             visibility: visible;
             opacity: 1;
         }
+
+        /* Стил за новия информационен текст с по-леко затъмнение */
+        .server-info-box {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px 20px;
+            border-radius: 6px;
+            border: 1px solid #E2EC10;
+            color: #ffffff;
+            font-size: 14px;
+            line-height: 1.5;
+            max-width: 380px;
+        }
+
+        .server-info-box p {
+            margin-bottom: 8px;
+        }
+
+        .server-info-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .server-info-box .commands {
+            color: #E2EC10;
+            font-family: monospace;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
     <div class="background-container">
-        <div class="copy-link-box" onclick="copyLink(this)">
-            <span class="copy-link-text" id="url-text">https://bulgaria-gaming-zone.github.io/main/</span>
-            <span class="tooltip">Копирано!</span>
+        <div class="left-content-wrapper">
+            <!-- Кутия с линка -->
+            <div class="copy-link-box" onclick="copyLink(this)">
+                <span class="copy-link-text" id="url-text">https://bulgaria-gaming-zone.github.io/main/</span>
+                <span class="tooltip">Копирано!</span>
+            </div>
+
+            <!-- Добавен информационен текст -->
+            <div class="server-info-box">
+                <p>Добре дошли!</p>
+                <p>Всеки от нашите сървъри ползва отделна собствена ранг система.</p>
+                <p>Може да следите личния си статус със следните команди, които се изписват в чата на играта:</p>
+                <p class="commands">
+                    /rank<br>
+                    /top15<br>
+                    /rankstats
+                </p>
+                <p style="margin-top: 10px; font-weight: bold; color: #E2EC10;">
+                    Приятна игра от екипа на<br>BULGARIA-GaminG-Zone!
+                </p>
+            </div>
         </div>
     </div>
 
