@@ -154,6 +154,19 @@
             color: #ffff00;
             font-size: 20px;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        /* Увеличена икона в текста */
+        .inline-text-icon {
+            height: 36px;
+            width: auto;
+            vertical-align: middle;
+            display: inline-block;
+            margin: 0 4px;
         }
 
         .download-icons-group {
@@ -165,7 +178,6 @@
         .game-icon-link {
             display: inline-block;
             transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
-            cursor: pointer;
         }
 
         .game-icon-link:hover {
@@ -173,87 +185,19 @@
             filter: brightness(1.2);
         }
 
-        .icon-game {
+        .icon-h3, .icon-vcmi, .icon-ra2, .icon-cncnet, .icon-terraria, .icon-rune {
             height: 55px;
             width: auto;
             object-fit: contain;
             display: block;
         }
 
-        /* Увеличена височина за CS/HL иконата */
+        /* Увеличена височина на CS & HL иконата за визуално съответствие */
         .icon-cshl {
             height: 85px;
             width: auto;
             object-fit: contain;
             display: block;
-        }
-
-        /* --- СТИЛОВЕ ЗА ИНФО ИКОНАТА И ПОДСКАЗКАТА --- */
-        .info-container {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: -5px;
-        }
-
-        .info-badge {
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            border: 2px solid #ffff00;
-            color: #ffff00;
-            font-weight: bold;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: help;
-            user-select: none;
-            transition: background-color 0.2s, color 0.2s;
-        }
-
-        .info-badge:hover {
-            background-color: #ffff00;
-            color: #000000;
-        }
-
-        .info-tooltip {
-            visibility: hidden;
-            opacity: 0;
-            width: 280px;
-            background-color: #111111;
-            color: #ffffff;
-            border: 1px solid #ffff00;
-            text-align: left;
-            border-radius: 6px;
-            padding: 10px 12px;
-            font-size: 13px;
-            line-height: 1.4;
-            position: absolute;
-            z-index: 100;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 4px 15px rgba(255, 255, 0, 0.2);
-            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
-            pointer-events: none;
-        }
-
-        .info-tooltip::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #ffff00 transparent transparent transparent;
-        }
-
-        .info-container:hover .info-tooltip {
-            visibility: visible;
-            opacity: 1;
         }
 
         footer {
@@ -296,39 +240,63 @@
 
     <main class="main-content">
         <section id="downloads-section" class="downloads-section">
-            <h2 class="downloads-title">Добре дошли и приятна игра в нашите сървъри!</h2>
+            <h2 class="downloads-title">ИЗТЕГЛЯНИЯ</h2>
             
-            <!-- Terraria Server Box -->
+            <!-- Heroes III Box -->
             <div class="download-box">
-                <span class="download-box-text">Terraria Server: bulgaria-gaming-zone.asuscomm.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Порт: 7775</span>
+                <span class="download-box-text">Heroes III Original Files and VCMI</span>
                 <div class="download-icons-group">
-                    <a onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)" class="game-icon-link" title="Копирай линка за сървъра">
-                        <img src="terraria_icon.png" alt="Terraria" class="icon-game">
+                    <a href="https://drive.google.com/file/d/1tK5Zhc8FJ5BB1vi8KgZNO5QntngwkVUD/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download Heroes III Files">
+                        <img src="heroes_icon.png" alt="Heroes III" class="icon-h3">
+                    </a>
+                    <a href="https://vcmi.eu/download/" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download VCMI">
+                        <img src="vcmi_icon.png" alt="VCMI" class="icon-vcmi">
                     </a>
                 </div>
             </div>
 
-            <!-- RUNE 2000 Server Box -->
+            <!-- Red Alert 2 Box -->
             <div class="download-box">
-                <span class="download-box-text">RUNE 2000 Server: bulgaria-gaming-zone.asuscomm.com</span>
+                <span class="download-box-text">Red Alert 2 Original Files and CnCNet</span>
                 <div class="download-icons-group">
-                    <a onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)" class="game-icon-link" title="Копирай линка за сървъра">
-                        <img src="rune_icon.png" alt="Rune" class="icon-game">
+                    <a href="https://drive.google.com/file/d/1D4_keMlTfIEl2B1teJ5lb71fsFSwkVry/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download Red Alert 2 Files">
+                        <img src="ra2_icon.png" alt="Red Alert 2" class="icon-ra2">
+                    </a>
+                    <a href="https://cncnet.org/red-alert-2" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download CnCNet">
+                        <img src="cncnet_icon.png" alt="CnCNet" class="icon-cncnet">
                     </a>
                 </div>
             </div>
 
-            <!-- Half-Life & Counter-Strike 1.6 Servers Box -->
+            <!-- Terraria Box -->
             <div class="download-box">
-                <span class="download-box-text">Half-Life &amp; Counter-Strike 1.6 Servers: bulgaria-gaming-zone.asuscomm.com</span>
+                <span class="download-box-text">Terraria – v1.4.5.0 ( Парола на архива: 1450 )</span>
                 <div class="download-icons-group">
-                    <div class="info-container">
-                        <span class="info-badge">!</span>
-                        <div class="info-tooltip">
-                            Всеки от Counter-Strike сървърите ни разполага със собствена ранг система. Можете лесно да проверявате статуса си за съответния сървър с командите: <strong>/rank</strong>, <strong>/rankstats</strong>, <strong>/top15</strong>
-                        </div>
-                    </div>
-                    <a onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)" class="game-icon-link" title="Копирай линка за сървъра">
+                    <a href="https://drive.google.com/file/d/19wX6nEFKB-cmNL2KqIQEOE0JL8z2li1Q/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download Terraria">
+                        <img src="terraria_icon.png" alt="Terraria" class="icon-terraria">
+                    </a>
+                </div>
+            </div>
+
+            <!-- RUNE 2000 Box -->
+            <div class="download-box">
+                <span class="download-box-text">
+                    RUNE 2000 ( Парола на инсталатора: 3440 Играта се стартира от 
+                    <img src="runeBGGZ.png" alt="Rune Icon" class="inline-text-icon"> 
+                    Play BULGARIA-GaminG-Zone.exe )
+                </span>
+                <div class="download-icons-group">
+                    <a href="https://drive.google.com/file/d/1mPkB_qACfytvZ9BUPjR1U3sXhJSSYCrz/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download RUNE 2000">
+                        <img src="rune_icon.png" alt="RUNE 2000" class="icon-rune">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Half-Life & Counter-Strike 1.6 Box -->
+            <div class="download-box">
+                <span class="download-box-text">Half-Life &amp; Counter-Strike 1.6 ( Парола на инсталатора: 4400 )</span>
+                <div class="download-icons-group">
+                    <a href="https://drive.google.com/file/d/1rD0_ogfojVJ884n-VFlg3uP3TV0RNVi8/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download Half-Life & Counter-Strike 1.6">
                         <img src="CS_HL_icon.png" alt="Half-Life & Counter-Strike 1.6" class="icon-cshl">
                     </a>
                 </div>
@@ -340,18 +308,5 @@
         &copy; 2026 BULGARIA|GaminG Zone|&trade;
     </footer>
 
-    <script>
-        function copyServerIP(text, element) {
-            navigator.clipboard.writeText(text).then(() => {
-                let originalTitle = element.getAttribute('title');
-                element.setAttribute('title', 'Линкът е копиран!');
-                setTimeout(() => {
-                    element.setAttribute('title', originalTitle);
-                }, 2000);
-            }).catch(err => {
-                console.error('Грешка при копиране: ', err);
-            });
-        }
-    </script>
 </body>
 </html>
