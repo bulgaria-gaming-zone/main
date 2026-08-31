@@ -225,6 +225,12 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
+        /* Уголемен размер на самите пароли спрямо надписите им */
+        .password-value {
+            font-size: 17px;
+            font-weight: 700;
+        }
+
         .download-item-wrapper {
             display: flex;
             flex-direction: column;
@@ -566,7 +572,7 @@
                     </div>
                     <div class="download-password-label">
                         Парола на инсталатора:<br>
-                        <span class="copyable-link" onclick="copyServerIP('4400', this)">
+                        <span class="copyable-link password-value" onclick="copyServerIP('4400', this)">
                             4400
                             <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
                         </span>
@@ -590,7 +596,7 @@
                 <div class="download-icons-group">
                     <div class="download-password-label">
                         Парола на инсталатора:<br>
-                        <span class="copyable-link" onclick="copyServerIP('3440', this)">
+                        <span class="copyable-link password-value" onclick="copyServerIP('3440', this)">
                             3440
                             <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
                         </span>
@@ -619,7 +625,7 @@
                 <div class="download-icons-group">
                     <div class="download-password-label">
                         Парола на архива:<br>
-                        <span class="copyable-link" onclick="copyServerIP('1450', this)">
+                        <span class="copyable-link password-value" onclick="copyServerIP('1450', this)">
                             1450
                             <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
                         </span>
