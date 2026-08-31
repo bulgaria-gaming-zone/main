@@ -183,6 +183,7 @@
             box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
             margin-bottom: 15px;
             gap: 15px;
+            position: relative;
         }
 
         .download-box-text {
@@ -193,63 +194,71 @@
             line-height: 1.4;
         }
 
-        /* Блок за парола вдясно до иконите с фиксирана широчина за перфектно подравняване */
-        .password-container {
+        /* Стил за етикетите и туултипите взаимствани от index.html */
+        .download-password-label {
+            color: #ffff00;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: right;
+            line-height: 1.3;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            width: 185px; /* Фиксирана широчина за перфектно подравняване */
+            flex-shrink: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
-            font-size: 14px;
-            color: #ffff00;
-            font-weight: 500;
-            width: 185px; /* Фиксирана широчина, за да укроти разликата в дължината на текста */
-            flex-shrink: 0;
         }
 
-        .password-container .pass-label {
-            font-size: 13px;
-            margin-bottom: 2px;
-            display: block;
-            text-align: center;
-            width: 100%;
-            white-space: nowrap;
-        }
-
-        /* Интерактивни цифри на паролата */
-        .copy-password {
+        .copyable-link {
+            position: relative;
             display: inline-block;
+            color: #ffff00;
             cursor: pointer;
-            font-size: 16px;
-            font-weight: 700;
-            text-decoration: underline;
-            text-decoration-style: dotted;
-            text-underline-offset: 4px;
-            transition: color 0.2s, transform 0.2s;
+            border-bottom: 1px dashed rgba(255, 255, 0, 0.4);
+            transition: color 0.2s;
         }
 
-        .copy-password:hover {
+        .copyable-link:hover {
             color: #ffffff;
-            transform: scale(1.05);
+            border-bottom-color: #ffffff;
         }
 
-        /* Изскачащ надпис при успешно копиране */
-        .copy-toast {
-            position: fixed;
-            bottom: 30px;
-            background-color: #ffff00;
-            color: #000000;
-            padding: 8px 16px;
-            font-weight: 700;
-            font-size: 14px;
-            border-radius: 4px;
-            box-shadow: 0 0 10px rgba(255,255,0,0.6);
+        .copyable-link .copy-tooltip {
+            visibility: hidden;
             opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+            width: 230px;
+            background-color: #111111;
+            color: #ffff00;
+            border: 1px solid #ffff00;
+            text-align: center;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 11px;
+            line-height: 1.3;
+            position: absolute;
+            z-index: 100;
+            left: 105%;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
+            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
             pointer-events: none;
-            z-index: 2000;
+            font-weight: normal;
         }
 
-        .copy-toast.show {
+        .copyable-link .copy-tooltip::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            margin-top: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent #ffff00 transparent transparent;
+        }
+
+        .copyable-link:hover .copy-tooltip {
+            visibility: visible;
             opacity: 1;
         }
 
@@ -351,9 +360,9 @@
                 gap: 12px;
             }
 
-            .password-container {
+            .download-password-label {
                 width: 100%;
-                margin-bottom: 5px;
+                text-align: center;
             }
 
             .icon-h3, .icon-vcmi, .icon-ra2, .icon-cncnet, .icon-terraria, .icon-rune {
@@ -368,13 +377,25 @@
                 font-size: 9px;
                 padding: 2px 6px;
             }
+
+            .copyable-link .copy-tooltip {
+                left: 50%;
+                top: auto;
+                bottom: 120%;
+                transform: translateX(-50%);
+            }
+            .copyable-link .copy-tooltip::after {
+                top: 100%;
+                left: 50%;
+                right: auto;
+                margin-top: 0;
+                margin-left: -5px;
+                border-color: #ffff00 transparent transparent transparent;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- Toast съобщение за копиране -->
-    <div id="copyToast" class="copy-toast">Паролата е копирана!</div>
 
     <div class="header-wrapper">
         <header class="header-container">
@@ -439,9 +460,12 @@
             <div class="download-box">
                 <span class="download-box-text">Terraria – v1.4.5.0</span>
                 <div class="download-icons-group">
-                    <div class="password-container">
-                        <span class="pass-label">Парола на архива:</span>
-                        <span class="copy-password" onclick="copyPassword('1450')" title="Кликни за копиране">1450</span>
+                    <div class="download-password-label">
+                        Парола на архива:<br>
+                        <span class="copyable-link" onclick="copyServerIP('1450', this)">
+                            1450
+                            <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                        </span>
                     </div>
                     <a href="https://drive.google.com/uc?export=download&amp;id=19wX6nEFKB-cmNL2KqIQEOE0JL8z2li1Q" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download Terraria">
                         <img src="terraria_icon.png" alt="Terraria" class="icon-terraria">
@@ -459,9 +483,12 @@
                     BULGARIA-GaminG-Zone.exe
                 </span>
                 <div class="download-icons-group">
-                    <div class="password-container">
-                        <span class="pass-label">Парола на инсталатора:</span>
-                        <span class="copy-password" onclick="copyPassword('3440')" title="Кликни за копиране">3440</span>
+                    <div class="download-password-label">
+                        Парола на инсталатора:<br>
+                        <span class="copyable-link" onclick="copyServerIP('3440', this)">
+                            3440
+                            <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                        </span>
                     </div>
                     <a href="https://drive.google.com/uc?export=download&amp;id=1mPkB_qACfytvZ9BUPjR1U3sXhJSSYCrz" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download RUNE 2000">
                         <img src="rune_icon.png" alt="RUNE 2000" class="icon-rune">
@@ -474,9 +501,12 @@
             <div class="download-box">
                 <span class="download-box-text">Half-Life &amp; Counter-Strike 1.6</span>
                 <div class="download-icons-group">
-                    <div class="password-container">
-                        <span class="pass-label">Парола на инсталатора:</span>
-                        <span class="copy-password" onclick="copyPassword('4400')" title="Кликни за копиране">4400</span>
+                    <div class="download-password-label">
+                        Парола на инсталатора:<br>
+                        <span class="copyable-link" onclick="copyServerIP('4400', this)">
+                            4400
+                            <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                        </span>
                     </div>
                     <a href="https://drive.google.com/uc?export=download&amp;id=1rD0_ogfojVJ884n-VFlg3uP3TV0RNVi8" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download Half-Life & Counter-Strike 1.6">
                         <img src="CS_HL_icon.png" alt="Half-Life & Counter-Strike 1.6" class="icon-cshl">
@@ -491,20 +521,22 @@
         &copy; 2026 BULGARIA|GaminG Zone|&trade;
     </footer>
 
-    <!-- JavaScript за копиране на паролата -->
+    <!-- JavaScript функция за копиране, еднаква с index.html -->
     <script>
-        function copyPassword(password) {
-            navigator.clipboard.writeText(password).then(() => {
-                const toast = document.getElementById('copyToast');
-                toast.classList.add('show');
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 2000);
+        function copyServerIP(text, element) {
+            navigator.clipboard.writeText(text).then(() => {
+                let tooltip = element.querySelector('.copy-tooltip');
+                if (tooltip) {
+                    let originalText = tooltip.innerText;
+                    tooltip.innerText = 'Паролата е копирана!';
+                    setTimeout(() => {
+                        tooltip.innerText = originalText;
+                    }, 2000);
+                }
             }).catch(err => {
                 console.error('Грешка при копиране: ', err);
             });
         }
     </script>
-
 </body>
 </html>
