@@ -133,8 +133,24 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-align: center;
+        }
+
+        .section-headers {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px 10px 10px;
+        }
+
+        .section-header-title {
+            color: #ffff00;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .download-box {
@@ -162,14 +178,18 @@
             align-items: center;
         }
 
-        .game-icon-link {
-            display: inline-block;
+        /* КОНТЕЙНЕР ЗА ИКОНА + ТАБЧЕ */
+        .download-item-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
             transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
             cursor: pointer;
         }
 
-        .game-icon-link:hover {
-            transform: scale(1.1);
+        .download-item-wrapper:hover {
+            transform: scale(1.08);
             filter: brightness(1.2);
         }
 
@@ -180,21 +200,94 @@
             display: block;
         }
 
-        /* Увеличена височина за CS/HL иконата */
         .icon-cshl {
-            height: 85px;
+            height: 70px;
             width: auto;
             object-fit: contain;
             display: block;
         }
 
-        /* --- СТИЛОВЕ ЗА ИНФО ИКОНАТА И ПОДСКАЗКАТА --- */
+        /* ТАБЧЕ ТЕКСТ "Изтегли" */
+        .download-badge {
+            margin-top: 4px;
+            background-color: #ffff00;
+            color: #000000;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 2px 10px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 5px rgba(255, 255, 0, 0.4);
+        }
+
+        /* СЪРВЪРНИ ЛИНКОВЕ И ТУЛТИПОВЕ */
+        .server-list-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .copyable-link {
+            position: relative;
+            display: inline-block;
+            color: #ffff00;
+            cursor: pointer;
+            border-bottom: 1px dashed rgba(255, 255, 0, 0.4);
+            transition: color 0.2s;
+        }
+
+        .copyable-link:hover {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
+        }
+
+        .copyable-link .copy-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            width: 260px;
+            background-color: #111111;
+            color: #ffff00;
+            border: 1px solid #ffff00;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-size: 12px;
+            line-height: 1.3;
+            position: absolute;
+            z-index: 100;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 15px rgba(255, 255, 0, 0.2);
+            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+            pointer-events: none;
+            font-weight: normal;
+        }
+
+        .copyable-link .copy-tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #ffff00 transparent transparent transparent;
+        }
+
+        .copyable-link:hover .copy-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* ИНФО ИКОНА */
         .info-container {
             position: relative;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin-right: -5px;
+            margin-right: 5px;
         }
 
         .info-badge {
@@ -223,7 +316,7 @@
             opacity: 0;
             width: 280px;
             background-color: #111111;
-            color: #ffff00; /* Буквите вече са жълти */
+            color: #ffff00;
             border: 1px solid #ffff00;
             text-align: left;
             border-radius: 6px;
@@ -298,29 +391,36 @@
         <section id="downloads-section" class="downloads-section">
             <h2 class="downloads-title">Добре дошли и приятна игра в нашите сървъри!</h2>
             
-            <!-- Terraria Server Box -->
-            <div class="download-box">
-                <span class="download-box-text">Terraria Server: bulgaria-gaming-zone.asuscomm.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Порт: 7775</span>
-                <div class="download-icons-group">
-                    <a onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)" class="game-icon-link" title="Копирай линка за сървъра">
-                        <img src="terraria_icon.png" alt="Terraria" class="icon-game">
-                    </a>
-                </div>
+            <div class="section-headers">
+                <span class="section-header-title">Влез в нашите сървъри с един клик (Копирай адреса на съответната игра)</span>
+                <span class="section-header-title">Нямаш играта? Свали я от тук:</span>
             </div>
 
-            <!-- RUNE 2000 Server Box -->
+            <!-- Half-Life & Counter-Strike 1.6 Box -->
             <div class="download-box">
-                <span class="download-box-text">RUNE 2000 Server: bulgaria-gaming-zone.asuscomm.com</span>
-                <div class="download-icons-group">
-                    <a onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)" class="game-icon-link" title="Копирай линка за сървъра">
-                        <img src="rune_icon.png" alt="Rune" class="icon-game">
-                    </a>
+                <div class="download-box-text server-list-container">
+                    <div>
+                        Half-Life Server: 
+                        <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27015', this)">
+                            connect bulgaria-gaming-zone.asuscomm.com:27015
+                            <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                        </span>
+                    </div>
+                    <div>
+                        CS1.6 fy_Server: 
+                        <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27016', this)">
+                            connect bulgaria-gaming-zone.asuscomm.com:27016
+                            <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                        </span>
+                    </div>
+                    <div>
+                        CS1.6 de_Server: 
+                        <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27017', this)">
+                            connect bulgaria-gaming-zone.asuscomm.com:27017
+                            <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                        </span>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Half-Life & Counter-Strike 1.6 Servers Box -->
-            <div class="download-box">
-                <span class="download-box-text">Half-Life &amp; Counter-Strike 1.6 Servers: bulgaria-gaming-zone.asuscomm.com</span>
                 <div class="download-icons-group">
                     <div class="info-container">
                         <span class="info-badge">!</span>
@@ -328,11 +428,52 @@
                             Всеки от Counter-Strike сървърите ни разполага със собствена ранг система. Можете лесно да проверявате статуса си за съответния сървър, като въведете в чата командите: <strong>/rank</strong>, <strong>/rankstats</strong>, <strong>/top15</strong>
                         </div>
                     </div>
-                    <a onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)" class="game-icon-link" title="Копирай линка за сървъра">
-                        <img src="CS_HL_icon.png" alt="Half-Life & Counter-Strike 1.6" class="icon-cshl">
+                    <a href="https://drive.google.com/uc?export=download&amp;id=1rD0_ogfojVJ884n-VFlg3uP3TV0RNVi8" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Half-Life / CS 1.6">
+                        <img src="CS_HL_icon.png" alt="Download Half-Life / CS 1.6" class="icon-cshl">
+                        <span class="download-badge">Изтегли</span>
                     </a>
                 </div>
             </div>
+
+            <!-- RUNE 2000 Box -->
+            <div class="download-box">
+                <div class="download-box-text">
+                    RUNE 2000 Server: 
+                    <span class="copyable-link" onclick="copyServerIP('open bulgaria-gaming-zone.asuscomm.com:7777', this)">
+                        open bulgaria-gaming-zone.asuscomm.com:7777
+                        <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                    </span>
+                </div>
+                <div class="download-icons-group">
+                    <a href="https://drive.google.com/uc?export=download&amp;id=1mPkB_qACfytvZ9BUPjR1U3sXhJSSYCrz" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download RUNE 2000">
+                        <img src="rune_icon.png" alt="Download RUNE 2000" class="icon-game">
+                        <span class="download-badge">Изтегли</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Terraria Box -->
+            <div class="download-box">
+                <div class="download-box-text">
+                    Terraria Server: 
+                    <span class="copyable-link" onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)">
+                        bulgaria-gaming-zone.asuscomm.com
+                        <span class="copy-tooltip">Кликни тук за да копираш адреса, приятна игра!</span>
+                    </span> 
+                    &nbsp;&nbsp;&nbsp;&nbsp; Порт: 
+                    <span class="copyable-link" onclick="copyServerIP('7775', this)">
+                        7775
+                        <span class="copy-tooltip">Кликни тук за да копираш порта!</span>
+                    </span>
+                </div>
+                <div class="download-icons-group">
+                    <a href="https://drive.google.com/uc?export=download&amp;id=19wX6nEFKB-cmNL2KqIQEOE0JL8z2li1Q" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Terraria">
+                        <img src="terraria_icon.png" alt="Download Terraria" class="icon-game">
+                        <span class="download-badge">Изтегли</span>
+                    </a>
+                </div>
+            </div>
+
         </section>
     </main>
 
@@ -343,11 +484,14 @@
     <script>
         function copyServerIP(text, element) {
             navigator.clipboard.writeText(text).then(() => {
-                let originalTitle = element.getAttribute('title');
-                element.setAttribute('title', 'Линкът е копиран!');
-                setTimeout(() => {
-                    element.setAttribute('title', originalTitle);
-                }, 2000);
+                let tooltip = element.querySelector('.copy-tooltip');
+                if (tooltip) {
+                    let originalText = tooltip.innerText;
+                    tooltip.innerText = 'Адресът е копиран!';
+                    setTimeout(() => {
+                        tooltip.innerText = originalText;
+                    }, 2000);
+                }
             }).catch(err => {
                 console.error('Грешка при копиране: ', err);
             });

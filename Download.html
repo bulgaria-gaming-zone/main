@@ -160,7 +160,6 @@
             flex-wrap: wrap;
         }
 
-        /* Увеличена икона в текста */
         .inline-text-icon {
             height: 36px;
             width: auto;
@@ -175,14 +174,33 @@
             align-items: center;
         }
 
-        .game-icon-link {
-            display: inline-block;
+        /* Контейнер за иконата и жълтото табче отдолу */
+        .game-download-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            gap: 8px;
             transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
         }
 
-        .game-icon-link:hover {
-            transform: scale(1.1);
+        .game-download-card:hover {
+            transform: scale(1.08);
             filter: brightness(1.2);
+        }
+
+        /* Жълто табче с черен текст */
+        .download-tab {
+            background-color: #ffff00;
+            color: #000000;
+            font-size: 13px;
+            font-weight: 900;
+            padding: 5px 14px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 8px rgba(255, 255, 0, 0.6);
+            white-space: nowrap;
         }
 
         .icon-h3, .icon-vcmi, .icon-ra2, .icon-cncnet, .icon-terraria, .icon-rune {
@@ -192,9 +210,8 @@
             display: block;
         }
 
-        /* Увеличена височина на CS & HL иконата за визуално съответствие */
         .icon-cshl {
-            height: 85px;
+            height: 75px;
             width: auto;
             object-fit: contain;
             display: block;
@@ -246,11 +263,13 @@
             <div class="download-box">
                 <span class="download-box-text">Heroes III Original Files and VCMI</span>
                 <div class="download-icons-group">
-                    <a href="https://drive.google.com/file/d/1tK5Zhc8FJ5BB1vi8KgZNO5QntngwkVUD/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download Heroes III Files">
+                    <a href="https://drive.google.com/uc?export=download&amp;id=1tK5Zhc8FJ5BB1vi8KgZNO5QntngwkVUD" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download Heroes III Files">
                         <img src="heroes_icon.png" alt="Heroes III" class="icon-h3">
+                        <span class="download-tab">ИЗТЕГЛИ</span>
                     </a>
-                    <a href="https://vcmi.eu/download/" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download VCMI">
+                    <a href="https://vcmi.eu/download/" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download VCMI">
                         <img src="vcmi_icon.png" alt="VCMI" class="icon-vcmi">
+                        <span class="download-tab">ИЗТЕГЛИ</span>
                     </a>
                 </div>
             </div>
@@ -259,11 +278,13 @@
             <div class="download-box">
                 <span class="download-box-text">Red Alert 2 Original Files and CnCNet</span>
                 <div class="download-icons-group">
-                    <a href="https://drive.google.com/file/d/1D4_keMlTfIEl2B1teJ5lb71fsFSwkVry/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download Red Alert 2 Files">
+                    <a href="https://drive.google.com/uc?export=download&amp;id=1D4_keMlTfIEl2B1teJ5lb71fsFSwkVry" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download Red Alert 2 Files">
                         <img src="ra2_icon.png" alt="Red Alert 2" class="icon-ra2">
+                        <span class="download-tab">ИЗТЕГЛИ</span>
                     </a>
-                    <a href="https://cncnet.org/red-alert-2" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download CnCNet">
+                    <a href="https://cncnet.org/red-alert-2" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download CnCNet">
                         <img src="cncnet_icon.png" alt="CnCNet" class="icon-cncnet">
+                        <span class="download-tab">ИЗТЕГЛИ</span>
                     </a>
                 </div>
             </div>
@@ -272,8 +293,9 @@
             <div class="download-box">
                 <span class="download-box-text">Terraria – v1.4.5.0 ( Парола на архива: 1450 )</span>
                 <div class="download-icons-group">
-                    <a href="https://drive.google.com/file/d/19wX6nEFKB-cmNL2KqIQEOE0JL8z2li1Q/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download Terraria">
+                    <a href="https://drive.google.com/uc?export=download&amp;id=19wX6nEFKB-cmNL2KqIQEOE0JL8z2li1Q" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download Terraria">
                         <img src="terraria_icon.png" alt="Terraria" class="icon-terraria">
+                        <span class="download-tab">ИЗТЕГЛИ</span>
                     </a>
                 </div>
             </div>
@@ -286,8 +308,9 @@
                     Play BULGARIA-GaminG-Zone.exe )
                 </span>
                 <div class="download-icons-group">
-                    <a href="https://drive.google.com/file/d/1mPkB_qACfytvZ9BUPjR1U3sXhJSSYCrz/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download RUNE 2000">
+                    <a href="https://drive.google.com/uc?export=download&amp;id=1mPkB_qACfytvZ9BUPjR1U3sXhJSSYCrz" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download RUNE 2000">
                         <img src="rune_icon.png" alt="RUNE 2000" class="icon-rune">
+                        <span class="download-tab">ИЗТЕГЛИ</span>
                     </a>
                 </div>
             </div>
@@ -296,8 +319,9 @@
             <div class="download-box">
                 <span class="download-box-text">Half-Life &amp; Counter-Strike 1.6 ( Парола на инсталатора: 4400 )</span>
                 <div class="download-icons-group">
-                    <a href="https://drive.google.com/file/d/1rD0_ogfojVJ884n-VFlg3uP3TV0RNVi8/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="game-icon-link" title="Download Half-Life & Counter-Strike 1.6">
+                    <a href="https://drive.google.com/uc?export=download&amp;id=1rD0_ogfojVJ884n-VFlg3uP3TV0RNVi8" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download Half-Life & Counter-Strike 1.6">
                         <img src="CS_HL_icon.png" alt="Half-Life & Counter-Strike 1.6" class="icon-cshl">
+                        <span class="download-tab">ИЗТЕГЛИ</span>
                     </a>
                 </div>
             </div>
