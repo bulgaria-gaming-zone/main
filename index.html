@@ -51,21 +51,13 @@
             filter: brightness(1.05);
         }
 
-        @media (max-width: 768px) {
-            .header-banner {
-                transform: scale(1.82);
-                transform-origin: center center;
-                margin: 45px 0;
-            }
-        }
-
         .nav-menu-container {
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             background-color: #000000;
-            padding: 20px 0;
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -73,7 +65,7 @@
 
         .social-links {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
@@ -91,15 +83,15 @@
         }
 
         .nav-icon {
-            width: 54px;
-            height: 54px;
+            width: 44px;
+            height: 44px;
             display: block;
             object-fit: contain;
         }
 
         .icon-home {
-            width: 68.4px;
-            height: 62.6px;
+            width: 54px;
+            height: 50px;
             display: block;
             object-fit: contain;
         }
@@ -110,13 +102,14 @@
 
         .main-content {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
             flex-grow: 1;
-            margin: 20px 20px;
+            padding: 0 15px;
+            margin: 15px 0;
         }
 
         .downloads-section {
@@ -124,16 +117,16 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         .downloads-title {
             color: #ffff00;
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
             text-align: center;
         }
 
@@ -142,15 +135,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 10px 10px 10px;
+            padding: 0 5px 10px 5px;
+            gap: 10px;
         }
 
         .section-header-title {
             color: #ffff00;
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .download-box {
@@ -158,23 +152,24 @@
             background-color: #000000;
             border: 1px solid #ffff00;
             border-radius: 4px;
-            padding: 15px 25px;
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 0 10px rgba(255, 255, 0, 0.1);
-            margin-bottom: 20px;
+            box-shadow: 0 0 8px rgba(255, 255, 0, 0.1);
+            margin-bottom: 15px;
+            gap: 15px;
         }
 
         .download-box-text {
             color: #ffff00;
-            font-size: 20px;
+            font-size: 15px;
             font-weight: 500;
         }
 
         .download-icons-group {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             align-items: center;
         }
 
@@ -184,24 +179,25 @@
             flex-direction: column;
             align-items: center;
             text-decoration: none;
+            gap: 6px;
             transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
             cursor: pointer;
         }
 
         .download-item-wrapper:hover {
-            transform: scale(1.08);
+            transform: scale(1.06);
             filter: brightness(1.2);
         }
 
         .icon-game {
-            height: 55px;
+            height: 46px;
             width: auto;
             object-fit: contain;
             display: block;
         }
 
         .icon-cshl {
-            height: 70px;
+            height: 58px;
             width: auto;
             object-fit: contain;
             display: block;
@@ -209,23 +205,23 @@
 
         /* ТАБЧЕ ТЕКСТ "Изтегли" */
         .download-badge {
-            margin-top: 4px;
             background-color: #ffff00;
             color: #000000;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 800;
-            padding: 2px 10px;
+            padding: 3px 8px;
             border-radius: 3px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             box-shadow: 0 0 5px rgba(255, 255, 0, 0.4);
+            white-space: nowrap;
         }
 
         /* СЪРВЪРНИ ЛИНКОВЕ И ТУЛТИПОВЕ */
         .server-list-container {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
         }
 
         .copyable-link {
@@ -245,14 +241,14 @@
         .copyable-link .copy-tooltip {
             visibility: hidden;
             opacity: 0;
-            width: 260px;
+            width: 240px;
             background-color: #111111;
             color: #ffff00;
             border: 1px solid #ffff00;
             text-align: center;
             border-radius: 6px;
-            padding: 8px 10px;
-            font-size: 12px;
+            padding: 6px 8px;
+            font-size: 11px;
             line-height: 1.3;
             position: absolute;
             z-index: 100;
@@ -291,13 +287,13 @@
         }
 
         .info-badge {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             border: 2px solid #ffff00;
             color: #ffff00;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -314,14 +310,14 @@
         .info-tooltip {
             visibility: hidden;
             opacity: 0;
-            width: 280px;
+            width: 250px;
             background-color: #111111;
             color: #ffff00;
             border: 1px solid #ffff00;
             text-align: left;
             border-radius: 6px;
-            padding: 10px 12px;
-            font-size: 13px;
+            padding: 8px 10px;
+            font-size: 12px;
             line-height: 1.4;
             position: absolute;
             z-index: 100;
@@ -351,14 +347,68 @@
 
         footer {
             width: 100%;
-            padding: 25px 20px;
+            padding: 18px 15px;
             text-align: center;
             color: #ffff00;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
             background-color: #000000;
+        }
+
+        /* Мобилна оптимизация */
+        @media (max-width: 768px) {
+            .header-banner {
+                transform: scale(1.82);
+                transform-origin: center center;
+                margin: 45px 0;
+            }
+
+            .downloads-title {
+                font-size: 17px;
+                margin-bottom: 15px;
+            }
+
+            .section-headers {
+                flex-direction: column;
+                text-align: center;
+                gap: 5px;
+                margin-bottom: 5px;
+            }
+
+            .section-header-title {
+                font-size: 11px;
+            }
+
+            .download-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 12px 15px;
+                gap: 12px;
+            }
+
+            .download-box-text {
+                font-size: 13px;
+                word-break: break-word;
+            }
+
+            .download-icons-group {
+                gap: 12px;
+            }
+
+            .icon-game {
+                height: 40px;
+            }
+
+            .icon-cshl {
+                height: 48px;
+            }
+
+            .download-badge {
+                font-size: 9px;
+                padding: 2px 6px;
+            }
         }
     </style>
 </head>
