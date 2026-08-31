@@ -216,6 +216,15 @@
             align-items: center;
         }
 
+        .download-password-label {
+            color: #ffff00;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: right;
+            line-height: 1.3;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
         .download-item-wrapper {
             display: flex;
             flex-direction: column;
@@ -434,7 +443,12 @@
             }
 
             .download-icons-group {
+                flex-direction: column;
                 gap: 12px;
+            }
+
+            .download-password-label {
+                text-align: center;
             }
 
             .icon-game {
@@ -550,6 +564,13 @@
                             Всеки от Counter-Strike сървърите ни разполага със собствена ранг система. Можете лесно да проверявате статуса си за съответния сървър, като въведете в чата командите: <strong>/rank</strong>, <strong>/rankstats</strong>, <strong>/top15</strong>
                         </div>
                     </div>
+                    <div class="download-password-label">
+                        Парола на инсталатора:<br>
+                        <span class="copyable-link" onclick="copyServerIP('4400', this)">
+                            4400
+                            <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                        </span>
+                    </div>
                     <a href="https://drive.google.com/uc?export=download&amp;id=1rD0_ogfojVJ884n-VFlg3uP3TV0RNVi8" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Half-Life / CS 1.6">
                         <img src="CS_HL_icon.png" alt="Download Half-Life / CS 1.6" class="icon-cshl">
                         <span class="download-badge">Изтегли</span>
@@ -567,6 +588,13 @@
                     </span>
                 </div>
                 <div class="download-icons-group">
+                    <div class="download-password-label">
+                        Парола на инсталатора:<br>
+                        <span class="copyable-link" onclick="copyServerIP('3440', this)">
+                            3440
+                            <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                        </span>
+                    </div>
                     <a href="https://drive.google.com/uc?export=download&amp;id=1mPkB_qACfytvZ9BUPjR1U3sXhJSSYCrz" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download RUNE 2000">
                         <img src="rune_icon.png" alt="Download RUNE 2000" class="icon-game">
                         <span class="download-badge">Изтегли</span>
@@ -589,6 +617,13 @@
                     </span>
                 </div>
                 <div class="download-icons-group">
+                    <div class="download-password-label">
+                        Парола на архива:<br>
+                        <span class="copyable-link" onclick="copyServerIP('1450', this)">
+                            1450
+                            <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                        </span>
+                    </div>
                     <a href="https://drive.google.com/uc?export=download&amp;id=19wX6nEFKB-cmNL2KqIQEOE0JL8z2li1Q" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Terraria">
                         <img src="terraria_icon.png" alt="Download Terraria" class="icon-game">
                         <span class="download-badge">Изтегли</span>
@@ -609,7 +644,7 @@
                 let tooltip = element.querySelector('.copy-tooltip');
                 if (tooltip) {
                     let originalText = tooltip.innerText;
-                    tooltip.innerText = 'Адресът е копиран!';
+                    tooltip.innerText = 'Паролата е копирана!'; // Работи както за IP, така и за пароли
                     setTimeout(() => {
                         tooltip.innerText = originalText;
                     }, 2000);
