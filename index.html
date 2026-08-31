@@ -37,11 +37,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid #ffff00;
+            border-bottom: 1px solid transparent;
+            border-image: linear-gradient(to right, rgba(255, 255, 0, 0), rgba(255, 255, 0, 0.85) 20%, rgba(255, 255, 0, 1) 50%, rgba(255, 255, 0, 0.85) 80%, rgba(255, 255, 0, 0)) 1;
         }
 
         .header-container {
@@ -49,7 +50,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding-top: 10px;
+            padding-top: 0;
         }
 
         .header-link {
@@ -77,7 +78,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px 0;
+            padding: 4px 0 10px 0;
+            position: relative;
+        }
+
+        .nav-menu-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 0, 0.3), transparent);
         }
 
         .social-links {
@@ -89,14 +100,16 @@
         }
 
         .social-link-item {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
             cursor: pointer;
         }
 
         .social-link-item:hover {
             transform: scale(1.12);
-            filter: brightness(1.15);
+            filter: drop-shadow(0 0 6px rgba(255, 255, 0, 0.6)) brightness(1.15);
         }
 
         .nav-icon {
@@ -179,6 +192,7 @@
             box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
             margin-bottom: 15px;
             gap: 15px;
+            position: relative;
         }
 
         .download-box-text {
@@ -255,24 +269,25 @@
             border-bottom-color: #ffffff;
         }
 
+        /* ПОДСКАЗКА ПРИ КОПИРАНЕ (Текст) - ПОЗИЦИОНИРАНЕ ВДЯСНО С СТРЕЛКА ВЛЯВО */
         .copyable-link .copy-tooltip {
             visibility: hidden;
             opacity: 0;
-            width: 240px;
+            width: 230px;
             background-color: #111111;
             color: #ffff00;
             border: 1px solid #ffff00;
             text-align: center;
             border-radius: 6px;
-            padding: 6px 8px;
+            padding: 6px 10px;
             font-size: 11px;
             line-height: 1.3;
             position: absolute;
             z-index: 100;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 4px 15px rgba(255, 255, 0, 0.2);
+            left: 105%; /* Позиционира се отдясно на текста */
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
             transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
             pointer-events: none;
             font-weight: normal;
@@ -281,12 +296,12 @@
         .copyable-link .copy-tooltip::after {
             content: "";
             position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
+            top: 50%;
+            right: 100%; /* Стрелката сочи наляво към текста */
+            margin-top: -5px;
             border-width: 5px;
             border-style: solid;
-            border-color: #ffff00 transparent transparent transparent;
+            border-color: transparent #ffff00 transparent transparent;
         }
 
         .copyable-link:hover .copy-tooltip {
@@ -294,6 +309,7 @@
             opacity: 1;
         }
 
+        /* ИНФО ИКОНА (!) */
         .info-container {
             position: relative;
             display: inline-flex;
@@ -303,8 +319,8 @@
         }
 
         .info-badge {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             border: 2px solid #ffff00;
             color: #ffff00;
@@ -323,24 +339,25 @@
             color: #000000;
         }
 
+        /* ИНФО ПОДСКАЗКА (!) - ПОЗИЦИОНИРАНЕ ВЛЯВО С СТРЕЛКА ВДЯСНО */
         .info-tooltip {
             visibility: hidden;
             opacity: 0;
-            width: 250px;
+            width: 260px;
             background-color: #111111;
             color: #ffff00;
             border: 1px solid #ffff00;
             text-align: left;
             border-radius: 6px;
-            padding: 8px 10px;
-            font-size: 12px;
+            padding: 8px 12px;
+            font-size: 11px;
             line-height: 1.4;
             position: absolute;
             z-index: 100;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 4px 15px rgba(255, 255, 0, 0.2);
+            right: 130%; /* Позиционира се отляво на иконата */
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
             transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
             pointer-events: none;
         }
@@ -348,12 +365,12 @@
         .info-tooltip::after {
             content: "";
             position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
+            top: 50%;
+            left: 100%; /* Стрелката сочи надясно към иконата */
+            margin-top: -5px;
             border-width: 5px;
             border-style: solid;
-            border-color: #ffff00 transparent transparent transparent;
+            border-color: transparent transparent transparent #ffff00;
         }
 
         .info-container:hover .info-tooltip {
@@ -363,7 +380,7 @@
 
         footer {
             width: 100%;
-            padding: 18px 15px;
+            padding: 10px 15px;
             text-align: center;
             color: #ffff00;
             font-weight: 700;
@@ -371,7 +388,8 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
             background-color: #000000;
-            border-top: 1px solid #ffff00;
+            border-top: 1px solid transparent;
+            border-image: linear-gradient(to right, rgba(255, 255, 0, 0), rgba(255, 255, 0, 0.85) 20%, rgba(255, 255, 0, 1) 50%, rgba(255, 255, 0, 0.85) 80%, rgba(255, 255, 0, 0)) 1;
         }
 
         @media (max-width: 768px) {
@@ -424,6 +442,37 @@
             .download-badge {
                 font-size: 9px;
                 padding: 2px 6px;
+            }
+
+            /* Мобилна версия - излизат над/под елементите за по-добра четимост на малки екрани */
+            .copyable-link .copy-tooltip {
+                left: 50%;
+                top: auto;
+                bottom: 120%;
+                transform: translateX(-50%);
+            }
+            .copyable-link .copy-tooltip::after {
+                top: 100%;
+                left: 50%;
+                right: auto;
+                margin-top: 0;
+                margin-left: -5px;
+                border-color: #ffff00 transparent transparent transparent;
+            }
+
+            .info-tooltip {
+                right: auto;
+                left: 50%;
+                top: auto;
+                bottom: 125%;
+                transform: translateX(-50%);
+            }
+            .info-tooltip::after {
+                top: 100%;
+                left: 50%;
+                margin-top: 0;
+                margin-left: -5px;
+                border-color: #ffff00 transparent transparent transparent;
             }
         }
     </style>

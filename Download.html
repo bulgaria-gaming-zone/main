@@ -30,18 +30,19 @@
             overflow-x: hidden;
         }
 
-        /* ОБЩ ЧЕРЕН ТАБ ЗА БАНЕРА И МЕНЮТО */
+        /* ОБЩ ЧЕРЕН ТАБ ЗА БАНЕРА И МЕНЮТО С ЕЛЕГАНТНА РАЗЧУПЕНА ГРАНИЦА */
         .header-wrapper {
             width: 100%;
             background-color: #000000;
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid #ffff00;
+            border-bottom: 1px solid transparent;
+            border-image: linear-gradient(to right, rgba(255, 255, 0, 0), rgba(255, 255, 0, 0.85) 20%, rgba(255, 255, 0, 1) 50%, rgba(255, 255, 0, 0.85) 80%, rgba(255, 255, 0, 0)) 1;
         }
 
         .header-container {
@@ -49,7 +50,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding-top: 10px;
+            padding-top: 0;
         }
 
         .header-link {
@@ -77,7 +78,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px 0;
+            padding: 4px 0 10px 0;
+            position: relative;
+        }
+
+        .nav-menu-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 0, 0.3), transparent);
         }
 
         .social-links {
@@ -89,14 +100,16 @@
         }
 
         .social-link-item {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
             cursor: pointer;
         }
 
         .social-link-item:hover {
             transform: scale(1.12);
-            filter: brightness(1.15);
+            filter: drop-shadow(0 0 6px rgba(255, 255, 0, 0.6)) brightness(1.15);
         }
 
         .nav-icon {
@@ -228,7 +241,7 @@
 
         footer {
             width: 100%;
-            padding: 18px 15px;
+            padding: 10px 15px;
             text-align: center;
             color: #ffff00;
             font-weight: 700;
@@ -236,7 +249,8 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
             background-color: #000000;
-            border-top: 1px solid #ffff00;
+            border-top: 1px solid transparent;
+            border-image: linear-gradient(to right, rgba(255, 255, 0, 0), rgba(255, 255, 0, 0.85) 20%, rgba(255, 255, 0, 1) 50%, rgba(255, 255, 0, 0.85) 80%, rgba(255, 255, 0, 0)) 1;
         }
 
         @media (max-width: 768px) {
