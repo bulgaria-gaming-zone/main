@@ -193,6 +193,66 @@
             line-height: 1.4;
         }
 
+        /* Блок за парола вдясно до иконите с фиксирана широчина за перфектно подравняване */
+        .password-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-size: 14px;
+            color: #ffff00;
+            font-weight: 500;
+            width: 185px; /* Фиксирана широчина, за да укроти разликата в дължината на текста */
+            flex-shrink: 0;
+        }
+
+        .password-container .pass-label {
+            font-size: 13px;
+            margin-bottom: 2px;
+            display: block;
+            text-align: center;
+            width: 100%;
+            white-space: nowrap;
+        }
+
+        /* Интерактивни цифри на паролата */
+        .copy-password {
+            display: inline-block;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-underline-offset: 4px;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .copy-password:hover {
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        /* Изскачащ надпис при успешно копиране */
+        .copy-toast {
+            position: fixed;
+            bottom: 30px;
+            background-color: #ffff00;
+            color: #000000;
+            padding: 8px 16px;
+            font-weight: 700;
+            font-size: 14px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(255,255,0,0.6);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+            z-index: 2000;
+        }
+
+        .copy-toast.show {
+            opacity: 1;
+        }
+
         .inline-text-icon {
             height: 28px;
             width: auto;
@@ -287,7 +347,13 @@
             }
 
             .download-icons-group {
+                flex-direction: column;
                 gap: 12px;
+            }
+
+            .password-container {
+                width: 100%;
+                margin-bottom: 5px;
             }
 
             .icon-h3, .icon-vcmi, .icon-ra2, .icon-cncnet, .icon-terraria, .icon-rune {
@@ -306,6 +372,9 @@
     </style>
 </head>
 <body>
+
+    <!-- Toast съобщение за копиране -->
+    <div id="copyToast" class="copy-toast">Паролата е копирана!</div>
 
     <div class="header-wrapper">
         <header class="header-container">
@@ -368,8 +437,12 @@
 
             <!-- Terraria Box -->
             <div class="download-box">
-                <span class="download-box-text">Terraria – v1.4.5.0 ( Парола на архива: 1450 )</span>
+                <span class="download-box-text">Terraria – v1.4.5.0</span>
                 <div class="download-icons-group">
+                    <div class="password-container">
+                        <span class="pass-label">Парола на архива:</span>
+                        <span class="copy-password" onclick="copyPassword('1450')" title="Кликни за копиране">1450</span>
+                    </div>
                     <a href="https://drive.google.com/uc?export=download&amp;id=19wX6nEFKB-cmNL2KqIQEOE0JL8z2li1Q" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download Terraria">
                         <img src="terraria_icon.png" alt="Terraria" class="icon-terraria">
                         <span class="download-tab">ИЗТЕГЛИ</span>
@@ -380,12 +453,16 @@
             <!-- RUNE 2000 Box -->
             <div class="download-box">
                 <span class="download-box-text">
-                    RUNE 2000 ( Парола на инсталатора: 3440 )<br>
+                    RUNE 2000<br>
                     Ползвайте ланчъра ни за инстантна връзка със сървъра 
                     <img src="runeBGGZ.png" alt="Rune Icon" class="inline-text-icon"> 
                     BULGARIA-GaminG-Zone.exe
                 </span>
                 <div class="download-icons-group">
+                    <div class="password-container">
+                        <span class="pass-label">Парола на инсталатора:</span>
+                        <span class="copy-password" onclick="copyPassword('3440')" title="Кликни за копиране">3440</span>
+                    </div>
                     <a href="https://drive.google.com/uc?export=download&amp;id=1mPkB_qACfytvZ9BUPjR1U3sXhJSSYCrz" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download RUNE 2000">
                         <img src="rune_icon.png" alt="RUNE 2000" class="icon-rune">
                         <span class="download-tab">ИЗТЕГЛИ</span>
@@ -395,8 +472,12 @@
 
             <!-- Half-Life & Counter-Strike 1.6 Box -->
             <div class="download-box">
-                <span class="download-box-text">Half-Life &amp; Counter-Strike 1.6 ( Парола на инсталатора: 4400 )</span>
+                <span class="download-box-text">Half-Life &amp; Counter-Strike 1.6</span>
                 <div class="download-icons-group">
+                    <div class="password-container">
+                        <span class="pass-label">Парола на инсталатора:</span>
+                        <span class="copy-password" onclick="copyPassword('4400')" title="Кликни за копиране">4400</span>
+                    </div>
                     <a href="https://drive.google.com/uc?export=download&amp;id=1rD0_ogfojVJ884n-VFlg3uP3TV0RNVi8" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download Half-Life & Counter-Strike 1.6">
                         <img src="CS_HL_icon.png" alt="Half-Life & Counter-Strike 1.6" class="icon-cshl">
                         <span class="download-tab">ИЗТЕГЛИ</span>
@@ -409,6 +490,21 @@
     <footer>
         &copy; 2026 BULGARIA|GaminG Zone|&trade;
     </footer>
+
+    <!-- JavaScript за копиране на паролата -->
+    <script>
+        function copyPassword(password) {
+            navigator.clipboard.writeText(password).then(() => {
+                const toast = document.getElementById('copyToast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            }).catch(err => {
+                console.error('Грешка при копиране: ', err);
+            });
+        }
+    </script>
 
 </body>
 </html>
