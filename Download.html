@@ -13,6 +13,10 @@
 
         body {
             background-color: #000000;
+            background-image: url('bgz_background_top02.jpg');
+            background-repeat: repeat;
+            background-position: center top;
+            background-attachment: fixed;
             color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
@@ -21,6 +25,19 @@
             justify-content: space-between;
             align-items: center;
             overflow-x: hidden;
+        }
+
+        /* ОБЩ ЧЕРЕН ТАБ ЗА БАНЕРА И МЕНЮТО */
+        .header-wrapper {
+            width: 100%;
+            background-color: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .header-container {
@@ -56,11 +73,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #000000;
             padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
         }
 
         .social-links {
@@ -128,18 +141,21 @@
             letter-spacing: 1.5px;
             margin-bottom: 20px;
             text-align: center;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
+        /* КУТИИ С 50% ПРОЗРАЧНОСТ И BACKDROP FILTER ЗА ПО-ДОБРА ЧЕТИМОСТ */
         .download-box {
             width: 100%;
-            background-color: #000000;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
             border: 1px solid #ffff00;
             border-radius: 4px;
             padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 0 8px rgba(255, 255, 0, 0.1);
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
             margin-bottom: 15px;
             gap: 15px;
         }
@@ -168,7 +184,6 @@
             align-items: center;
         }
 
-        /* Контейнер за иконата и жълтото табче отдолу */
         .game-download-card {
             display: flex;
             flex-direction: column;
@@ -183,7 +198,6 @@
             filter: brightness(1.2);
         }
 
-        /* Жълто табче с черен текст - ОПТИМИЗИРАН РАЗМЕР */
         .download-tab {
             background-color: #ffff00;
             color: #000000;
@@ -223,7 +237,6 @@
             background-color: #000000;
         }
 
-        /* Мобилна оптимизация */
         @media (max-width: 768px) {
             .header-banner {
                 transform: scale(1.82);
@@ -269,28 +282,30 @@
 </head>
 <body>
 
-    <header class="header-container">
-        <a href="https://bulgaria-gaming-zone.github.io/main/" class="header-link">
-            <img src="header_banner.png" alt="GAMING BULGARIA ZONE Header" class="header-banner">
-        </a>
-    </header>
+    <div class="header-wrapper">
+        <header class="header-container">
+            <a href="https://bulgaria-gaming-zone.github.io/main/" class="header-link">
+                <img src="header_banner.png" alt="GAMING BULGARIA ZONE Header" class="header-banner">
+            </a>
+        </header>
 
-    <nav class="nav-menu-container">
-        <div class="social-links">
-            <a href="https://bulgaria-gaming-zone.github.io/main/" class="social-link-item" title="Начало">
-                <img src="home_icon.png" alt="Home" class="icon-home">
-            </a>
-            <a href="https://www.facebook.com/groups/389530691674289/" target="_blank" rel="noopener noreferrer" class="social-link-item" title="Facebook Group">
-                <img src="facebook_icon.png" alt="Facebook" class="nav-icon">
-            </a>
-            <a href="https://discord.gg/yyG5CpQ" target="_blank" rel="noopener noreferrer" class="social-link-item" title="Discord Server">
-                <img src="discord_icon.png" alt="Discord" class="nav-icon">
-            </a>
-            <a href="https://bulgaria-gaming-zone.github.io/main/Download.html" class="social-link-item" title="Download Menu">
-                <img src="download_icon.png" alt="Download" class="nav-icon icon-download">
-            </a>
-        </div>
-    </nav>
+        <nav class="nav-menu-container">
+            <div class="social-links">
+                <a href="https://bulgaria-gaming-zone.github.io/main/" class="social-link-item" title="Начало">
+                    <img src="home_icon.png" alt="Home" class="icon-home">
+                </a>
+                <a href="https://www.facebook.com/groups/389530691674289/" target="_blank" rel="noopener noreferrer" class="social-link-item" title="Facebook Group">
+                    <img src="facebook_icon.png" alt="Facebook" class="nav-icon">
+                </a>
+                <a href="https://discord.gg/yyG5CpQ" target="_blank" rel="noopener noreferrer" class="social-link-item" title="Discord Server">
+                    <img src="discord_icon.png" alt="Discord" class="nav-icon">
+                </a>
+                <a href="https://bulgaria-gaming-zone.github.io/main/Download.html" class="social-link-item" title="Download Menu">
+                    <img src="download_icon.png" alt="Download" class="nav-icon icon-download">
+                </a>
+            </div>
+        </nav>
+    </div>
 
     <main class="main-content">
         <section id="downloads-section" class="downloads-section">
