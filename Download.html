@@ -247,6 +247,10 @@
             font-weight: normal;
         }
 
+        .copyable-link .copy-tooltip.copied {
+            color: #ffff00;
+        }
+
         .copyable-link .copy-tooltip::after {
             content: "";
             position: absolute;
@@ -528,9 +532,11 @@
                 let tooltip = element.querySelector('.copy-tooltip');
                 if (tooltip) {
                     let originalText = tooltip.innerText;
-                    tooltip.innerText = 'Паролата е копирана!';
+                    tooltip.innerText = 'Копирано!';
+                    tooltip.style.color = '#ffff00';
                     setTimeout(() => {
                         tooltip.innerText = originalText;
+                        tooltip.style.color = '';
                     }, 2000);
                 }
             }).catch(err => {

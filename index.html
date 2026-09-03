@@ -650,9 +650,11 @@
                 let tooltip = element.querySelector('.copy-tooltip');
                 if (tooltip) {
                     let originalText = tooltip.innerText;
-                    tooltip.innerText = 'Паролата е копирана!'; // Работи както за IP, така и за пароли
+                    tooltip.innerText = 'Копирано!'; // Работи както за IP, така и за пароли
+                    tooltip.style.color = '#ffff00';
                     setTimeout(() => {
                         tooltip.innerText = originalText;
+                        tooltip.style.color = '';
                     }, 2000);
                 }
             }).catch(err => {
