@@ -7,7 +7,7 @@
 
     <!-- Open Graph / Discord Embed Meta Tags -->
     <meta property="og:title" content="BULGARIA | GaminG Zone - Център за изтегляне">
-    <meta property="og:description" content="Изтеглете оригинални файлове и ланчъри за любимите си ретро игри - Heroes III, Red Alert 2, Terraria, RUNE и CS 1.6!">
+    <meta property="og:description" content="Изтеглете оригинални файлове и ланчъри за любимите си ретро игри - Heroes III, Red Alert 2, Terraria, RUNE, Quake II и CS 1.6!">
     <meta property="og:image" content="https://bulgaria-gaming-zone.github.io/main/header_banner.png">
     <meta property="og:url" content="https://bulgaria-gaming-zone.github.io/main/Download.html">
     <meta property="og:type" content="website">
@@ -275,6 +275,15 @@
             margin: 0 4px;
         }
 
+        /* Малко по-голяма икона специално за Quake II ланчъра */
+        .inline-text-icon-q2 {
+            height: 36px;
+            width: auto;
+            vertical-align: middle;
+            display: inline-block;
+            margin: 0 4px;
+        }
+
         .download-icons-group {
             display: flex;
             gap: 15px;
@@ -308,7 +317,7 @@
             white-space: nowrap;
         }
 
-        .icon-h3, .icon-vcmi, .icon-ra2, .icon-cncnet, .icon-terraria, .icon-rune {
+        .icon-h3, .icon-vcmi, .icon-ra2, .icon-cncnet, .icon-terraria, .icon-rune, .icon-q2 {
             height: 46px;
             width: auto;
             object-fit: contain;
@@ -369,7 +378,7 @@
                 text-align: center;
             }
 
-            .icon-h3, .icon-vcmi, .icon-ra2, .icon-cncnet, .icon-terraria, .icon-rune {
+            .icon-h3, .icon-vcmi, .icon-ra2, .icon-cncnet, .icon-terraria, .icon-rune, .icon-q2 {
                 height: 40px;
             }
 
@@ -496,6 +505,29 @@
                     </div>
                     <a href="https://drive.google.com/uc?export=download&amp;id=1mPkB_qACfytvZ9BUPjR1U3sXhJSSYCrz" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download RUNE 2000">
                         <img src="rune_icon.png" alt="RUNE 2000" class="icon-rune">
+                        <span class="download-tab">ИЗТЕГЛИ</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quake II Box -->
+            <div class="download-box">
+                <span class="download-box-text">
+                    Quake II<br>
+                    Ползвайте ланчъра ни за инстантна връзка със сървъра 
+                    <img src="Q2BGGZ_icon.png" alt="Quake II Launcher Icon" class="inline-text-icon-q2"> 
+                    q2BG-GZ.exe
+                </span>
+                <div class="download-icons-group">
+                    <div class="download-password-label">
+                        Парола на инсталатора:<br>
+                        <span class="copyable-link password-value" onclick="copyServerIP('1212', this)">
+                            1212
+                            <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                        </span>
+                    </div>
+                    <a href="https://drive.google.com/uc?export=download&amp;id=1OwUKADjy6fxK9F4q8VXXR6Sa-NgwEgf-" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download Quake II">
+                        <img src="Q2_icon.png" alt="Quake II" class="icon-q2">
                         <span class="download-tab">ИЗТЕГЛИ</span>
                     </a>
                 </div>
