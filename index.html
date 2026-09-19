@@ -87,7 +87,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 4px 0 10px 0;
+            padding: 4px 15px 10px 15px;
             position: relative;
         }
 
@@ -106,6 +106,54 @@
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
+            position: relative;
+        }
+
+        /* ВАЖНО БУТОН С МИГАЩА РАМКА */
+        .important-btn {
+            position: absolute;
+            right: 100%;
+            margin-right: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            white-space: nowrap;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            outline: none;
+        }
+
+        .important-btn-title {
+            color: #ffff00;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: transparent;
+            animation: blinkBorder 1s infinite alternate;
+        }
+
+        @keyframes blinkBorder {
+            0% {
+                border: 2px solid #ffff00;
+                box-shadow: 0 0 4px #ffff00;
+            }
+            100% {
+                border: 2px solid transparent;
+                box-shadow: 0 0 0px transparent;
+            }
+        }
+
+        .important-btn-sub {
+            color: #ffff00;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 3px;
         }
 
         .social-link-item {
@@ -292,7 +340,7 @@
             border-bottom-color: #ffffff;
         }
 
-        .copyable-link .copy-tooltip {
+        .copyable-link .copy-tooltip, .launcher-tooltip-container .launcher-tooltip {
             visibility: hidden;
             opacity: 0;
             width: 230px;
@@ -315,7 +363,7 @@
             font-weight: normal;
         }
 
-        .copyable-link .copy-tooltip::after {
+        .copyable-link .copy-tooltip::after, .launcher-tooltip-container .launcher-tooltip::after {
             content: "";
             position: absolute;
             top: 50%;
@@ -326,9 +374,32 @@
             border-color: transparent #ffff00 transparent transparent;
         }
 
-        .copyable-link:hover .copy-tooltip {
+        .copyable-link:hover .copy-tooltip, .launcher-tooltip-container:hover .launcher-tooltip {
             visibility: visible;
             opacity: 1;
+        }
+
+        .launcher-tooltip-container {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .inline-text-icon {
+            height: 28px;
+            width: auto;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .inline-text-icon-q2 {
+            height: 36px;
+            width: auto;
+            vertical-align: middle;
+            display: inline-block;
         }
 
         .info-container {
@@ -398,6 +469,104 @@
             opacity: 1;
         }
 
+        /* МОДАЛЕН ПРОЗОРЕЦ (POPUP) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: #0d0d0d;
+            border: 2px solid #ffff00;
+            border-radius: 8px;
+            max-width: 900px;
+            width: 100%;
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 0 25px rgba(255, 255, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #ffff00;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: #ffffff;
+        }
+
+        .modal-text {
+            color: #ffff00;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .modal-image-container {
+            position: relative;
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid rgba(255, 255, 0, 0.5);
+            border-radius: 4px;
+        }
+
+        .zoom-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.75);
+            color: #ffff00;
+            border: 1px solid #ffff00;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.8);
+        }
+
+        .zoom-btn:hover {
+            background-color: #ffff00;
+            color: #000000;
+            transform: scale(1.1);
+        }
+
         footer {
             width: 100%;
             padding: 10px 15px;
@@ -417,6 +586,13 @@
                 transform: scale(1.82);
                 transform-origin: center center;
                 margin: 45px 0;
+            }
+
+            .important-btn {
+                position: static;
+                margin-right: 0;
+                margin-bottom: 10px;
+                width: 100%;
             }
 
             .downloads-title {
@@ -469,13 +645,13 @@
                 padding: 2px 6px;
             }
 
-            .copyable-link .copy-tooltip {
+            .copyable-link .copy-tooltip, .launcher-tooltip-container .launcher-tooltip {
                 left: 50%;
                 top: auto;
                 bottom: 120%;
                 transform: translateX(-50%);
             }
-            .copyable-link .copy-tooltip::after {
+            .copyable-link .copy-tooltip::after, .launcher-tooltip-container .launcher-tooltip::after {
                 top: 100%;
                 left: 50%;
                 right: auto;
@@ -498,6 +674,10 @@
                 margin-left: -5px;
                 border-color: #ffff00 transparent transparent transparent;
             }
+
+            .launcher-tooltip-container {
+                margin: 5px 0;
+            }
         }
     </style>
 </head>
@@ -512,6 +692,10 @@
 
         <nav class="nav-menu-container">
             <div class="social-links">
+                <button class="important-btn" onclick="openModal()" title="Инструкции за игра">
+                    <span class="important-btn-title">ВАЖНО!</span>
+                    <span class="important-btn-sub">Искаш ли да играеш при нас?</span>
+                </button>
                 <a href="https://bulgaria-gaming-zone.github.io/main/" class="social-link-item" title="Начало">
                     <img src="home_icon.png" alt="Home" class="icon-home">
                 </a>
@@ -591,6 +775,11 @@
                         open bulgaria-gaming-zone.asuscomm.com:7777
                         <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
                     </span>
+                    <span class="launcher-tooltip-container">
+                        <img src="runeBGGZ.png" alt="Rune Launcher Icon" class="inline-text-icon">
+                        <span>BULGARIA-GaminG-Zone.exe</span>
+                        <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
+                    </span>
                 </div>
                 <div class="download-icons-group">
                     <div class="download-password-label">
@@ -614,6 +803,11 @@
                     <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27910', this)">
                         connect bulgaria-gaming-zone.asuscomm.com:27910
                         <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                    </span>
+                    <span class="launcher-tooltip-container">
+                        <img src="Q2BGGZ_icon.png" alt="Quake II Launcher Icon" class="inline-text-icon-q2">
+                        <span>q2BG-GZ.exe</span>
+                        <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
                     </span>
                 </div>
                 <div class="download-icons-group">
@@ -735,6 +929,24 @@
         </section>
     </main>
 
+    <!-- МОДАЛЕН ПРОЗОРЕЦ ЗА ИНСТРУКЦИИТЕ -->
+    <div id="infoModal" class="modal-overlay" onclick="closeModalOnOuter(event)">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-text">
+                Следвайте инструкциите за настройка на Windows Защита (Windows Defender), ако системата отчете фалшива тревога за вирус, както и за правилната инсталация на нашите игри:<br><br>
+                Първо добавете изключение (папка) в Windows Защита, която да не се сканира за вируси (например <strong>D:\GAMES</strong> или където са ви игрите).<br>
+                След това инсталирайте архива, като въведете правилната парола за съответния инсталатор.<br>
+                В готовата инсталационна директория просто си извадете пряк път (shortcut) на самата игра или на нашия ланчър за бърза връзка, ако има такъв.<br><br>
+                <strong>Приятна игра!</strong>
+            </div>
+            <div class="modal-image-container">
+                <a href="WindowsDefenderExclusionGuide.png" target="_blank" class="zoom-btn" title="Отвори снимката в пълен размер (лупичка)">&#128065;</a>
+                <img src="WindowsDefenderExclusionGuide.png" alt="Windows Defender Instructions" class="modal-image">
+            </div>
+        </div>
+    </div>
+
     <footer>
         &copy; 2026 BULGARIA|GaminG Zone|&trade;
     </footer>
@@ -755,6 +967,20 @@
             }).catch(err => {
                 console.error('Грешка при копиране: ', err);
             });
+        }
+
+        function openModal() {
+            document.getElementById('infoModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+
+        function closeModalOnOuter(event) {
+            if (event.target.id === 'infoModal') {
+                closeModal();
+            }
         }
     </script>
 </body>
