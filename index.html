@@ -7,7 +7,7 @@
 
     <!-- Open Graph / Discord Embed Meta Tags -->
     <meta property="og:title" content="BULGARIA | GaminG Zone - Ретро Сървъри">
-    <meta property="og:description" content="Съберете се с приятели и се забавлявайте в нашите ретро сървъри за Counter-Strike, Half-Life, RUNE, Quake II, Terraria, Serious Sam, Project Zomboid и Necesse!">
+    <meta property="og:description" content="Съберете се с приятели и се забавлявайте в нашите ретро сървъри за Counter-Strike, Half-Life, RUNE, Quake II, Quake III, Terraria, Serious Sam, Project Zomboid и Necesse!">
     <meta property="og:image" content="https://bulgaria-gaming-zone.github.io/main/favicon.png">
     <meta property="og:url" content="https://bulgaria-gaming-zone.github.io/main/">
     <meta property="og:type" content="website">
@@ -361,6 +361,10 @@
             transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
             pointer-events: none;
             font-weight: normal;
+        }
+
+        .copyable-link .copy-tooltip.copied {
+            color: #ffff00;
         }
 
         .copyable-link .copy-tooltip::after, .launcher-tooltip-container .launcher-tooltip::after {
@@ -820,6 +824,35 @@
                     </div>
                     <a href="https://drive.google.com/uc?export=download&amp;id=1OwUKADjy6fxK9F4q8VXXR6Sa-NgwEgf-" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Quake II">
                         <img src="Q2_icon.png" alt="Download Quake II" class="icon-game">
+                        <span class="download-badge">Изтегли</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quake III Box -->
+            <div class="download-box">
+                <div class="download-box-text">
+                    Quake III Server: 
+                    <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27960', this)">
+                        connect bulgaria-gaming-zone.asuscomm.com:27960
+                        <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                    </span>
+                    <span class="launcher-tooltip-container">
+                        <img src="q3bg-gz.png" alt="Quake III Launcher Icon" class="inline-text-icon-q2">
+                        <span>q3bg-gz.exe</span>
+                        <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
+                    </span>
+                </div>
+                <div class="download-icons-group">
+                    <div class="download-password-label">
+                        Парола на инсталатора:<br>
+                        <span class="copyable-link password-value" onclick="copyServerIP('5566', this)">
+                            5566
+                            <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                        </span>
+                    </div>
+                    <a href="https://drive.google.com/uc?export=download&amp;id=1ZnVaYD0ywnlAFebvSszWlCEj_aapqQX1" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Quake III">
+                        <img src="Quake3icon.png" alt="Download Quake III" class="icon-game">
                         <span class="download-badge">Изтегли</span>
                     </a>
                 </div>
