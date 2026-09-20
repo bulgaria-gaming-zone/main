@@ -2,7 +2,8 @@
 <html lang="bg">
 <head>
   <meta charset="UTF-8">
-  <title>Bulgaria Gaming Zone - Live Chat (Admin Delete)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bulgaria Gaming Zone - Live Chat</title>
   <style>
     * {
       box-sizing: border-box;
@@ -14,62 +15,95 @@
       background-color: #0d0d0d;
       color: #e0e0e0;
       font-family: 'Consolas', 'Courier New', monospace;
-      padding: 10px;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      width: 100%;
     }
 
     .retro-chat-container {
       width: 100%;
-      height: 500px;
+      height: 150px; /* Фиксирана височина около 4 см */
+      max-height: 150px;
       background-color: #111111;
       border: 2px solid #ffee00;
       box-shadow: 0 0 12px rgba(255, 238, 0, 0.25);
       display: flex;
       flex-direction: column;
+      border-radius: 4px;
+      overflow: hidden;
     }
 
     .chat-header {
       background: #ffee00;
       color: #000;
-      padding: 6px 12px;
+      padding: 2px 8px;
       font-weight: bold;
       text-transform: uppercase;
-      font-size: 13px;
+      font-size: 10px;
       letter-spacing: 1px;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .clear-chat-btn {
+      background: #000;
+      color: #ffee00;
+      border: none;
+      padding: 1px 5px;
+      font-size: 9px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 2px;
+      font-family: inherit;
+      text-transform: uppercase;
+    }
+
+    .clear-chat-btn:hover {
+      background: #ff0000;
+      color: #fff;
     }
 
     .chat-body {
       flex: 1;
       display: flex;
+      min-height: 0;
       overflow: hidden;
     }
 
     .chat-messages {
       flex: 1;
-      padding: 10px;
+      padding: 4px 6px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 3px;
       background: #080808;
       border-right: 1px solid #282828;
+      min-height: 0;
     }
 
     .online-users-panel {
-      width: 160px;
+      width: 130px;
       background: #0d0d0d;
-      padding: 8px;
+      padding: 4px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 3px;
+      flex-shrink: 0;
+      min-height: 0;
     }
 
     .online-title {
-      font-size: 11px;
+      font-size: 9px;
       color: #ffee00;
       font-weight: bold;
       border-bottom: 1px solid #282828;
-      padding-bottom: 4px;
+      padding-bottom: 2px;
       text-transform: uppercase;
+      flex-shrink: 0;
     }
 
     .users-list {
@@ -78,108 +112,109 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 2px;
+      min-height: 0;
+    }
+
+    /* КОМПАКТНИ СКРОЛБАРОВЕ */
+    .chat-messages::-webkit-scrollbar,
+    .users-list::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .chat-messages::-webkit-scrollbar-track,
+    .users-list::-webkit-scrollbar-track {
+      background: #000000;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb,
+    .users-list::-webkit-scrollbar-thumb {
+      background: #ffee00;
+      border-radius: 2px;
     }
 
     .user-item {
-      font-size: 12px;
+      font-size: 10px;
       color: #00ff66;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 3px;
       word-break: break-all;
     }
 
     .user-item::before {
       content: "●";
-      font-size: 10px;
+      font-size: 7px;
     }
 
     .chat-msg {
-      font-size: 13px;
-      line-height: 1.4;
+      font-size: 11px;
+      line-height: 1.2;
       word-break: break-word;
-      display: flex;
-      align-items: center;
     }
 
     .chat-msg .time {
       color: #666;
-      font-size: 11px;
-      margin-right: 6px;
+      font-size: 9px;
+      margin-right: 3px;
     }
 
     .chat-msg .username {
       color: #ffee00;
       font-weight: bold;
-      margin-right: 6px;
+      margin-right: 3px;
     }
 
     .chat-msg .text {
       color: #ffffff;
-      flex: 1;
-    }
-
-    .delete-btn {
-      color: #ff3333;
-      background: transparent;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-      margin-left: 8px;
-      font-size: 11px;
-      padding: 0 4px;
-    }
-
-    .delete-btn:hover {
-      color: #ffffff;
-      background: #ff3333;
     }
 
     .chat-input-area {
       display: flex;
-      gap: 6px;
-      padding: 8px;
+      gap: 4px;
+      padding: 4px;
       background: #161616;
       border-top: 1px solid #282828;
+      flex-shrink: 0;
     }
 
     .chat-input-area input {
       background: #000;
       border: 1px solid #ffee00;
       color: #fff;
-      padding: 6px 10px;
+      padding: 2px 6px;
       font-family: inherit;
-      font-size: 13px;
+      font-size: 10px;
       outline: none;
+      border-radius: 2px;
     }
 
     .chat-input-area input:focus {
-      box-shadow: 0 0 5px #ffee00;
+      box-shadow: 0 0 4px #ffee00;
     }
 
     #chat-name {
-      width: 120px;
+      width: 80px;
+      flex-shrink: 0;
     }
 
     #chat-text {
       flex: 1;
-    }
-
-    #admin-pass {
-      width: 100px;
-      border-color: #ff3333;
+      min-width: 0;
     }
 
     .chat-btn {
       background: #ffee00;
       color: #000;
       border: none;
-      padding: 6px 14px;
+      padding: 2px 8px;
       font-weight: bold;
       font-family: inherit;
+      font-size: 10px;
       cursor: pointer;
       text-transform: uppercase;
+      border-radius: 2px;
+      flex-shrink: 0;
     }
 
     .chat-btn:hover {
@@ -190,7 +225,10 @@
 <body>
 
 <div class="retro-chat-container">
-  <div class="chat-header">BULGARIA GAMING ZONE - MODERATED CHAT</div>
+  <div class="chat-header">
+    <span>BULGARIA GAMING ZONE - LIVE CHAT</span>
+    <button class="clear-chat-btn" id="clear-chat-btn" title="Изтрий всички съобщения">Изтрий чата</button>
+  </div>
   
   <div class="chat-body">
     <div class="chat-messages" id="chat-messages"></div>
@@ -204,7 +242,6 @@
   <form class="chat-input-area" id="chat-form">
     <input type="text" id="chat-name" placeholder="Ник" maxlength="15" required>
     <input type="text" id="chat-text" placeholder="Съобщение..." autocomplete="off" maxlength="200" required>
-    <input type="password" id="admin-pass" placeholder="Админ Ключ">
     <button type="submit" class="chat-btn">Прати</button>
   </form>
 </div>
@@ -245,25 +282,24 @@
   const messagesRef = ref(db, 'chat_messages');
   const presenceRef = ref(db, 'online_users');
 
-  // --- АДМИН ПАРОЛА ЗА ТРИЕНЕ ---
-  const ADMIN_PASSWORD = "1234"; // Промени това с твоя парола!
-
   const form = document.getElementById('chat-form');
   const nameInput = document.getElementById('chat-name');
   const textInput = document.getElementById('chat-text');
-  const adminPassInput = document.getElementById('admin-pass');
   const messagesDiv = document.getElementById('chat-messages');
   const usersListDiv = document.getElementById('users-list');
   const userCountSpan = document.getElementById('user-count');
+  const clearChatBtn = document.getElementById('clear-chat-btn');
 
   let myPresenceRef = null;
 
+  // --- СПАМ И ФИЛТЪР НАСТРОЙКИ ---
   let lastMessageTime = 0;
   let lastMessageText = "";
-  const COOLDOWN_MS = 2500;
+  const COOLDOWN_MS = 2500; // 2.5 секунди изчакване между съобщенията
 
+  // Забранени думи
   const BANNED_WORDS = [
-    "кур", "копеле", "курва", "пичка", "педераст", "птка", "кучка", "гей", "педал"
+    "кур", "копеле", "курва", "пичка", "педераст", "патка", "кучка", "гей", "педал", "хуй", "хуя"
   ];
 
   function censorText(text) {
@@ -281,7 +317,7 @@
     nameInput.value = "Guest_" + Math.floor(Math.random() * 8999 + 1000);
   }
 
-  // Почистване на съобщения по-стари от 24 часа
+  // --- Автоматично почистване на съобщения по-стари от 24 часа ---
   function cleanOldMessages() {
     const twentyFourHoursAgo = Date.now() - (24 * 60 * 60 * 1000);
     const oldMessagesQuery = query(messagesRef, orderByChild('timestamp'), endAt(twentyFourHoursAgo));
@@ -296,6 +332,17 @@
   }
 
   cleanOldMessages();
+
+  // Бутон за изтриване на целия чат
+  clearChatBtn.addEventListener('click', () => {
+    if (confirm("Сигурни ли сте, че искате да изтриете всички съобщения в чата?")) {
+      remove(messagesRef).then(() => {
+        messagesDiv.innerHTML = '';
+      }).catch((err) => {
+        alert("Грешка при изтриване на чата: " + err.message);
+      });
+    }
+  });
 
   // Онлайн статус
   function updateOnlineStatus() {
@@ -343,7 +390,7 @@
     }
   });
 
-  // Пращане на съобщение
+  // --- Изпращане на съобщение със защита от спам и обиди ---
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = nameInput.value.trim();
@@ -382,11 +429,12 @@
     textInput.value = '';
   });
 
-  // Зареждане на съобщения с бутон за изтриване [x]
+  // Зареждане на съобщения
   const recentMessagesQuery = query(messagesRef, limitToLast(50));
   onChildAdded(recentMessagesQuery, (snapshot) => {
     const data = snapshot.val();
     const key = snapshot.key;
+    if (!data) return;
     const time = new Date(data.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
     const msgEl = document.createElement('div');
@@ -396,26 +444,13 @@
       <span class="time">[${time}]</span>
       <span class="username">&lt;${escapeHtml(data.username)}&gt;:</span>
       <span class="text">${escapeHtml(data.text)}</span>
-      <button class="delete-btn" data-key="${key}">[x]</button>
     `;
 
     messagesDiv.appendChild(msgEl);
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
   });
 
-  // Функция за изтриване при клик върху [x]
-  messagesDiv.addEventListener('click', (e) => {
-    if (e.target.classList.contains('delete-btn')) {
-      const pass = adminPassInput.value;
-      if (pass === ADMIN_PASSWORD) {
-        const msgKey = e.target.getAttribute('data-key');
-        remove(ref(db, `chat_messages/${msgKey}`));
-      } else {
-        alert("Грешна админ парола! Введи вярната парола в полето 'Админ Ключ'.");
-      }
-    }
-  });
-
+  // Премахване при изтичане на 24 часа или изтриване
   onChildRemoved(messagesRef, (snapshot) => {
     const deletedEl = document.getElementById(`msg-${snapshot.key}`);
     if (deletedEl) {

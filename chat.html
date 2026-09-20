@@ -2,6 +2,7 @@
 <html lang="bg">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bulgaria Gaming Zone - Live Chat</title>
   <style>
     * {
@@ -14,62 +15,74 @@
       background-color: #0d0d0d;
       color: #e0e0e0;
       font-family: 'Consolas', 'Courier New', monospace;
-      padding: 10px;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      width: 100%;
     }
 
     .retro-chat-container {
       width: 100%;
-      height: 500px;
+      height: 150px; /* Фиксирана височина около 4 см */
+      max-height: 150px;
       background-color: #111111;
       border: 2px solid #ffee00;
       box-shadow: 0 0 12px rgba(255, 238, 0, 0.25);
       display: flex;
       flex-direction: column;
+      border-radius: 4px;
+      overflow: hidden;
     }
 
     .chat-header {
       background: #ffee00;
       color: #000;
-      padding: 6px 12px;
+      padding: 2px 8px;
       font-weight: bold;
       text-transform: uppercase;
-      font-size: 13px;
+      font-size: 10px;
       letter-spacing: 1px;
+      flex-shrink: 0;
     }
 
     .chat-body {
       flex: 1;
       display: flex;
+      min-height: 0;
       overflow: hidden;
     }
 
     .chat-messages {
       flex: 1;
-      padding: 10px;
+      padding: 4px 6px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 3px;
       background: #080808;
       border-right: 1px solid #282828;
+      min-height: 0;
     }
 
     .online-users-panel {
-      width: 160px;
+      width: 130px;
       background: #0d0d0d;
-      padding: 8px;
+      padding: 4px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 3px;
+      flex-shrink: 0;
+      min-height: 0;
     }
 
     .online-title {
-      font-size: 11px;
+      font-size: 9px;
       color: #ffee00;
       font-weight: bold;
       border-bottom: 1px solid #282828;
-      padding-bottom: 4px;
+      padding-bottom: 2px;
       text-transform: uppercase;
+      flex-shrink: 0;
     }
 
     .users-list {
@@ -78,39 +91,57 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 2px;
+      min-height: 0;
+    }
+
+    /* КОМПАКТНИ СКРОЛБАРОВЕ */
+    .chat-messages::-webkit-scrollbar,
+    .users-list::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .chat-messages::-webkit-scrollbar-track,
+    .users-list::-webkit-scrollbar-track {
+      background: #000000;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb,
+    .users-list::-webkit-scrollbar-thumb {
+      background: #ffee00;
+      border-radius: 2px;
     }
 
     .user-item {
-      font-size: 12px;
+      font-size: 10px;
       color: #00ff66;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 3px;
       word-break: break-all;
     }
 
     .user-item::before {
       content: "●";
-      font-size: 10px;
+      font-size: 7px;
     }
 
     .chat-msg {
-      font-size: 13px;
-      line-height: 1.4;
+      font-size: 11px;
+      line-height: 1.2;
       word-break: break-word;
     }
 
     .chat-msg .time {
       color: #666;
-      font-size: 11px;
-      margin-right: 6px;
+      font-size: 9px;
+      margin-right: 3px;
     }
 
     .chat-msg .username {
       color: #ffee00;
       font-weight: bold;
-      margin-right: 6px;
+      margin-right: 3px;
     }
 
     .chat-msg .text {
@@ -119,43 +150,50 @@
 
     .chat-input-area {
       display: flex;
-      gap: 6px;
-      padding: 8px;
+      gap: 4px;
+      padding: 4px;
       background: #161616;
       border-top: 1px solid #282828;
+      flex-shrink: 0;
     }
 
     .chat-input-area input {
       background: #000;
       border: 1px solid #ffee00;
       color: #fff;
-      padding: 6px 10px;
+      padding: 2px 6px;
       font-family: inherit;
-      font-size: 13px;
+      font-size: 10px;
       outline: none;
+      border-radius: 2px;
     }
 
     .chat-input-area input:focus {
-      box-shadow: 0 0 5px #ffee00;
+      box-shadow: 0 0 4px #ffee00;
     }
 
     #chat-name {
-      width: 120px;
+      width: 80px;
+      flex-shrink: 0;
     }
 
     #chat-text {
       flex: 1;
+      min-width: 0;
     }
 
     .chat-btn {
       background: #ffee00;
       color: #000;
       border: none;
-      padding: 6px 14px;
+      padding: 2px 8px;
       font-weight: bold;
       font-family: inherit;
+      font-size: 10px;
       cursor: pointer;
       text-transform: uppercase;
+      border-radius: 2px;
+      flex-shrink: 0;
     }
 
     .chat-btn:hover {
@@ -236,7 +274,7 @@
 
   // Забранени думи (добавяй или премахвай думи тук)
   const BANNED_WORDS = [
-    "кур", "копеле", "курва", "пичка", "педераст", "птка", "кучка", "гей", "педал"
+    "кур", "копеле", "курва", "пичка", "педераст", "патка", "кучка", "гей", "педал", "хуй", "хуя"
   ];
 
   function censorText(text) {
