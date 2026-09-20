@@ -265,7 +265,13 @@
   const usersListDiv = document.getElementById('users-list');
   const userCountSpan = document.getElementById('user-count');
 
-  let myPresenceRef = null;
+  // Използваме постоянен уникален ID за сесията в localStorage, за да няма клонинги при цъкане на страниците
+  let chatSessionId = localStorage.getItem('chat_session_unique_id');
+  if (!chatSessionId) {
+    chatSessionId = 'user_' + Math.random().toString(36).substring(2, 11) + Date.now().toString(36);
+    localStorage.setItem('chat_session_unique_id', chatSessionId);
+  }
+  const myPresenceRef = ref(db, `online_users/${chatSessionId}`);
 
   // --- СПАМ И ФИЛТЪР НАСТРОЙКИ ---
   let lastMessageTime = 0;
@@ -315,10 +321,6 @@
 
     onValue(connectedRef, (snap) => {
       if (snap.val() === true) {
-        if (myPresenceRef) {
-          remove(myPresenceRef);
-        }
-        myPresenceRef = push(presenceRef);
         onDisconnect(myPresenceRef).remove();
         set(myPresenceRef, { username: name });
       }
@@ -331,9 +333,7 @@
     const newName = nameInput.value.trim();
     if (newName) {
       localStorage.setItem('chat_nickname', newName);
-      if (myPresenceRef) {
-        set(myPresenceRef, { username: newName });
-      }
+      set(myPresenceRef, { username: newName });
     }
   });
 
