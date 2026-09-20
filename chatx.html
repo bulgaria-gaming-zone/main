@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <title>Bulgaria Gaming Zone - Live Chat (Admin Delete)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+      font-family: 'Consolas', 'Courier New', monospace;
+      padding: 10px;
+    }
+
+    .retro-chat-container {
+      width: 100%;
+      height: 500px;
+      background-color: #111111;
+      border: 2px solid #ffee00;
+      box-shadow: 0 0 12px rgba(255, 238, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-header {
+      background: #ffee00;
+      color: #000;
+      padding: 6px 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    .chat-body {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: #080808;
+      border-right: 1px solid #282828;
+    }
+
+    .online-users-panel {
+      width: 160px;
+      background: #0d0d0d;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .online-title {
+      font-size: 11px;
+      color: #ffee00;
+      font-weight: bold;
+      border-bottom: 1px solid #282828;
+      padding-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .users-list {
+      list-style: none;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .user-item {
+      font-size: 12px;
+      color: #00ff66;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      word-break: break-all;
+    }
+
+    .user-item::before {
+      content: "●";
+      font-size: 10px;
+    }
+
+    .chat-msg {
+      font-size: 13px;
+      line-height: 1.4;
+      word-break: break-word;
+      display: flex;
+      align-items: center;
+    }
+
+    .chat-msg .time {
+      color: #666;
+      font-size: 11px;
+      margin-right: 6px;
+    }
+
+    .chat-msg .username {
+      color: #ffee00;
+      font-weight: bold;
+      margin-right: 6px;
+    }
+
+    .chat-msg .text {
+      color: #ffffff;
+      flex: 1;
+    }
+
+    .delete-btn {
+      color: #ff3333;
+      background: transparent;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 8px;
+      font-size: 11px;
+      padding: 0 4px;
+    }
+
+    .delete-btn:hover {
+      color: #ffffff;
+      background: #ff3333;
+    }
+
+    .chat-input-area {
+      display: flex;
+      gap: 6px;
+      padding: 8px;
+      background: #161616;
+      border-top: 1px solid #282828;
+    }
+
+    .chat-input-area input {
+      background: #000;
+      border: 1px solid #ffee00;
+      color: #fff;
+      padding: 6px 10px;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .chat-input-area input:focus {
+      box-shadow: 0 0 5px #ffee00;
+    }
+
+    #chat-name {
+      width: 120px;
+    }
+
+    #chat-text {
+      flex: 1;
+    }
+
+    #admin-pass {
+      width: 100px;
+      border-color: #ff3333;
+    }
+
+    .chat-btn {
+      background: #ffee00;
+      color: #000;
+      border: none;
+      padding: 6px 14px;
+      font-weight: bold;
+      font-family: inherit;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .chat-btn:hover {
+      background: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="retro-chat-container">
+  <div class="chat-header">BULGARIA GAMING ZONE - MODERATED CHAT</div>
+  
+  <div class="chat-body">
+    <div class="chat-messages" id="chat-messages"></div>
+    
+    <div class="online-users-panel">
+      <div class="online-title">Онлайн (<span id="user-count">0</span>)</div>
+      <ul class="users-list" id="users-list"></ul>
+    </div>
+  </div>
+
+  <form class="chat-input-area" id="chat-form">
+    <input type="text" id="chat-name" placeholder="Ник" maxlength="15" required>
+    <input type="text" id="chat-text" placeholder="Съобщение..." autocomplete="off" maxlength="200" required>
+    <input type="password" id="admin-pass" placeholder="Админ Ключ">
+    <button type="submit" class="chat-btn">Прати</button>
+  </form>
+</div>
+
+<!-- Firebase Realtime SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { 
+    getDatabase, 
+    ref, 
+    push, 
+    onChildAdded, 
+    onChildRemoved, 
+    remove, 
+    query, 
+    limitToLast, 
+    orderByChild, 
+    endAt, 
+    get, 
+    onValue, 
+    onDisconnect, 
+    set 
+  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAwAjdbV8NLL33ovLR8j3shl9tk7HaFfWk",
+    authDomain: "bulgaria-gaming-zone-chat.firebaseapp.com",
+    databaseURL: "https://bulgaria-gaming-zone-chat-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "bulgaria-gaming-zone-chat",
+    storageBucket: "bulgaria-gaming-zone-chat.firebasestorage.app",
+    messagingSenderId: "183397526491",
+    appId: "1:183397526491:web:c7c0c2a23693494e3fd5fe",
+    measurementId: "G-L0JMK4H302"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const messagesRef = ref(db, 'chat_messages');
+  const presenceRef = ref(db, 'online_users');
+
+  // --- АДМИН ПАРОЛА ЗА ТРИЕНЕ ---
+  const ADMIN_PASSWORD = "1234"; // Промени това с твоя парола!
+
+  const form = document.getElementById('chat-form');
+  const nameInput = document.getElementById('chat-name');
+  const textInput = document.getElementById('chat-text');
+  const adminPassInput = document.getElementById('admin-pass');
+  const messagesDiv = document.getElementById('chat-messages');
+  const usersListDiv = document.getElementById('users-list');
+  const userCountSpan = document.getElementById('user-count');
+
+  let myPresenceRef = null;
+
+  let lastMessageTime = 0;
+  let lastMessageText = "";
+  const COOLDOWN_MS = 2500;
+
+  const BANNED_WORDS = [
+    "кур", "копеле", "курва", "пичка", "педераст", "птка", "кучка", "гей", "педал"
+  ];
+
+  function censorText(text) {
+    let cleanText = text;
+    BANNED_WORDS.forEach(word => {
+      const regex = new RegExp(word, "gi");
+      cleanText = cleanText.replace(regex, "***");
+    });
+    return cleanText;
+  }
+
+  if (localStorage.getItem('chat_nickname')) {
+    nameInput.value = localStorage.getItem('chat_nickname');
+  } else {
+    nameInput.value = "Guest_" + Math.floor(Math.random() * 8999 + 1000);
+  }
+
+  // Почистване на съобщения по-стари от 24 часа
+  function cleanOldMessages() {
+    const twentyFourHoursAgo = Date.now() - (24 * 60 * 60 * 1000);
+    const oldMessagesQuery = query(messagesRef, orderByChild('timestamp'), endAt(twentyFourHoursAgo));
+    
+    get(oldMessagesQuery).then((snapshot) => {
+      if (snapshot.exists()) {
+        snapshot.forEach((childSnapshot) => {
+          remove(ref(db, `chat_messages/${childSnapshot.key}`));
+        });
+      }
+    }).catch((err) => console.error("Грешка при почистване:", err));
+  }
+
+  cleanOldMessages();
+
+  // Онлайн статус
+  function updateOnlineStatus() {
+    const name = nameInput.value.trim() || "Guest";
+    const connectedRef = ref(db, ".info/connected");
+
+    onValue(connectedRef, (snap) => {
+      if (snap.val() === true) {
+        if (myPresenceRef) {
+          remove(myPresenceRef);
+        }
+        myPresenceRef = push(presenceRef);
+        onDisconnect(myPresenceRef).remove();
+        set(myPresenceRef, { username: name });
+      }
+    });
+  }
+
+  updateOnlineStatus();
+
+  nameInput.addEventListener('change', () => {
+    const newName = nameInput.value.trim();
+    if (newName) {
+      localStorage.setItem('chat_nickname', newName);
+      if (myPresenceRef) {
+        set(myPresenceRef, { username: newName });
+      }
+    }
+  });
+
+  onValue(presenceRef, (snapshot) => {
+    usersListDiv.innerHTML = '';
+    const users = snapshot.val();
+    if (users) {
+      const keys = Object.keys(users);
+      userCountSpan.textContent = keys.length;
+      keys.forEach(key => {
+        const li = document.createElement('li');
+        li.className = 'user-item';
+        li.textContent = users[key].username;
+        usersListDiv.appendChild(li);
+      });
+    } else {
+      userCountSpan.textContent = '0';
+    }
+  });
+
+  // Пращане на съобщение
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = nameInput.value.trim();
+    const text = textInput.value.trim();
+    const now = Date.now();
+
+    if (!name || !text) return;
+
+    if (now - lastMessageTime < COOLDOWN_MS) {
+      const waitSec = Math.ceil((COOLDOWN_MS - (now - lastMessageTime)) / 1000);
+      alert(`Моля, изчакай ${waitSec} сек. преди следващото съобщение!`);
+      return;
+    }
+
+    if (text === lastMessageText) {
+      alert("Не можеш да изпращаш същото съобщение повторно!");
+      return;
+    }
+
+    if (text.length > 200) {
+      alert("Съобщението е прекалено дълго (максимум 200 символа)!");
+      return;
+    }
+
+    const cleanText = censorText(text);
+
+    lastMessageTime = now;
+    lastMessageText = text;
+
+    localStorage.setItem('chat_nickname', name);
+    push(messagesRef, {
+      username: name,
+      text: cleanText,
+      timestamp: now
+    });
+    textInput.value = '';
+  });
+
+  // Зареждане на съобщения с бутон за изтриване [x]
+  const recentMessagesQuery = query(messagesRef, limitToLast(50));
+  onChildAdded(recentMessagesQuery, (snapshot) => {
+    const data = snapshot.val();
+    const key = snapshot.key;
+    const time = new Date(data.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    const msgEl = document.createElement('div');
+    msgEl.className = 'chat-msg';
+    msgEl.id = `msg-${key}`;
+    msgEl.innerHTML = `
+      <span class="time">[${time}]</span>
+      <span class="username">&lt;${escapeHtml(data.username)}&gt;:</span>
+      <span class="text">${escapeHtml(data.text)}</span>
+      <button class="delete-btn" data-key="${key}">[x]</button>
+    `;
+
+    messagesDiv.appendChild(msgEl);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  });
+
+  // Функция за изтриване при клик върху [x]
+  messagesDiv.addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete-btn')) {
+      const pass = adminPassInput.value;
+      if (pass === ADMIN_PASSWORD) {
+        const msgKey = e.target.getAttribute('data-key');
+        remove(ref(db, `chat_messages/${msgKey}`));
+      } else {
+        alert("Грешна админ парола! Введи вярната парола в полето 'Админ Ключ'.");
+      }
+    }
+  });
+
+  onChildRemoved(messagesRef, (snapshot) => {
+    const deletedEl = document.getElementById(`msg-${snapshot.key}`);
+    if (deletedEl) {
+      deletedEl.remove();
+    }
+  });
+
+  function escapeHtml(str) {
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+</script>
+
+</body>
+</html>
