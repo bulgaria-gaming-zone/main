@@ -265,11 +265,11 @@
   const usersListDiv = document.getElementById('users-list');
   const userCountSpan = document.getElementById('user-count');
 
-  // Уникален ID за текущия таб в sessionStorage
-  let chatSessionId = sessionStorage.getItem('chat_session_tab_id');
+  // Използваме глобален localStorage ключ за целия сайт, за да е абсолютно едно и също ID и на главната, и в Download.html
+  let chatSessionId = localStorage.getItem('bulgaria_gaming_zone_global_chat_id');
   if (!chatSessionId) {
-    chatSessionId = 'tab_' + Math.random().toString(36).substring(2, 11) + Date.now().toString(36);
-    sessionStorage.setItem('chat_session_tab_id', chatSessionId);
+    chatSessionId = 'user_' + Math.random().toString(36).substring(2, 11) + Date.now().toString(36);
+    localStorage.setItem('bulgaria_gaming_zone_global_chat_id', chatSessionId);
   }
   const myPresenceRef = ref(db, `online_users/${chatSessionId}`);
 
@@ -340,7 +340,7 @@
     }
   }
 
-  // Онлайн статус с проверка за заети никове
+  // Онлайн статус с проверка за заети никове и глобално ID
   async function updateOnlineStatus() {
     let rawName = nameInput.value.trim() || "Guest";
     const uniqueName = await getUniqueUsername(rawName);
@@ -354,10 +354,8 @@
 
     onValue(connectedRef, (snap) => {
       if (snap.val() === true) {
-        remove(myPresenceRef).then(() => {
-          onDisconnect(myPresenceRef).remove();
-          set(myPresenceRef, { username: uniqueName });
-        });
+        onDisconnect(myPresenceRef).remove();
+        set(myPresenceRef, { username: uniqueName });
       }
     });
   }
@@ -401,7 +399,6 @@
 
     if (!name || !text) return;
 
-    // Проверяваме пак за всеки случай дали не е станал конфликт в последния момент
     name = await getUniqueUsername(name);
     nameInput.value = name;
     localStorage.setItem('chat_nickname', name);
