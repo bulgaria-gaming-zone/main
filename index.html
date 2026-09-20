@@ -56,6 +56,7 @@
 
         .header-container {
             width: 100%;
+            max-width: 1100px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -65,15 +66,19 @@
         .header-link {
             display: block;
             width: 100%;
-            max-width: 1920px;
+            max-width: 1100px;
             cursor: pointer;
             overflow: hidden;
+            text-align: center;
         }
 
         .header-banner {
             width: 100%;
+            max-height: 150px;
             height: auto;
             display: block;
+            margin: 0 auto;
+            object-fit: contain;
             transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
         }
 
@@ -84,10 +89,11 @@
 
         .nav-menu-container {
             width: 100%;
+            max-width: 1100px;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 4px 15px 10px 15px;
+            padding: 4px 15px 8px 15px;
             position: relative;
         }
 
@@ -102,7 +108,7 @@
 
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
@@ -113,7 +119,7 @@
         .important-btn {
             position: absolute;
             right: 100%;
-            margin-right: 25px;
+            margin-right: 20px;
             background: transparent;
             border: none;
             cursor: pointer;
@@ -129,10 +135,10 @@
 
         .important-btn-title {
             color: #ffff00;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 900;
             letter-spacing: 1px;
-            padding: 2px 8px;
+            padding: 2px 6px;
             border-radius: 4px;
             background: transparent;
             animation: blinkBorder 1s infinite alternate;
@@ -151,9 +157,9 @@
 
         .important-btn-sub {
             color: #ffff00;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
-            margin-top: 3px;
+            margin-top: 2px;
         }
 
         .social-link-item {
@@ -170,15 +176,15 @@
         }
 
         .nav-icon {
-            width: 44px;
-            height: 44px;
+            width: 38px;
+            height: 38px;
             display: block;
             object-fit: contain;
         }
 
         .icon-home {
-            width: 54px;
-            height: 50px;
+            width: 46px;
+            height: 42px;
             display: block;
             object-fit: contain;
         }
@@ -191,13 +197,13 @@
         .retro-chat-wrapper {
             width: 100%;
             max-width: 1100px;
-            padding: 0 15px 10px 15px;
+            padding: 0 15px 6px 15px;
         }
 
         .retro-chat-container {
             width: 100%;
-            height: 140px;
-            max-height: 140px;
+            height: 120px;
+            max-height: 120px;
             background-color: #111111;
             border: 2px solid #ffee00;
             box-shadow: 0 0 12px rgba(255, 238, 0, 0.25);
@@ -211,10 +217,10 @@
         .chat-header {
             background: #ffee00;
             color: #000;
-            padding: 2px 8px;
+            padding: 2px 6px;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 10px;
+            font-size: 9px;
             letter-spacing: 1px;
             flex-shrink: 0;
             display: flex;
@@ -231,33 +237,33 @@
 
         .chat-messages {
             flex: 1;
-            padding: 4px 6px;
+            padding: 3px 5px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 3px;
+            gap: 2px;
             background: #080808;
             border-right: 1px solid #282828;
             min-height: 0;
         }
 
         .online-users-panel {
-            width: 130px;
+            width: 120px;
             background: #0d0d0d;
-            padding: 4px;
+            padding: 3px;
             display: flex;
             flex-direction: column;
-            gap: 3px;
+            gap: 2px;
             flex-shrink: 0;
             min-height: 0;
         }
 
         .online-title {
-            font-size: 9px;
+            font-size: 8px;
             color: #ffee00;
             font-weight: bold;
             border-bottom: 1px solid #282828;
-            padding-bottom: 2px;
+            padding-bottom: 1px;
             text-transform: uppercase;
             flex-shrink: 0;
         }
@@ -268,7 +274,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 1px;
             min-height: 0;
         }
 
@@ -289,7 +295,7 @@
         }
 
         .user-item {
-            font-size: 10px;
+            font-size: 9px;
             color: #00ff66;
             display: flex;
             align-items: center;
@@ -299,18 +305,18 @@
 
         .user-item::before {
             content: "●";
-            font-size: 7px;
+            font-size: 6px;
         }
 
         .chat-msg {
-            font-size: 11px;
-            line-height: 1.2;
+            font-size: 10px;
+            line-height: 1.15;
             word-break: break-word;
         }
 
         .chat-msg .time {
             color: #666;
-            font-size: 9px;
+            font-size: 8px;
             margin-right: 3px;
         }
 
@@ -326,8 +332,8 @@
 
         .chat-input-area {
             display: flex;
-            gap: 4px;
-            padding: 4px;
+            gap: 3px;
+            padding: 3px;
             background: #161616;
             border-top: 1px solid #282828;
             flex-shrink: 0;
@@ -337,9 +343,9 @@
             background: #000;
             border: 1px solid #ffee00;
             color: #fff;
-            padding: 2px 6px;
+            padding: 2px 5px;
             font-family: inherit;
-            font-size: 10px;
+            font-size: 9px;
             outline: none;
             border-radius: 2px;
         }
@@ -349,7 +355,7 @@
         }
 
         #chat-name {
-            width: 80px;
+            width: 75px;
             flex-shrink: 0;
         }
 
@@ -362,10 +368,10 @@
             background: #ffee00;
             color: #000;
             border: none;
-            padding: 2px 8px;
+            padding: 2px 6px;
             font-weight: bold;
             font-family: inherit;
-            font-size: 10px;
+            font-size: 9px;
             cursor: pointer;
             text-transform: uppercase;
             border-radius: 2px;
@@ -376,6 +382,7 @@
             background: #ffffff;
         }
 
+        /* ОСНОВНО СЪДЪРЖАНИЕ */
         .main-content {
             width: 100%;
             max-width: 1100px;
@@ -386,6 +393,17 @@
             flex-grow: 1;
             padding: 0 15px;
             margin: 15px 0;
+        }
+
+        .view-section {
+            width: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .view-section.active {
+            display: flex;
         }
 
         .downloads-section {
@@ -445,6 +463,10 @@
             color: #ffff00;
             font-size: 15px;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            line-height: 1.4;
         }
 
         .download-icons-group {
@@ -467,7 +489,7 @@
             font-weight: 700;
         }
 
-        .download-item-wrapper {
+        .download-item-wrapper, .game-download-card {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -477,12 +499,12 @@
             cursor: pointer;
         }
 
-        .download-item-wrapper:hover {
+        .download-item-wrapper:hover, .game-download-card:hover {
             transform: scale(1.06);
             filter: brightness(1.2);
         }
 
-        .icon-game {
+        .icon-game, .icon-h3, .icon-vcmi, .icon-ra2, .icon-cncnet, .icon-terraria, .icon-rune, .icon-q2, .icon-ss, .icon-zomboid, .icon-necesse {
             height: 46px;
             width: auto;
             object-fit: contain;
@@ -496,7 +518,7 @@
             display: block;
         }
 
-        .download-badge {
+        .download-badge, .download-tab {
             background-color: #ffff00;
             color: #000000;
             font-size: 10px;
@@ -715,15 +737,21 @@
             font-size: 14px;
             line-height: 1.6;
             margin-bottom: 20px;
-            text-align: center;
+            text-align: left;
             font-weight: 500;
             text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+            width: 100%;
+        }
+
+        .modal-text p {
+            margin-bottom: 10px;
         }
 
         .modal-image-container {
             position: relative;
             display: inline-block;
             max-width: 100%;
+            margin-top: 10px;
         }
 
         .modal-image {
@@ -738,7 +766,7 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            background-color: rgba(0, 0, 0, 0.75);
+            background-color: rgba(0, 0, 0, 0.8);
             color: #ffff00;
             border: 1px solid #ffff00;
             border-radius: 50%;
@@ -776,15 +804,15 @@
 
         @media (max-width: 768px) {
             .header-banner {
-                transform: scale(1.82);
-                transform-origin: center center;
-                margin: 45px 0;
+                max-height: 80px;
+                transform: none;
+                margin: 5px 0;
             }
 
             .important-btn {
                 position: static;
                 margin-right: 0;
-                margin-bottom: 10px;
+                margin-bottom: 6px;
                 width: 100%;
             }
 
@@ -814,6 +842,7 @@
             .download-box-text {
                 font-size: 13px;
                 word-break: break-word;
+                justify-content: center;
             }
 
             .download-icons-group {
@@ -823,19 +852,6 @@
 
             .download-password-label {
                 text-align: center;
-            }
-
-            .icon-game {
-                height: 40px;
-            }
-
-            .icon-cshl {
-                height: 48px;
-            }
-
-            .download-badge {
-                font-size: 9px;
-                padding: 2px 6px;
             }
 
             .copyable-link .copy-tooltip, .launcher-tooltip-container .launcher-tooltip {
@@ -878,21 +894,21 @@
 
     <div class="header-wrapper">
         <header class="header-container">
-            <a href="https://bulgaria-gaming-zone.github.io/main/" class="header-link">
+            <a href="#home" onclick="switchView('home'); return false;" class="header-link">
                 <img src="header_banner.png" alt="GAMING BULGARIA ZONE Header" class="header-banner">
             </a>
         </header>
 
         <nav class="nav-menu-container">
             <div class="social-links">
-                <button class="important-btn" onclick="openModal()" title="Инструкции за игра">
+                <button class="important-btn" onclick="openModal()" title="натисни тук за да видиш инструкците">
                     <span class="important-btn-title">ВАЖНО!</span>
                     <span class="important-btn-sub">Искаш ли да играеш при нас?</span>
                 </button>
-                <a href="https://bulgaria-gaming-zone.github.io/main/" class="social-link-item" title="Начало">
+                <a href="#home" onclick="switchView('home'); return false;" class="social-link-item" title="Начало">
                     <img src="home_icon.png" alt="Home" class="icon-home">
                 </a>
-                <a href="https://bulgaria-gaming-zone.github.io/main/Download.html" class="social-link-item" title="Download Menu">
+                <a href="#download" onclick="switchView('download'); return false;" class="social-link-item" title="Download Menu">
                     <img src="download_icon.png" alt="Download" class="nav-icon icon-download">
                 </a>
                 <a href="https://discord.gg/yyG5CpQ" target="_blank" rel="noopener noreferrer" class="social-link-item" title="Discord Server">
@@ -904,7 +920,7 @@
             </div>
         </nav>
 
-        <!-- ТУК Е ДОБАВЕН ЧАТЪТ В НЕПОДВИЖНОТО МЕНЮ -->
+        <!-- ЕДИН ЕДИНСТВЕН ПЕРСИСТЕНТЕН ЧАТ (НЯМА ДА СЕ ПРЕЗАРЕЖДА) -->
         <div class="retro-chat-wrapper">
             <div class="retro-chat-container">
                 <div class="chat-header">
@@ -929,250 +945,385 @@
         </div>
     </div>
 
+    <!-- ДИНАМИЧЕН СЕКЦИОНЕН БЛОК (СМЕНЯ СЕ САМО ТОВА ПОД ЧАТА) -->
     <main class="main-content">
-        <section id="downloads-section" class="downloads-section">
-            <h2 class="downloads-title">Добре дошли и приятна игра в нашите сървъри!</h2>
-            
-            <div class="section-headers">
-                <span class="section-header-title">Влез в нашите сървъри с един клик (Копирай адреса на съответната игра)[cite: 7]</span>
-                <span class="section-header-title">Нямаш играта? Свали я от тук:[cite: 7]</span>
-            </div>
-
-            <!-- Half-Life & Counter-Strike 1.6 Box -->
-            <div class="download-box">
-                <div class="download-box-text server-list-container">
-                    <div>
-                        Half-Life Server:[cite: 7]
-                        <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27015', this)">
-                            connect bulgaria-gaming-zone.asuscomm.com:27015[cite: 7]
-                            <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра![cite: 7]</span>
-                        </span>
-                    </div>
-                    <div>
-                        CS1.6 fy_Server:[cite: 7]
-                        <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27016', this)">
-                            connect bulgaria-gaming-zone.asuscomm.com:27016[cite: 7]
-                            <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра![cite: 7]</span>
-                        </span>
-                    </div>
-                    <div>
-                        CS1.6 de_Server:[cite: 7]
-                        <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27017', this)">
-                            connect bulgaria-gaming-zone.asuscomm.com:27017[cite: 7]
-                            <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра![cite: 7]</span>
-                        </span>
-                    </div>
+        
+        <!-- НАЧАЛЕН ИЗГЛЕД (HOME) -->
+        <section id="home-view" class="view-section active">
+            <div class="downloads-section">
+                <h2 class="downloads-title">Добре дошли и приятна игра в нашите сървъри!</h2>
+                
+                <div class="section-headers">
+                    <span class="section-header-title">Влез в нашите сървъри с един клик (Копирай адреса на съответната игра)</span>
+                    <span class="section-header-title">Нямаш играта? Свали я от тук:</span>
                 </div>
-                <div class="download-icons-group">
-                    <div class="info-container">
-                        <span class="info-badge">!</span>
-                        <div class="info-tooltip">
-                            Всеки от Counter-Strike сървърите ни разполага със собствена ранг система. Можете лесно да проверявате статуса си за съответния сървър, като въведете в чата командите: <strong>/rank</strong>, <strong>/rankstats</strong>, <strong>/top15</strong>[cite: 7]
+
+                <!-- Half-Life & Counter-Strike 1.6 Box -->
+                <div class="download-box">
+                    <div class="download-box-text server-list-container">
+                        <div>
+                            Half-Life Server:
+                            <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27015', this)">
+                                connect bulgaria-gaming-zone.asuscomm.com:27015
+                                <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                            </span>
+                        </div>
+                        <div>
+                            CS1.6 fy_Server:
+                            <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27016', this)">
+                                connect bulgaria-gaming-zone.asuscomm.com:27016
+                                <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                            </span>
+                        </div>
+                        <div>
+                            CS1.6 de_Server:
+                            <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27017', this)">
+                                connect bulgaria-gaming-zone.asuscomm.com:27017
+                                <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                            </span>
                         </div>
                     </div>
-                    <div class="download-password-label">
-                        Парола на инсталатора:<br>[cite: 7]
-                        <span class="copyable-link password-value" onclick="copyServerIP('4400', this)">
-                            4400[cite: 7]
-                            <span class="copy-tooltip">Кликни тук за да копираш паролата![cite: 7]</span>
+                    <div class="download-icons-group">
+                        <div class="info-container">
+                            <span class="info-badge">!</span>
+                            <div class="info-tooltip">
+                                Всеки от Counter-Strike сървърите ни разполага със собствена ранг система. Можете лесно да проверявате статуса си за съответния сървър, като въведете в чата командите: <strong>/rank</strong>, <strong>/rankstats</strong>, <strong>/top15</strong>
+                            </div>
+                        </div>
+                        <div class="download-password-label">
+                            Парола на инсталатора:<br>
+                            <span class="copyable-link password-value" onclick="copyServerIP('4400', this)">
+                                4400
+                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                            </span>
+                        </div>
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1rD0_ogfojVJ884n-VFlg3uP3TV0RNVi8" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Half-Life / CS 1.6">
+                            <img src="CS_HL_icon.png" alt="Download Half-Life / CS 1.6" class="icon-cshl">
+                            <span class="download-badge">Изтегли</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- RUNE 2000 Box -->
+                <div class="download-box">
+                    <div class="download-box-text">
+                        RUNE 2000 Server:
+                        <span class="copyable-link" onclick="copyServerIP('open bulgaria-gaming-zone.asuscomm.com:7777', this)">
+                            open bulgaria-gaming-zone.asuscomm.com:7777
+                            <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                        </span>
+                        <span class="launcher-tooltip-container">
+                            <img src="runeBGGZ.png" alt="Rune Launcher Icon" class="inline-text-icon">
+                            <span>BULGARIA-GaminG-Zone.exe</span>
+                            <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
                         </span>
                     </div>
-                    <a href="https://drive.google.com/uc?export=download&amp;id=1rD0_ogfojVJ884n-VFlg3uP3TV0RNVi8" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Half-Life / CS 1.6">
-                        <img src="CS_HL_icon.png" alt="Download Half-Life / CS 1.6" class="icon-cshl">
-                        <span class="download-badge">Изтегли[cite: 7]</span>
-                    </a>
+                    <div class="download-icons-group">
+                        <div class="download-password-label">
+                            Парола на инсталатора:<br>
+                            <span class="copyable-link password-value" onclick="copyServerIP('3440', this)">
+                                3440
+                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                            </span>
+                        </div>
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1mPkB_qACfytvZ9BUPjR1U3sXhJSSYCrz" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download RUNE 2000">
+                            <img src="rune_icon.png" alt="Download RUNE 2000" class="icon-game">
+                            <span class="download-badge">Изтегли</span>
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- RUNE 2000 Box -->
-            <div class="download-box">
-                <div class="download-box-text">
-                    RUNE 2000 Server:[cite: 7]
-                    <span class="copyable-link" onclick="copyServerIP('open bulgaria-gaming-zone.asuscomm.com:7777', this)">
-                        open bulgaria-gaming-zone.asuscomm.com:7777[cite: 7]
-                        <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра![cite: 7]</span>
-                    </span>
-                    <span class="launcher-tooltip-container">
-                        <img src="runeBGGZ.png" alt="Rune Launcher Icon" class="inline-text-icon">
-                        <span>BULGARIA-GaminG-Zone.exe[cite: 7]</span>
-                        <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра![cite: 7]</span>
-                    </span>
-                </div>
-                <div class="download-icons-group">
-                    <div class="download-password-label">
-                        Парола на инсталатора:<br>[cite: 7]
-                        <span class="copyable-link password-value" onclick="copyServerIP('3440', this)">
-                            3440[cite: 7]
-                            <span class="copy-tooltip">Кликни тук за да копираш паролата![cite: 7]</span>
+                <!-- Quake II Box -->
+                <div class="download-box">
+                    <div class="download-box-text">
+                        Quake II Server:
+                        <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27910', this)">
+                            connect bulgaria-gaming-zone.asuscomm.com:27910
+                            <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                        </span>
+                        <span class="launcher-tooltip-container">
+                            <img src="Q2BGGZ_icon.png" alt="Quake II Launcher Icon" class="inline-text-icon-q2">
+                            <span>q2BG-GZ.exe</span>
+                            <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
                         </span>
                     </div>
-                    <a href="https://drive.google.com/uc?export=download&amp;id=1mPkB_qACfytvZ9BUPjR1U3sXhJSSYCrz" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download RUNE 2000">
-                        <img src="rune_icon.png" alt="Download RUNE 2000" class="icon-game">
-                        <span class="download-badge">Изтегли[cite: 7]</span>
-                    </a>
+                    <div class="download-icons-group">
+                        <div class="download-password-label">
+                            Парола на инсталатора:<br>
+                            <span class="copyable-link password-value" onclick="copyServerIP('1212', this)">
+                                1212
+                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                            </span>
+                        </div>
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1OwUKADjy6fxK9F4q8VXXR6Sa-NgwEgf-" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Quake II">
+                            <img src="Q2_icon.png" alt="Download Quake II" class="icon-game">
+                            <span class="download-badge">Изтегли</span>
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Quake II Box -->
-            <div class="download-box">
-                <div class="download-box-text">
-                    Quake II Server:[cite: 7]
-                    <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27910', this)">
-                        connect bulgaria-gaming-zone.asuscomm.com:27910[cite: 7]
-                        <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра![cite: 7]</span>
-                    </span>
-                    <span class="launcher-tooltip-container">
-                        <img src="Q2BGGZ_icon.png" alt="Quake II Launcher Icon" class="inline-text-icon-q2">
-                        <span>q2BG-GZ.exe[cite: 7]</span>
-                        <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра![cite: 7]</span>
-                    </span>
-                </div>
-                <div class="download-icons-group">
-                    <div class="download-password-label">
-                        Парола на инсталатора:<br>[cite: 7]
-                        <span class="copyable-link password-value" onclick="copyServerIP('1212', this)">
-                            1212[cite: 7]
-                            <span class="copy-tooltip">Кликни тук за да копираш паролата![cite: 7]</span>
+                <!-- Quake III Box -->
+                <div class="download-box">
+                    <div class="download-box-text">
+                        Quake III Server:
+                        <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27960', this)">
+                            connect bulgaria-gaming-zone.asuscomm.com:27960
+                            <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                        </span>
+                        <span class="launcher-tooltip-container">
+                            <img src="q3bg-gz.png" alt="Quake III Launcher Icon" class="inline-text-icon-q2">
+                            <span>q3bg-gz.exe</span>
+                            <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
                         </span>
                     </div>
-                    <a href="https://drive.google.com/uc?export=download&amp;id=1OwUKADjy6fxK9F4q8VXXR6Sa-NgwEgf-" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Quake II">
-                        <img src="Q2_icon.png" alt="Download Quake II" class="icon-game">
-                        <span class="download-badge">Изтегли[cite: 7]</span>
-                    </a>
+                    <div class="download-icons-group">
+                        <div class="download-password-label">
+                            Парола на инсталатора:<br>
+                            <span class="copyable-link password-value" onclick="copyServerIP('5566', this)">
+                                5566
+                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                            </span>
+                        </div>
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1ZnVaYD0ywnlAFebvSszWlCEj_aapqQX1" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Quake III">
+                            <img src="Quake3icon.png" alt="Download Quake III" class="icon-game">
+                            <span class="download-badge">Изтегли</span>
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Quake III Box -->
-            <div class="download-box">
-                <div class="download-box-text">
-                    Quake III Server:[cite: 7]
-                    <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27960', this)">
-                        connect bulgaria-gaming-zone.asuscomm.com:27960[cite: 7]
-                        <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра![cite: 7]</span>
-                    </span>
-                    <span class="launcher-tooltip-container">
-                        <img src="q3bg-gz.png" alt="Quake III Launcher Icon" class="inline-text-icon-q2">
-                        <span>q3bg-gz.exe[cite: 7]</span>
-                        <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра![cite: 7]</span>
-                    </span>
-                </div>
-                <div class="download-icons-group">
-                    <div class="download-password-label">
-                        Парола на инсталатора:<br>[cite: 7]
-                        <span class="copyable-link password-value" onclick="copyServerIP('5566', this)">
-                            5566[cite: 7]
-                            <span class="copy-tooltip">Кликни тук за да копираш паролата![cite: 7]</span>
+                <!-- Serious Sam Box -->
+                <div class="download-box">
+                    <div class="download-box-text">
+                        Serious Sam Server:
+                        <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com', this)">
+                            bulgaria-gaming-zone.asuscomm.com
+                            <span class="copy-tooltip">Кликни тук за да копираш адреса, приятна игра!</span>
                         </span>
                     </div>
-                    <a href="https://drive.google.com/uc?export=download&amp;id=1ZnVaYD0ywnlAFebvSszWlCEj_aapqQX1" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Quake III">
-                        <img src="Quake3icon.png" alt="Download Quake III" class="icon-game">
-                        <span class="download-badge">Изтегли[cite: 7]</span>
-                    </a>
+                    <div class="download-icons-group">
+                        <div class="download-password-label">
+                            Парола на инсталатора:<br>
+                            <span class="copyable-link password-value" onclick="copyServerIP('2222', this)">
+                                2222
+                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                            </span>
+                        </div>
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1muWaaXuRCIEOnsAMYlH1W3JcoWRAPGQu" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Serious Sam">
+                            <img src="SS-icon.png" alt="Download Serious Sam" class="icon-game">
+                            <span class="download-badge">Изтегли</span>
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Serious Sam Box -->
-            <div class="download-box">
-                <div class="download-box-text">
-                    Serious Sam Server:[cite: 7]
-                    <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com', this)">
-                        bulgaria-gaming-zone.asuscomm.com[cite: 7]
-                        <span class="copy-tooltip">Кликни тук за да копираш адреса, приятна игра![cite: 7]</span>
-                    </span>
-                </div>
-                <div class="download-icons-group">
-                    <div class="download-password-label">
-                        Парола на инсталатора:<br>[cite: 7]
-                        <span class="copyable-link password-value" onclick="copyServerIP('2222', this)">
-                            2222[cite: 7]
-                            <span class="copy-tooltip">Кликни тук за да копираш паролата![cite: 7]</span>
+                <!-- Terraria Box -->
+                <div class="download-box">
+                    <div class="download-box-text">
+                        Terraria Server:
+                        <span class="copyable-link" onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)">
+                            bulgaria-gaming-zone.asuscomm.com
+                            <span class="copy-tooltip">Кликни тук за да копираш адреса, приятна игра!</span>
+                        </span> 
+                        &nbsp;&nbsp;&nbsp;&nbsp; Порт:
+                        <span class="copyable-link" onclick="copyServerIP('7775', this)">
+                            7775
+                            <span class="copy-tooltip">Кликни тук за да копираш порта!</span>
                         </span>
                     </div>
-                    <a href="https://drive.google.com/uc?export=download&amp;id=1muWaaXuRCIEOnsAMYlH1W3JcoWRAPGQu" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Serious Sam">
-                        <img src="SS-icon.png" alt="Download Serious Sam" class="icon-game">
-                        <span class="download-badge">Изтегли[cite: 7]</span>
-                    </a>
+                    <div class="download-icons-group">
+                        <div class="download-password-label">
+                            Парола на архива:<br>
+                            <span class="copyable-link password-value" onclick="copyServerIP('1450', this)">
+                                1450
+                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                            </span>
+                        </div>
+                        <a href="https://drive.google.com/uc?export=download&amp;id=19wX6nEFKB-cmNL2KqIQEOE0JL8z2li1Q" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Terraria">
+                            <img src="terraria_icon.png" alt="Download Terraria" class="icon-game">
+                            <span class="download-badge">Изтегли</span>
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Terraria Box -->
-            <div class="download-box">
-                <div class="download-box-text">
-                    Terraria Server:[cite: 7]
-                    <span class="copyable-link" onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)">
-                        bulgaria-gaming-zone.asuscomm.com[cite: 7]
-                        <span class="copy-tooltip">Кликни тук за да копираш адреса, приятна игра![cite: 7]</span>
-                    </span> 
-                    &nbsp;&nbsp;&nbsp;&nbsp; Порт:[cite: 7]
-                    <span class="copyable-link" onclick="copyServerIP('7775', this)">
-                        7775[cite: 7]
-                        <span class="copy-tooltip">Кликни тук за да копираш порта![cite: 7]</span>
-                    </span>
-                </div>
-                <div class="download-icons-group">
-                    <div class="download-password-label">
-                        Парола на архива:<br>[cite: 7]
-                        <span class="copyable-link password-value" onclick="copyServerIP('1450', this)">
-                            1450[cite: 7]
-                            <span class="copy-tooltip">Кликни тук за да копираш паролата![cite: 7]</span>
+                <!-- Project Zomboid Box -->
+                <div class="download-box">
+                    <div class="download-box-text">
+                        Project Zomboid Server:
+                        <span class="copyable-link" onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)">
+                            bulgaria-gaming-zone.asuscomm.com
+                            <span class="copy-tooltip">Кликни тук за да копираш адреса, приятна игра!</span>
                         </span>
                     </div>
-                    <a href="https://drive.google.com/uc?export=download&amp;id=19wX6nEFKB-cmNL2KqIQEOE0JL8z2li1Q" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Terraria">
-                        <img src="terraria_icon.png" alt="Download Terraria" class="icon-game">
-                        <span class="download-badge">Изтегли[cite: 7]</span>
-                    </a>
+                    <div class="download-icons-group">
+                        <div class="download-password-label">
+                            Парола на инсталатора:<br>
+                            <span class="copyable-link password-value" onclick="copyServerIP('4444', this)">
+                                4444
+                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                            </span>
+                        </div>
+                        <a href="https://drive.usercontent.google.com/download?id=1dtNA4DbLHNDephwpPByYske4gpkp2EYb&export=download&authuser=0" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Project Zomboid">
+                            <img src="project_zomboid_icon.png" alt="Download Project Zomboid" class="icon-game">
+                            <span class="download-badge">Изтегли</span>
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Project Zomboid Box -->
-            <div class="download-box">
-                <div class="download-box-text">
-                    Project Zomboid Server:[cite: 7]
-                    <span class="copyable-link" onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)">
-                        bulgaria-gaming-zone.asuscomm.com[cite: 7]
-                        <span class="copy-tooltip">Кликни тук за да копираш адреса, приятна игра![cite: 7]</span>
-                    </span>
-                </div>
-                <div class="download-icons-group">
-                    <div class="download-password-label">
-                        Парола на инсталатора:<br>[cite: 7]
-                        <span class="copyable-link password-value" onclick="copyServerIP('4444', this)">
-                            4444[cite: 7]
-                            <span class="copy-tooltip">Кликни тук за да копираш паролата![cite: 7]</span>
+                <!-- Necesse Box -->
+                <div class="download-box">
+                    <div class="download-box-text">
+                        Necesse Server:
+                        <span class="copyable-link" onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)">
+                            bulgaria-gaming-zone.asuscomm.com
+                            <span class="copy-tooltip">Кликни тук за да копираш адреса, приятна игра!</span>
                         </span>
                     </div>
-                    <a href="https://drive.usercontent.google.com/download?id=1dtNA4DbLHNDephwpPByYske4gpkp2EYb&export=download&authuser=0" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Project Zomboid">
-                        <img src="project_zomboid_icon.png" alt="Download Project Zomboid" class="icon-game">
-                        <span class="download-badge">Изтегли[cite: 7]</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Necesse Box -->
-            <div class="download-box">
-                <div class="download-box-text">
-                    Necesse Server:[cite: 7]
-                    <span class="copyable-link" onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)">
-                        bulgaria-gaming-zone.asuscomm.com[cite: 7]
-                        <span class="copy-tooltip">Кликни тук за да копираш адреса, приятна игра![cite: 7]</span>
-                    </span>
-                </div>
-                <div class="download-icons-group">
-                    <div class="download-password-label">
-                        Парола на инсталатора:<br>[cite: 7]
-                        <span class="copyable-link password-value" onclick="copyServerIP('1122', this)">
-                            1122[cite: 7]
-                            <span class="copy-tooltip">Кликни тук за да копираш паролата![cite: 7]</span>
-                        </span>
+                    <div class="download-icons-group">
+                        <div class="download-password-label">
+                            Парола на инсталатора:<br>
+                            <span class="copyable-link password-value" onclick="copyServerIP('1122', this)">
+                                1122
+                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                            </span>
+                        </div>
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1To11IqaSyQLmbJoJtjYKnyxPUdYYeuuy" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Necesse">
+                            <img src="Necesse_icon.png" alt="Download Necesse" class="icon-game">
+                            <span class="download-badge">Изтегли</span>
+                        </a>
                     </div>
-                    <a href="https://drive.google.com/uc?export=download&amp;id=1To11IqaSyQLmbJoJtjYKnyxPUdYYeuuy" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Necesse">
-                        <img src="Necesse_icon.png" alt="Download Necesse" class="icon-game">
-                        <span class="download-badge">Изтегли[cite: 7]</span>
-                    </a>
                 </div>
             </div>
-
         </section>
+
+        <!-- ИЗТЕГЛЯНИЯ ИЗГЛЕД (DOWNLOAD) -->
+        <section id="download-view" class="view-section">
+            <div class="downloads-section">
+                <h2 class="downloads-title">ИЗТЕГЛЯНИЯ</h2>
+                
+                <!-- Heroes III Box -->
+                <div class="download-box">
+                    <span class="download-box-text">Heroes III Original Files and VCMI</span>
+                    <div class="download-icons-group">
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1tK5Zhc8FJ5BB1vi8KgZNO5QntngwkVUD" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download Heroes III Files">
+                            <img src="heroes_icon.png" alt="Heroes III" class="icon-h3">
+                            <span class="download-tab">ИЗТЕГЛИ</span>
+                        </a>
+                        <a href="https://vcmi.eu/download/" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download VCMI">
+                            <img src="vcmi_icon.png" alt="VCMI" class="icon-vcmi">
+                            <span class="download-tab">ИЗТЕГЛИ</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Red Alert 2 Box -->
+                <div class="download-box">
+                    <span class="download-box-text">Red Alert 2 Original Files and CnCNet</span>
+                    <div class="download-icons-group">
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1D4_keMlTfIEl2B1teJ5lb71fsFSwkVry" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download Red Alert 2 Files">
+                            <img src="ra2_icon.png" alt="Red Alert 2" class="icon-ra2">
+                            <span class="download-tab">ИЗТЕГЛИ</span>
+                        </a>
+                        <a href="https://cncnet.org/red-alert-2" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download CnCNet">
+                            <img src="cncnet_icon.png" alt="CnCNet" class="icon-cncnet">
+                            <span class="download-tab">ИЗТЕГЛИ</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Terraria Box -->
+                <div class="download-box">
+                    <span class="download-box-text">Terraria – v1.4.5.0</span>
+                    <div class="download-icons-group">
+                        <div class="download-password-label">
+                            Парола на архива:<br>
+                            <span class="copyable-link password-value" onclick="copyServerIP('1450', this)">
+                                1450
+                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                            </span>
+                        </div>
+                        <a href="https://drive.google.com/uc?export=download&amp;id=19wX6nEFKB-cmNL2KqIQEOE0JL8z2li1Q" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download Terraria">
+                            <img src="terraria_icon.png" alt="Terraria" class="icon-terraria">
+                            <span class="download-tab">ИЗТЕГЛИ</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- RUNE 2000 Box -->
+                <div class="download-box">
+                    <span class="download-box-text">
+                        <span>RUNE 2000</span>
+                        <span class="launcher-tooltip-container">
+                            <img src="runeBGGZ.png" alt="Rune Icon" class="inline-text-icon">
+                            <span>BULGARIA-GaminG-Zone.exe</span>
+                            <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
+                        </span>
+                    </span>
+                    <div class="download-icons-group">
+                        <div class="download-password-label">
+                            Парола на инсталатора:<br>
+                            <span class="copyable-link password-value" onclick="copyServerIP('3440', this)">
+                                3440
+                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                            </span>
+                        </div>
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1mPkB_qACfytvZ9BUPjR1U3sXhJSSYCrz" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download RUNE 2000">
+                            <img src="rune_icon.png" alt="RUNE 2000" class="icon-rune">
+                            <span class="download-tab">ИЗТЕГЛИ</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quake II Box -->
+                <div class="download-box">
+                    <span class="download-box-text">
+                        <span>Quake II</span>
+                        <span class="launcher-tooltip-container">
+                            <img src="Q2BGGZ_icon.png" alt="Quake II Launcher Icon" class="inline-text-icon-q2">
+                            <span>q2BG-GZ.exe</span>
+                            <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
+                        </span>
+                    </span>
+                    <div class="download-icons-group">
+                        <div class="download-password-label">
+                            Парола на инсталатора:<br>
+                            <span class="copyable-link password-value" onclick="copyServerIP('1212', this)">
+                                1212
+                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                            </span>
+                        </div>
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1OwUKADjy6fxK9F4q8VXXR6Sa-NgwEgf-" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download Quake II">
+                            <img src="Q2_icon.png" alt="Quake II" class="icon-q2">
+                            <span class="download-tab">ИЗТЕГЛИ</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quake III Box -->
+                <div class="download-box">
+                    <span class="download-box-text">
+                        <span>Quake III</span>
+                        <span class="launcher-tooltip-container">
+                            <img src="q3bg-gz.png" alt="Quake III Launcher Icon" class="inline-text-icon-q2">
+                            <span>q3bg-gz.exe</span>
+                            <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
+                        </span>
+                    </span>
+                    <div class="download-icons-group">
+                        <div class="download-password-label">
+                            Парола на инсталатора:<br>
+                            <span class="copyable-link password-value" onclick="copyServerIP('5566', this)">
+                                5566
+                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+                            </span>
+                        </div>
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1ZnVaYD0ywnlAFebvSszWlCEj_aapqQX1" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download Quake III">
+                            <img src="Quake3icon.png" alt="Quake III" class="icon-q2">
+                            <span class="download-tab">ИЗТЕГЛИ</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- МОДАЛЕН ПРОЗОРЕЦ ЗА ИНСТРУКЦИИТЕ -->
@@ -1180,22 +1331,71 @@
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <div class="modal-text">
-                Следвайте инструкциите за настройка на Windows Защита (Windows Defender), ако системата отчете фалшива тревога за вирус, както и за правилната инсталация на нашите игри:<br><br>
-                Първо добавете изключение (папка) в Windows Защита, която да не се сканира за вируси (например <strong>D:\GAMES</strong> или където са ви игрите).<br>
-                След това инсталирайте архива, като въведете правилната парола за съответния инсталатор.<br>
-                В готовата инсталационна директория просто си извадете пряк път (shortcut) на самата игра или на нашия ланчър за бърза връзка, ако има такъв.<br><br>
-                <strong>Приятна игра!</strong>[cite: 7]
+                <p>Следвайте инструкциите за настройка на Windows Защита (Windows Defender), ако системата отчете фалшива тревога за вирус, както и за правилната инсталация на нашите игри:</p>
+                <p>Първо добавете изключение (папка) в Windows Защита, която да не се сканира за вируси (например <strong>D:\GAMES</strong> или където са ви игрите).</p>
+                <p>След това инсталирайте архива, като въведете правилната парола за съответния инсталатор.</p>
+                <p>В готовата инсталационна директория просто си извадете пряк път (shortcut) на самата игра или на нашия ланчър за бърза връзка, ако има такъв.</p>
+                <p><strong>Приятна игра!</strong></p>
             </div>
             <div class="modal-image-container">
-                <a href="WindowsDefenderExclusionGuide.png" target="_blank" class="zoom-btn" title="Отвори снимката в пълен размер (лупичка)">&#128065;[cite: 7]</a>
-                <img src="WindowsDefenderExclusionGuide.png" alt="Windows Defender Instructions" class="modal-image">
+                <a href="WindowsDefenderExclusionGuide.jpg" target="_blank" class="zoom-btn" title="Отвори снимката в нов прозорец в пълен размер">&#128269;</a>
+                <img src="WindowsDefenderExclusionGuide.jpg" alt="Windows Defender Instructions" class="modal-image">
             </div>
         </div>
     </div>
 
     <footer>
-        &copy; 2026 BULGARIA|GaminG Zone|&trade;[cite: 7]
+        &copy; 2026 BULGARIA|GaminG Zone|&trade;
     </footer>
+
+    <!-- СКРИПТ ЗА ПРЕВКЛЮЧВАНЕ НА ИЗГЛЕДИТЕ -->
+    <script>
+        function switchView(viewName) {
+            const homeView = document.getElementById('home-view');
+            const downloadView = document.getElementById('download-view');
+
+            if (viewName === 'download') {
+                homeView.classList.remove('active');
+                downloadView.classList.add('active');
+                history.pushState(null, '', '#download');
+            } else {
+                downloadView.classList.remove('active');
+                homeView.classList.add('active');
+                history.pushState(null, '', '#home');
+            }
+            window.scrollTo(0, 0);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.location.hash === '#download') {
+                switchView('download');
+            } else {
+                switchView('home');
+            }
+        });
+
+        window.addEventListener('popstate', () => {
+            if (window.location.hash === '#download') {
+                switchView('download');
+            } else {
+                switchView('home');
+            }
+        });
+
+        function openModal() {
+            document.getElementById('infoModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+
+        function closeModalOnOuter(event) {
+            if (event.target.id === 'infoModal') {
+                closeModal();
+            }
+        }
+    </script>
 
     <!-- Firebase Realtime SDK & Chat Logic -->
     <script type="module">
@@ -1241,7 +1441,6 @@
         const userCountSpan = document.getElementById('user-count');
 
         let myPresenceRef = null;
-
         let lastMessageTime = 0;
         let lastMessageText = "";
         const COOLDOWN_MS = 2500;
@@ -1394,7 +1593,7 @@
             return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         }
 
-        function copyServerIP(text, element) {
+        window.copyServerIP = function(text, element) {
             navigator.clipboard.writeText(text).then(() => {
                 let tooltip = element.querySelector('.copy-tooltip');
                 if (tooltip) {
@@ -1409,21 +1608,7 @@
             }).catch(err => {
                 console.error('Грешка при копиране: ', err);
             });
-        }
-
-        function openModal() {
-            document.getElementById('infoModal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('infoModal').style.display = 'none';
-        }
-
-        function closeModalOnOuter(event) {
-            if (event.target.id === 'infoModal') {
-                closeModal();
-            }
-        }
+        };
     </script>
 </body>
 </html>
