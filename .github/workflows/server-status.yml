@@ -45,7 +45,7 @@ jobs:
             },
             hl: {
               name: 'Half-Life Server',
-              type: 'halflife',
+              type: 'counterstrike16',
               host: '84.85.150.109',
               port: 27015
             }
@@ -57,25 +57,35 @@ jobs:
                 type: server.type,
                 host: server.host,
                 port: server.port,
-                socketTimeout: 5000,
-                attemptTimeout: 5000,
-                maxAttempts: 1
+                socketTimeout: 10000,
+                attemptTimeout: 10000,
+                maxAttempts: 2
               });
+
+              console.log(`${server.name}: ONLINE`);
+              console.log(state);
 
               return {
                 name: server.name,
                 online: true,
                 players: Array.isArray(state.players) ? state.players.length : 0,
                 maxplayers: state.maxplayers || 0,
-                map: state.map || ''
+                map: state.map || '',
+                error: ''
               };
+
             } catch (error) {
+              console.log(`${server.name}: OFFLINE`);
+              console.log('ERROR:', error.message);
+              console.log(error);
+
               return {
                 name: server.name,
                 online: false,
                 players: 0,
                 maxplayers: 0,
-                map: ''
+                map: '',
+                error: error.message || String(error)
               };
             }
           }
@@ -87,9 +97,7 @@ jobs:
             };
 
             for (const [id, server] of Object.entries(servers)) {
-              console.log(`Checking ${server.name}...`);
               result.servers[id] = await checkServer(server);
-              console.log(result.servers[id]);
             }
 
             fs.writeFileSync(
