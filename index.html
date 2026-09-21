@@ -457,18 +457,85 @@
             background: #111419;
             border: 1px solid #242830;
             border-radius: 4px;
-            padding: 2px;
+            padding: 3px 4px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-around;
+            justify-content: space-between;
         }
 
         .top3-server-title {
-            font-size: 9px;
+            font-size: 10px;
             font-weight: bold;
             color: #ffee00;
             letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        /* СТАВКИ/СТАТУСИ ЗА СЪРВЪРА В ТОП 3 КАРТАТА */
+        .server-live-status-box {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #282c34;
+            border-radius: 3px;
+            padding: 2px 4px;
+            margin: 2px 0;
+            gap: 1px;
+        }
+
+        .status-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 9px;
+            line-height: 1.1;
+        }
+
+        .status-badge {
+            font-weight: bold;
+            font-size: 8px;
+            padding: 1px 4px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-online {
+            background: rgba(0, 255, 102, 0.15);
+            color: #00ff66;
+            border: 1px solid #00ff66;
+        }
+
+        .status-offline {
+            background: rgba(255, 51, 51, 0.15);
+            color: #ff3333;
+            border: 1px solid #ff3333;
+        }
+
+        .players-count {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 9px;
+        }
+
+        .players-count span {
+            color: #ffee00;
+        }
+
+        .map-name {
+            color: #00e5ff;
+            font-size: 9px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            text-align: center;
         }
 
         .top3-players-list {
@@ -487,7 +554,7 @@
         }
 
         .top3-star {
-            font-size: 20px;
+            font-size: 14px;
             line-height: 1;
         }
 
@@ -1160,15 +1227,25 @@
                 </div>
             </div>
 
-            <!-- ТОП 3 СТАТИСТИКА -->
+            <!-- ТОП 3 СТАТИСТИКА И СТАТУСИ НА СЪРВЪРИТЕ -->
             <div class="top3-wrapper">
                 <div class="top3-header">
-                    <span>CS 1.6 TOP 3 СТАТИСТИКА</span>
+                    <span>CS 1.6 СЪРВЪРИ И TOP 3</span>
                 </div>
                 <div class="top3-servers-container">
                     <!-- CS_FY -->
                     <div class="top3-server-card">
                         <div class="top3-server-title">CS_FY</div>
+                        
+                        <!-- ЖИВ СТАТУС, ХОРА И КАРТА -->
+                        <div class="server-live-status-box" id="status-box-cs_fy">
+                            <div class="status-row">
+                                <span class="status-badge status-offline" id="status-badge-cs_fy">OFFLINE</span>
+                                <span class="players-count"><span id="players-cs_fy">0</span>/<span id="maxplayers-cs_fy">0</span></span>
+                            </div>
+                            <div class="map-name" id="map-cs_fy">—</div>
+                        </div>
+
                         <div class="top3-players-list">
                             <div class="top3-player">
                                 <span class="top3-star gold">★</span>
@@ -1188,6 +1265,16 @@
                     <!-- CS_DE -->
                     <div class="top3-server-card">
                         <div class="top3-server-title">CS_DE</div>
+                        
+                        <!-- ЖИВ СТАТУС, ХОРА И КАРТА -->
+                        <div class="server-live-status-box" id="status-box-cs_de">
+                            <div class="status-row">
+                                <span class="status-badge status-offline" id="status-badge-cs_de">OFFLINE</span>
+                                <span class="players-count"><span id="players-cs_de">0</span>/<span id="maxplayers-cs_de">0</span></span>
+                            </div>
+                            <div class="map-name" id="map-cs_de">—</div>
+                        </div>
+
                         <div class="top3-players-list">
                             <div class="top3-player">
                                 <span class="top3-star gold">★</span>
@@ -1632,6 +1719,49 @@
                 closeTop15Modal();
             }
         }
+
+        /* СКРИПТ ЗА ИЗВЛИЧАНЕ НА СТАТУСА НА СЪРВЪРИТЕ ОТ rank.json */
+        async function updateServerStatuses() {
+            try {
+                const response = await fetch('https://bulgaria-gaming-zone.github.io/main/rank.json?t=' + Date.now());
+                if (!response.ok) return;
+                const data = await response.json();
+                
+                if (data && data.servers) {
+                    const keys = ['cs_fy', 'cs_de'];
+                    keys.forEach(key => {
+                        const srv = data.servers[key];
+                        if (!srv) return;
+
+                        const badgeEl = document.getElementById(`status-badge-${key}`);
+                        const playersEl = document.getElementById(`players-${key}`);
+                        const maxplayersEl = document.getElementById(`maxplayers-${key}`);
+                        const mapEl = document.getElementById(`map-${key}`);
+
+                        if (badgeEl) {
+                            if (srv.online) {
+                                badgeEl.textContent = 'ONLINE';
+                                badgeEl.className = 'status-badge status-online';
+                            } else {
+                                badgeEl.textContent = 'OFFLINE';
+                                badgeEl.className = 'status-badge status-offline';
+                            }
+                        }
+
+                        if (playersEl) playersEl.textContent = srv.players ?? 0;
+                        if (maxplayersEl) maxplayersEl.textContent = srv.maxplayers ?? 0;
+                        if (mapEl) mapEl.textContent = srv.map || '—';
+                    });
+                }
+            } catch (err) {
+                console.error("Грешка при обновяване на статуса от rank.json:", err);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateServerStatuses();
+            setInterval(updateServerStatuses, 30000);
+        });
     </script>
 
     <!-- Firebase Realtime SDK, Chat & Top15/Top3 Logic -->
