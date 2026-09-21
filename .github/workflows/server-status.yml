@@ -11,6 +11,7 @@ permissions:
 jobs:
   update-status:
     runs-on: ubuntu-latest
+    timeout-minutes: 3  # Защита: спира процеса автоматично, ако забие за повече от 3 мин.
 
     steps:
       - name: Checkout
@@ -20,24 +21,29 @@ jobs:
         run: |
           mkdir -p data
 
-          curl -fsSL https://api.gamemonitoring.net/servers/16842836 -o /tmp/cs_fy.json
-          curl -fsSL https://api.gamemonitoring.net/servers/16842850 -o /tmp/cs_de.json
+          # --connect-timeout 5 и --max-time 10 гарантират, че curl няма да забие
+          curl -fsSL --connect-timeout 5 --max-time 10 https://api.gamemonitoring.net/servers/16842836 -o /tmp/cs_fy.json || echo '{"response":{}}' > /tmp/cs_fy.json
+          curl -fsSL --connect-timeout 5 --max-time 10 https://api.gamemonitoring.net/servers/16842850 -o /tmp/cs_de.json || echo '{"response":{}}' > /tmp/cs_de.json
 
           python3 - <<'PY'
           import json
           from datetime import datetime, timezone
 
-          with open("/tmp/cs_fy.json") as f:
-              fy = json.load(f)["response"]
+          def load_json(path):
+              try:
+                  with open(path) as f:
+                      return json.load(f).get("response", {})
+              except Exception:
+                  return {}
 
-          with open("/tmp/cs_de.json") as f:
-              de = json.load(f)["response"]
+          fy = load_json("/tmp/cs_fy.json")
+          de = load_json("/tmp/cs_de.json")
 
           status = {
               "updated": datetime.now(timezone.utc).isoformat(),
               "servers": {
                   "cs_fy": {
-                      "name": fy.get("name", ""),
+                      "name": fy.get("name", "Offline / Error"),
                       "online": fy.get("status", False),
                       "players": fy.get("numplayers", 0),
                       "maxplayers": fy.get("maxplayers", 0),
@@ -45,7 +51,7 @@ jobs:
                       "connect": fy.get("connect", "")
                   },
                   "cs_de": {
-                      "name": de.get("name", ""),
+                      "name": de.get("name", "Offline / Error"),
                       "online": de.get("status", False),
                       "players": de.get("numplayers", 0),
                       "maxplayers": de.get("maxplayers", 0),
