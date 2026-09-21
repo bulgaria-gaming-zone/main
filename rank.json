@@ -1,10 +1,10 @@
 {
-  "updated": "2026-09-21T19:51:01.094790+00:00",
+  "updated": "2026-09-21T19:52:02.683973+00:00",
   "servers": {
     "cs_fy": {
       "name": "BULGARIA-GaminG-Zone CS 1.6",
       "online": true,
-      "players": 1,
+      "players": 0,
       "maxplayers": 10,
       "map": "fy_dustworld",
       "connect": "84.54.150.109:27016"
@@ -12,7 +12,7 @@
     "cs_de": {
       "name": "BULGARIA-GaminG-Zone CS 1.6",
       "online": true,
-      "players": 0,
+      "players": 1,
       "maxplayers": 20,
       "map": "de_nuke",
       "connect": "84.54.150.109:27017"
