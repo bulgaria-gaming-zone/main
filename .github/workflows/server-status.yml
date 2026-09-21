@@ -27,29 +27,27 @@ jobs:
           import json
 
           with open("/tmp/cs_fy.json") as f:
-              fy = json.load(f)["response"]
+              fy = json.load(f)["response"]["servers"][0]
 
           with open("/tmp/cs_de.json") as f:
-              de = json.load(f)["response"]
+              de = json.load(f)["response"]["servers"][0]
 
           status = {
-              "updated": fy.get("last_update"),
+              "updated": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
               "servers": {
                   "cs_fy": {
+                      "name": fy.get("name", ""),
                       "online": fy.get("status", False),
                       "players": fy.get("numplayers", 0),
                       "maxplayers": fy.get("maxplayers", 0),
-                      "map": fy.get("map", ""),
-                      "name": fy.get("name", ""),
-                      "connect": fy.get("connect", "")
+                      "map": fy.get("map", "")
                   },
                   "cs_de": {
+                      "name": de.get("name", ""),
                       "online": de.get("status", False),
                       "players": de.get("numplayers", 0),
                       "maxplayers": de.get("maxplayers", 0),
-                      "map": de.get("map", ""),
-                      "name": de.get("name", ""),
-                      "connect": de.get("connect", "")
+                      "map": de.get("map", "")
                   }
               }
           }
