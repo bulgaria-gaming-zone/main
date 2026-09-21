@@ -2,34 +2,26 @@ name: Game Server UDP Test
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "*/5 * * * *"
-
-permissions:
-  contents: write
 
 jobs:
   check-servers:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: UDP server test
+      - name: UDP A2S diagnostic
         run: |
           cat > udp-test.js <<'EOF'
           const dgram = require('dgram');
 
           const servers = [
-            { name: 'Half-Life Server', host: '84.85.150.109', port: 27015 },
-            { name: 'CS1.6 fy_Server', host: '84.85.150.109', port: 27016 },
-            { name: 'CS1.6 de_Server', host: '84.85.150.109', port: 27017 }
+            { name: 'Half-Life', host: '84.85.150.109', port: 27015 },
+            { name: 'CS1.6 fy', host: '84.85.150.109', port: 27016 },
+            { name: 'CS1.6 de', host: '84.85.150.109', port: 27017 }
           ];
 
           const query = Buffer.from(
@@ -37,86 +29,69 @@ jobs:
             'hex'
           );
 
-          function testServer(server) {
+          function queryServer(server) {
             return new Promise((resolve) => {
               const socket = dgram.createSocket('udp4');
+              let done = false;
 
-              let finished = false;
-
-              const finish = (result) => {
-                if (finished) return;
-                finished = true;
-
-                try {
-                  socket.close();
-                } catch {}
-
+              function finish(result) {
+                if (done) return;
+                done = true;
+                try { socket.close(); } catch {}
                 resolve(result);
-              };
+              }
 
-              socket.on('message', (message, rinfo) => {
+              socket.on('message', (msg, rinfo) => {
                 console.log('');
-                console.log(`===== ${server.name} =====`);
-                console.log(`RESPONSE RECEIVED`);
+                console.log('================================');
+                console.log(server.name);
+                console.log('RESPONSE RECEIVED');
                 console.log(`From: ${rinfo.address}:${rinfo.port}`);
-                console.log(`Bytes: ${message.length}`);
-                console.log(`Hex: ${message.toString('hex')}`);
+                console.log(`Bytes: ${msg.length}`);
+                console.log(`Hex: ${msg.toString('hex')}`);
 
                 finish({
-                  name: server.name,
                   online: true,
-                  players: 0,
-                  maxplayers: 0,
-                  map: '',
-                  error: ''
+                  bytes: msg.length,
+                  from: `${rinfo.address}:${rinfo.port}`
                 });
               });
 
-              socket.on('error', (error) => {
+              socket.on('error', (err) => {
                 console.log('');
-                console.log(`===== ${server.name} =====`);
-                console.log(`UDP SOCKET ERROR: ${error.message}`);
+                console.log('================================');
+                console.log(server.name);
+                console.log(`SOCKET ERROR: ${err.message}`);
 
                 finish({
-                  name: server.name,
                   online: false,
-                  players: 0,
-                  maxplayers: 0,
-                  map: '',
-                  error: error.message
+                  error: err.message
                 });
               });
 
               socket.bind(() => {
-                const address = socket.address();
+                const local = socket.address();
 
                 console.log('');
-                console.log(`===== ${server.name} =====`);
-                console.log(`Sending UDP query...`);
-                console.log(`Destination: ${server.host}:${server.port}`);
-                console.log(`Local UDP port: ${address.port}`);
+                console.log('================================');
+                console.log(server.name);
+                console.log(`Sending to ${server.host}:${server.port}`);
+                console.log(`Local UDP port: ${local.port}`);
 
                 socket.send(
                   query,
-                  0,
-                  query.length,
                   server.port,
                   server.host,
-                  (error) => {
-                    if (error) {
-                      console.log(`SEND ERROR: ${error.message}`);
-
+                  (err) => {
+                    if (err) {
+                      console.log(`SEND ERROR: ${err.message}`);
                       finish({
-                        name: server.name,
                         online: false,
-                        players: 0,
-                        maxplayers: 0,
-                        map: '',
-                        error: error.message
+                        error: err.message
                       });
                     } else {
                       console.log('UDP query sent successfully.');
-                      console.log('Waiting 10 seconds for response...');
+                      console.log('Waiting 15 seconds...');
                     }
                   }
                 );
@@ -124,61 +99,23 @@ jobs:
 
               setTimeout(() => {
                 console.log('');
-                console.log(`===== ${server.name} =====`);
-                console.log('NO UDP RESPONSE - TIMEOUT');
+                console.log('TIMEOUT - no UDP response');
 
                 finish({
-                  name: server.name,
                   online: false,
-                  players: 0,
-                  maxplayers: 0,
-                  map: '',
-                  error: 'No UDP response after 10 seconds'
+                  error: 'Timeout after 15 seconds'
                 });
-              }, 10000);
+              }, 15000);
             });
           }
 
           async function main() {
-            const result = {
-              updated: new Date().toISOString(),
-              servers: {}
-            };
-
             for (const server of servers) {
-              const id =
-                server.port === 27015 ? 'hl' :
-                server.port === 27016 ? 'cs_fy' :
-                'cs_de';
-
-              result.servers[id] = await testServer(server);
+              await queryServer(server);
             }
-
-            require('fs').writeFileSync(
-              'status.json',
-              JSON.stringify(result, null, 2) + '\n'
-            );
-
-            console.log('');
-            console.log('===== FINAL RESULT =====');
-            console.log(JSON.stringify(result, null, 2));
           }
 
           main();
           EOF
 
           node udp-test.js
-
-      - name: Commit status.json
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add status.json
-
-          if git diff --cached --quiet; then
-            echo "No changes in server status."
-          else
-            git commit -m "Update game server status"
-            git push
-          fi
