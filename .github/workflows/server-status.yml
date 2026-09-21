@@ -25,29 +25,32 @@ jobs:
 
           python3 - <<'PY'
           import json
+          from datetime import datetime, timezone
 
           with open("/tmp/cs_fy.json") as f:
-              fy = json.load(f)["response"]["servers"][0]
+              fy = json.load(f)["response"]
 
           with open("/tmp/cs_de.json") as f:
-              de = json.load(f)["response"]["servers"][0]
+              de = json.load(f)["response"]
 
           status = {
-              "updated": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
+              "updated": datetime.now(timezone.utc).isoformat(),
               "servers": {
                   "cs_fy": {
                       "name": fy.get("name", ""),
                       "online": fy.get("status", False),
                       "players": fy.get("numplayers", 0),
                       "maxplayers": fy.get("maxplayers", 0),
-                      "map": fy.get("map", "")
+                      "map": fy.get("map", ""),
+                      "connect": fy.get("connect", "")
                   },
                   "cs_de": {
                       "name": de.get("name", ""),
                       "online": de.get("status", False),
                       "players": de.get("numplayers", 0),
                       "maxplayers": de.get("maxplayers", 0),
-                      "map": de.get("map", "")
+                      "map": de.get("map", ""),
+                      "connect": de.get("connect", "")
                   }
               }
           }
