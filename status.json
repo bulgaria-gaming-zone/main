@@ -1,0 +1,26 @@
+{
+  "updated": "2026-09-21T14:48:03.761Z",
+  "servers": {
+    "cs_fy": {
+      "name": "CS1.6 fy_Server",
+      "online": false,
+      "players": 0,
+      "maxplayers": 0,
+      "map": ""
+    },
+    "cs_de": {
+      "name": "CS1.6 de_Server",
+      "online": false,
+      "players": 0,
+      "maxplayers": 0,
+      "map": ""
+    },
+    "hl": {
+      "name": "Half-Life Server",
+      "online": false,
+      "players": 0,
+      "maxplayers": 0,
+      "map": ""
+    }
+  }
+}
