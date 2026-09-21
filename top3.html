@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CS TOP 3</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background: #0b0d10;
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+}
+
+
+/* =========================================================
+   ОСНОВА
+   ========================================================= */
+
+.wrapper {
+    width: 100%;
+    max-width: 900px;
+}
+
+
+/* =========================================================
+   ДВАТА СЪРВЪРА
+   ========================================================= */
+
+.servers {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+
+/* =========================================================
+   СЪРВЪР КАРТА
+   ========================================================= */
+
+.server {
+
+    background: #111419;
+
+    border: 1px solid #242830;
+
+    border-radius: 16px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.35);
+}
+
+
+.server-title {
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 30px;
+
+}
+
+
+/* =========================================================
+   TOP 3
+   ========================================================= */
+
+.top3 {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+    gap: 18px;
+}
+
+
+.player {
+
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   ЗВЕЗДИ
+   ========================================================= */
+
+.star {
+
+    font-size: 58px;
+
+    line-height: 1;
+
+    margin-bottom: 12px;
+
+    filter:
+        drop-shadow(0 5px 8px rgba(0,0,0,0.5));
+}
+
+
+/* ЗЛАТНО */
+
+.gold {
+
+    color: #FFD700;
+
+    text-shadow:
+        0 0 10px rgba(255,215,0,0.35);
+}
+
+
+/* СРЕБЪРНО */
+
+.silver {
+
+    color: #C9CDD2;
+
+    text-shadow:
+        0 0 10px rgba(220,225,230,0.25);
+}
+
+
+/* БРОНЗОВО */
+
+.bronze {
+
+    color: #CD7F32;
+
+    text-shadow:
+        0 0 10px rgba(205,127,50,0.25);
+}
+
+
+/* =========================================================
+   ИМЕ
+   ========================================================= */
+
+.player-name {
+
+    width: 100%;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: #eeeeee;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   МОБИЛНИ
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .servers {
+
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .server {
+
+        padding: 20px;
+    }
+
+    .star {
+
+        font-size: 50px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="wrapper">
+
+    <div class="servers">
+
+
+        <!-- =================================================
+             CS FY
+             ================================================= -->
+
+        <div class="server">
+
+            <div class="server-title">
+                CS_FY
+            </div>
+
+
+            <div class="top3">
+
+
+                <!-- #1 -->
+
+                <div class="player">
+
+                    <div class="star gold">
+                        ★
+                    </div>
+
+                    <div
+                        class="player-name"
+                        id="fy-1">
+                        —
+                    </div>
+
+                </div>
+
+
+                <!-- #2 -->
+
+                <div class="player">
+
+                    <div class="star silver">
+                        ★
+                    </div>
+
+                    <div
+                        class="player-name"
+                        id="fy-2">
+                        —
+                    </div>
+
+                </div>
+
+
+                <!-- #3 -->
+
+                <div class="player">
+
+                    <div class="star bronze">
+                        ★
+                    </div>
+
+                    <div
+                        class="player-name"
+                        id="fy-3">
+                        —
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CS DE
+             ================================================= -->
+
+        <div class="server">
+
+            <div class="server-title">
+                CS_DE
+            </div>
+
+
+            <div class="top3">
+
+
+                <!-- #1 -->
+
+                <div class="player">
+
+                    <div class="star gold">
+                        ★
+                    </div>
+
+                    <div
+                        class="player-name"
+                        id="de-1">
+                        —
+                    </div>
+
+                </div>
+
+
+                <!-- #2 -->
+
+                <div class="player">
+
+                    <div class="star silver">
+                        ★
+                    </div>
+
+                    <div
+                        class="player-name"
+                        id="de-2">
+                        —
+                    </div>
+
+                </div>
+
+
+                <!-- #3 -->
+
+                <div class="player">
+
+                    <div class="star bronze">
+                        ★
+                    </div>
+
+                    <div
+                        class="player-name"
+                        id="de-3">
+                        —
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     FIREBASE
+     ========================================================= -->
+
+<script type="module">
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+    getDatabase,
+    ref,
+    onValue
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+
+
+/* =========================================================
+   FIREBASE CONFIG
+   ========================================================= */
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyCQSa6AS9WnZQ0iKCllh5E_1GY",
+
+    authDomain:
+        "cs-top-15.firebaseapp.com",
+
+    databaseURL:
+        "https://cs-top-15-default-rtdb.europe-west1.firebasedatabase.app",
+
+    projectId:
+        "cs-top-15",
+
+    storageBucket:
+        "cs-top-15.firebasestorage.app",
+
+    messagingSenderId:
+        "346915126353",
+
+    appId:
+        "1:346915126353:web:72fee415710b9da16c0c70",
+
+    measurementId:
+        "G-K9QKTSMMQF"
+};
+
+
+
+/* =========================================================
+   FIREBASE START
+   ========================================================= */
+
+const app =
+    initializeApp(firebaseConfig);
+
+
+const database =
+    getDatabase(app);
+
+
+
+/* =========================================================
+   UPDATE SERVER
+   ========================================================= */
+
+function updateServer(serverName, prefix) {
+
+    const serverRef =
+        ref(
+            database,
+            "stats/" + serverName
+        );
+
+
+    onValue(
+        serverRef,
+        (snapshot) => {
+
+            const data =
+                snapshot.val();
+
+
+            if (!data) {
+
+                for (let i = 1; i <= 3; i++) {
+
+                    document.getElementById(
+                        prefix + "-" + i
+                    ).textContent = "—";
+
+                }
+
+                return;
+            }
+
+
+            /*
+             * Python записва TOP 15
+             * като Firebase array/object.
+             */
+
+            const players =
+                Array.isArray(data)
+                    ? data
+                    : Object.values(data);
+
+
+            /*
+             * Показваме първите 3.
+             */
+
+            for (let i = 0; i < 3; i++) {
+
+                const element =
+                    document.getElementById(
+                        prefix + "-" + (i + 1)
+                    );
+
+
+                if (
+                    players[i] &&
+                    players[i].name
+                ) {
+
+                    element.textContent =
+                        players[i].name;
+
+                } else {
+
+                    element.textContent =
+                        "—";
+                }
+
+            }
+
+        },
+
+        (error) => {
+
+            console.error(
+                "Firebase error:",
+                error
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+updateServer(
+    "cs_fy",
+    "fy"
+);
+
+
+updateServer(
+    "cs_de",
+    "de"
+);
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter-Strike 1.6 Top 15</title>
+
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h1 {
+      color: #f39c12;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .server-card {
+      background: #292929;
+      border-radius: 10px;
+      padding: 20px;
+      width: 100%;
+      max-width: 580px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .server-card h2 {
+      color: #ecf0f1;
+      border-bottom: 2px solid #f39c12;
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th,
+    td {
+      padding: 10px 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f1c40f;
+      color: #292929;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #333333;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #292929;
+    }
+
+    tr:hover {
+      background-color: #414141;
+    }
+
+    .rank {
+      font-weight: bold;
+      color: #f39c12;
+      width: 40px;
+    }
+
+    .player-name {
+      text-align: left;
+      font-weight: bold;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      .server-card {
+        padding: 12px;
+      }
+
+      th,
+      td {
+        padding: 8px 4px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Counter-Strike 1.6 Top 15</h1>
+
+  <div class="container">
+
+    <!-- CS_FY Server -->
+    <div class="server-card">
+      <h2>CS_FY Server</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th class="rank">#</th>
+            <th style="text-align: left;">Ник</th>
+            <th>Убийства</th>
+            <th>Умирания</th>
+            <th>HS</th>
+            <th>Щета (DMG)</th>
+          </tr>
+        </thead>
+
+        <tbody id="stats-cs_fy">
+          <tr>
+            <td colspan="6">Зареждане...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- CS_DE Server -->
+    <div class="server-card">
+      <h2>CS_DE Server</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th class="rank">#</th>
+            <th style="text-align: left;">Ник</th>
+            <th>Убийства</th>
+            <th>Умирания</th>
+            <th>HS</th>
+            <th>Щета (DMG)</th>
+          </tr>
+        </thead>
+
+        <tbody id="stats-cs_de">
+          <tr>
+            <td colspan="6">Зареждане...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+  <script type="module">
+
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+    import {
+      getDatabase,
+      ref,
+      onValue
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+
+    // ==========================================
+    // FIREBASE CONFIG
+    // ==========================================
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCQSa6AS9WnZVCTSZ70Q0iKCllh5E_1GY",
+      authDomain: "cs-top-15.firebaseapp.com",
+      databaseURL: "https://cs-top-15-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "cs-top-15",
+      storageBucket: "cs-top-15.firebasestorage.app",
+      messagingSenderId: "346915126353",
+      appId: "1:346915126353:web:72fee415710b9da16c0c70",
+      measurementId: "G-K9QKTSMMQF"
+    };
+
+
+    // ==========================================
+    // INITIALIZE FIREBASE
+    // ==========================================
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+
+    // ==========================================
+    // ESCAPE HTML
+    // ==========================================
+
+    function escapeHtml(text) {
+
+      text = String(text ?? "");
+
+      return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+
+    // ==========================================
+    // LOAD SERVER STATS
+    // ==========================================
+
+    function loadServerStats(serverKey, tbodyId) {
+
+      const statsRef = ref(db, `stats/${serverKey}`);
+
+      onValue(statsRef, (snapshot) => {
+
+        const data = snapshot.val();
+
+        const tbody = document.getElementById(tbodyId);
+
+        tbody.innerHTML = "";
+
+
+        // Няма данни
+        if (!data || !Array.isArray(data) || data.length === 0) {
+
+          tbody.innerHTML =
+            '<tr><td colspan="6">Няма данни.</td></tr>';
+
+          return;
+        }
+
+
+        // Показваме Top 15
+        data.slice(0, 15).forEach((player, index) => {
+
+          const row = document.createElement("tr");
+
+          row.innerHTML = `
+            <td class="rank">${index + 1}</td>
+
+            <td class="player-name">
+              ${escapeHtml(player.name)}
+            </td>
+
+            <td>
+              ${Number(player.kills ?? 0)}
+            </td>
+
+            <td>
+              ${Number(player.deaths ?? 0)}
+            </td>
+
+            <td>
+              ${Number(player.hs ?? 0)}
+            </td>
+
+            <td>
+              ${Number(player.damage ?? 0)}
+            </td>
+          `;
+
+          tbody.appendChild(row);
+
+        });
+
+      });
+
+    }
+
+
+    // ==========================================
+    // LOAD BOTH SERVERS
+    // ==========================================
+
+    loadServerStats(
+      "cs_fy",
+      "stats-cs_fy"
+    );
+
+    loadServerStats(
+      "cs_de",
+      "stats-cs_de"
+    );
+
+  </script>
+
+</body>
+</html>
