@@ -59,7 +59,9 @@ jobs:
                 port: server.port,
                 socketTimeout: 10000,
                 attemptTimeout: 10000,
-                maxAttempts: 2
+                maxRetries: 2,
+                givenPortOnly: true,
+                debug: true
               });
 
               console.log(`${server.name}: ONLINE`);
@@ -104,6 +106,7 @@ jobs:
             );
 
             console.log('status.json created.');
+            console.log(JSON.stringify(result, null, 2));
           }
 
           main().catch(error => {
