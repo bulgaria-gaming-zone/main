@@ -1,4 +1,4 @@
-name: Game Server Status
+name: Game Server UDP Test
 
 on:
   workflow_dispatch:
@@ -21,73 +21,122 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install GameDig
-        run: npm install gamedig
-
-      - name: Check game servers
+      - name: UDP server test
         run: |
-          cat > check-servers.js <<'EOF'
-          const { GameDig } = require('gamedig');
-          const fs = require('fs');
+          cat > udp-test.js <<'EOF'
+          const dgram = require('dgram');
 
-          const servers = {
-            cs_fy: {
-              name: 'CS1.6 fy_Server',
-              type: 'counterstrike16',
-              host: '84.85.150.109',
-              port: 27016
-            },
-            cs_de: {
-              name: 'CS1.6 de_Server',
-              type: 'counterstrike16',
-              host: '84.85.150.109',
-              port: 27017
-            },
-            hl: {
-              name: 'Half-Life Server',
-              type: 'counterstrike16',
-              host: '84.85.150.109',
-              port: 27015
-            }
-          };
+          const servers = [
+            { name: 'Half-Life Server', host: '84.85.150.109', port: 27015 },
+            { name: 'CS1.6 fy_Server', host: '84.85.150.109', port: 27016 },
+            { name: 'CS1.6 de_Server', host: '84.85.150.109', port: 27017 }
+          ];
 
-          async function checkServer(server) {
-            try {
-              const state = await GameDig.query({
-                type: server.type,
-                host: server.host,
-                port: server.port,
-                socketTimeout: 10000,
-                attemptTimeout: 10000,
-                maxRetries: 2,
-                givenPortOnly: true,
-                debug: true
+          const query = Buffer.from(
+            'ffffffff54536f7572636520456e67696e6520517565727900',
+            'hex'
+          );
+
+          function testServer(server) {
+            return new Promise((resolve) => {
+              const socket = dgram.createSocket('udp4');
+
+              let finished = false;
+
+              const finish = (result) => {
+                if (finished) return;
+                finished = true;
+
+                try {
+                  socket.close();
+                } catch {}
+
+                resolve(result);
+              };
+
+              socket.on('message', (message, rinfo) => {
+                console.log('');
+                console.log(`===== ${server.name} =====`);
+                console.log(`RESPONSE RECEIVED`);
+                console.log(`From: ${rinfo.address}:${rinfo.port}`);
+                console.log(`Bytes: ${message.length}`);
+                console.log(`Hex: ${message.toString('hex')}`);
+
+                finish({
+                  name: server.name,
+                  online: true,
+                  players: 0,
+                  maxplayers: 0,
+                  map: '',
+                  error: ''
+                });
               });
 
-              console.log(`${server.name}: ONLINE`);
+              socket.on('error', (error) => {
+                console.log('');
+                console.log(`===== ${server.name} =====`);
+                console.log(`UDP SOCKET ERROR: ${error.message}`);
 
-              return {
-                name: server.name,
-                online: true,
-                players: Array.isArray(state.players) ? state.players.length : 0,
-                maxplayers: state.maxplayers || 0,
-                map: state.map || '',
-                error: ''
-              };
+                finish({
+                  name: server.name,
+                  online: false,
+                  players: 0,
+                  maxplayers: 0,
+                  map: '',
+                  error: error.message
+                });
+              });
 
-            } catch (error) {
-              console.log(`${server.name}: OFFLINE`);
-              console.log('ERROR:', error.message);
+              socket.bind(() => {
+                const address = socket.address();
 
-              return {
-                name: server.name,
-                online: false,
-                players: 0,
-                maxplayers: 0,
-                map: '',
-                error: error.message || String(error)
-              };
-            }
+                console.log('');
+                console.log(`===== ${server.name} =====`);
+                console.log(`Sending UDP query...`);
+                console.log(`Destination: ${server.host}:${server.port}`);
+                console.log(`Local UDP port: ${address.port}`);
+
+                socket.send(
+                  query,
+                  0,
+                  query.length,
+                  server.port,
+                  server.host,
+                  (error) => {
+                    if (error) {
+                      console.log(`SEND ERROR: ${error.message}`);
+
+                      finish({
+                        name: server.name,
+                        online: false,
+                        players: 0,
+                        maxplayers: 0,
+                        map: '',
+                        error: error.message
+                      });
+                    } else {
+                      console.log('UDP query sent successfully.');
+                      console.log('Waiting 10 seconds for response...');
+                    }
+                  }
+                );
+              });
+
+              setTimeout(() => {
+                console.log('');
+                console.log(`===== ${server.name} =====`);
+                console.log('NO UDP RESPONSE - TIMEOUT');
+
+                finish({
+                  name: server.name,
+                  online: false,
+                  players: 0,
+                  maxplayers: 0,
+                  map: '',
+                  error: 'No UDP response after 10 seconds'
+                });
+              }, 10000);
+            });
           }
 
           async function main() {
@@ -96,26 +145,29 @@ jobs:
               servers: {}
             };
 
-            for (const [id, server] of Object.entries(servers)) {
-              result.servers[id] = await checkServer(server);
+            for (const server of servers) {
+              const id =
+                server.port === 27015 ? 'hl' :
+                server.port === 27016 ? 'cs_fy' :
+                'cs_de';
+
+              result.servers[id] = await testServer(server);
             }
 
-            fs.writeFileSync(
+            require('fs').writeFileSync(
               'status.json',
               JSON.stringify(result, null, 2) + '\n'
             );
 
-            console.log('status.json created.');
+            console.log('');
+            console.log('===== FINAL RESULT =====');
             console.log(JSON.stringify(result, null, 2));
           }
 
-          main().catch(error => {
-            console.error(error);
-            process.exit(1);
-          });
+          main();
           EOF
 
-          node check-servers.js
+          node udp-test.js
 
       - name: Commit status.json
         run: |
