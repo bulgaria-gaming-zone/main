@@ -1,12 +1,12 @@
 {
-  "updated": "2026-09-21T22:11:46.896027+00:00",
+  "updated": "2026-09-21T22:12:48.396594+00:00",
   "servers": {
     "cs_fy": {
       "name": "BULGARIA-GaminG-Zone CS 1.6",
       "online": true,
       "players": 0,
       "maxplayers": 10,
-      "map": "fy_inferno",
+      "map": "fy_snow",
       "connect": "84.54.150.109:27016"
     },
     "cs_de": {
