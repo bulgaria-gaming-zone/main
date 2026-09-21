@@ -39,7 +39,7 @@
             overflow-x: hidden;
         }
 
-        /* ОБЩ ЧЕРЕН ТАБ ЗА БАНЕРА, МЕНЮТО И ЧАТА */
+        /* ОБЩ ЧЕРЕН ТАБ ЗА БАНЕРА, МЕНЮТО И ЧАТА / ТОП 3 */
         .header-wrapper {
             width: 100%;
             background-color: #000000;
@@ -144,10 +144,37 @@
             animation: blinkBorder 1s infinite alternate;
         }
 
+        /* МИГАЩ БУТОН CS TOP 15 */
+        .top15-nav-btn {
+            background: #111111;
+            color: #ffff00;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            animation: blinkBorder 1s infinite alternate;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-left: 10px;
+            border: none;
+            outline: none;
+        }
+
+        .top15-nav-btn:hover {
+            transform: scale(1.05);
+            background: #ffff00;
+            color: #000000;
+        }
+
         @keyframes blinkBorder {
             0% {
                 border: 2px solid #ffff00;
-                box-shadow: 0 0 4px #ffff00;
+                box-shadow: 0 0 6px #ffff00;
             }
             100% {
                 border: 2px solid transparent;
@@ -193,17 +220,26 @@
             opacity: 0.9;
         }
 
-        /* ИНТЕГРИРАН РЕТРО ЧАТ В ГЛАВНОТО МЕНЮ */
-        .retro-chat-wrapper {
+        /* КОНТЕЙНЕР ЗА РЕТРО ЧАТ И ТОП 3 (ЕДИН ДО ДРУГ) */
+        .chat-top3-grid {
             width: 100%;
             max-width: 1100px;
-            padding: 0 15px 6px 15px;
+            padding: 0 15px 8px 15px;
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
+        }
+
+        /* ЧАТ НА ПОЛОВИН ШИРОЧИНА */
+        .retro-chat-wrapper {
+            flex: 1;
+            min-width: 0;
         }
 
         .retro-chat-container {
             width: 100%;
-            height: 120px;
-            max-height: 120px;
+            height: 125px;
+            max-height: 125px;
             background-color: #111111;
             border: 2px solid #ffee00;
             box-shadow: 0 0 12px rgba(255, 238, 0, 0.25);
@@ -248,7 +284,7 @@
         }
 
         .online-users-panel {
-            width: 120px;
+            width: 95px;
             background: #0d0d0d;
             padding: 3px;
             display: flex;
@@ -355,7 +391,7 @@
         }
 
         #chat-name {
-            width: 75px;
+            width: 65px;
             flex-shrink: 0;
         }
 
@@ -380,6 +416,95 @@
 
         .chat-btn:hover {
             background: #ffffff;
+        }
+
+        /* ТОП 3 НА ПОЛОВИН ШИРОЧИНА */
+        .top3-wrapper {
+            flex: 1;
+            min-width: 0;
+            height: 125px;
+            background-color: #111111;
+            border: 2px solid #ffee00;
+            box-shadow: 0 0 12px rgba(255, 238, 0, 0.25);
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .top3-header {
+            background: #ffee00;
+            color: #000;
+            padding: 2px 6px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 9px;
+            letter-spacing: 1px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .top3-servers-container {
+            display: flex;
+            flex: 1;
+            gap: 5px;
+            padding: 4px;
+            background: #080808;
+        }
+
+        .top3-server-card {
+            flex: 1;
+            background: #111419;
+            border: 1px solid #242830;
+            border-radius: 4px;
+            padding: 2px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .top3-server-title {
+            font-size: 9px;
+            font-weight: bold;
+            color: #ffee00;
+            letter-spacing: 1px;
+        }
+
+        .top3-players-list {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            align-items: flex-end;
+        }
+
+        .top3-player {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .top3-star {
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .top3-star.gold { color: #FFD700; text-shadow: 0 0 5px rgba(255,215,0,0.5); }
+        .top3-star.silver { color: #C9CDD2; text-shadow: 0 0 5px rgba(220,225,230,0.4); }
+        .top3-star.bronze { color: #CD7F32; text-shadow: 0 0 5px rgba(205,127,50,0.4); }
+
+        .top3-player-name {
+            font-size: 9px;
+            color: #ffffff;
+            font-weight: 600;
+            width: 100%;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0 2px;
         }
 
         /* ОСНОВНО СЪДЪРЖАНИЕ */
@@ -684,6 +809,72 @@
             opacity: 1;
         }
 
+        /* ТОП 15 СТИЛОВЕ В МОДАЛНИЯ ПРОЗОРЕЦ (ЕДИН ДО ДРУГ) */
+        .top15-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .top15-card {
+            background: rgba(17, 17, 17, 0.95);
+            border: 1px solid #ffff00;
+            border-radius: 8px;
+            padding: 15px;
+            flex: 1;
+            min-width: 0;
+            box-shadow: 0 0 15px rgba(255, 255, 0, 0.2);
+        }
+
+        .top15-card h3 {
+            color: #ffff00;
+            border-bottom: 1px solid #ffff00;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+            text-align: center;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .top15-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .top15-table th, .top15-table td {
+            padding: 6px 8px;
+            text-align: center;
+        }
+
+        .top15-table th {
+            background-color: #ffee00;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .top15-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .top15-table tr:hover {
+            background-color: rgba(255, 255, 0, 0.15);
+        }
+
+        .top15-rank {
+            font-weight: bold;
+            color: #ffee00;
+        }
+
+        .top15-player {
+            text-align: left;
+            font-weight: 600;
+        }
+
         /* МОДАЛЕН ПРОЗОРЕЦ (POPUP) */
         .modal-overlay {
             display: none;
@@ -716,6 +907,10 @@
             overflow-y: auto;
         }
 
+        .top15-modal-content {
+            max-width: 1100px;
+        }
+
         .close-modal {
             position: absolute;
             top: 10px;
@@ -726,6 +921,7 @@
             cursor: pointer;
             line-height: 1;
             transition: color 0.2s;
+            z-index: 10;
         }
 
         .close-modal:hover {
@@ -803,6 +999,14 @@
         }
 
         @media (max-width: 768px) {
+            .chat-top3-grid {
+                flex-direction: column;
+            }
+
+            .top15-container {
+                flex-direction: column;
+            }
+
             .header-banner {
                 max-height: 80px;
                 transform: none;
@@ -814,6 +1018,11 @@
                 margin-right: 0;
                 margin-bottom: 6px;
                 width: 100%;
+            }
+
+            .top15-nav-btn {
+                margin-left: 0;
+                margin-top: 5px;
             }
 
             .downloads-title {
@@ -917,35 +1126,90 @@
                 <a href="https://www.facebook.com/groups/389530691674289/" target="_blank" rel="noopener noreferrer" class="social-link-item" title="Facebook Group">
                     <img src="facebook_icon.png" alt="Facebook" class="nav-icon">
                 </a>
+                <!-- МИГАЩ БУТОН ЗА TOP15 - ОТВАРЯ МОДАЛЕН ПРОЗОРЕЦ -->
+                <button type="button" onclick="openTop15Modal()" class="top15-nav-btn" title="Виж CS TOP 15 Ранглистата">
+                    CS TOP 15
+                </button>
             </div>
         </nav>
 
-        <!-- ЕДИН ЕДИНСТВЕН ПЕРСИСТЕНТЕН ЧАТ (НЯМА ДА СЕ ПРЕЗАРЕЖДА) -->
-        <div class="retro-chat-wrapper">
-            <div class="retro-chat-container">
-                <div class="chat-header">
-                    <span>BULGARIA GAMING ZONE - LIVE CHAT</span>
-                </div>
-                
-                <div class="chat-body">
-                    <div class="chat-messages" id="chat-messages"></div>
+        <!-- МРЕЖА С ЧАТ И ТОП 3 (ПО 50% НА ДЕСКТОП) -->
+        <div class="chat-top3-grid">
+            
+            <!-- ЛАЙВ ЧАТ -->
+            <div class="retro-chat-wrapper">
+                <div class="retro-chat-container">
+                    <div class="chat-header">
+                        <span>BULGARIA GAMING ZONE - LIVE CHAT</span>
+                    </div>
                     
-                    <div class="online-users-panel">
-                        <div class="online-title">Онлайн (<span id="user-count">0</span>)</div>
-                        <ul class="users-list" id="users-list"></ul>
+                    <div class="chat-body">
+                        <div class="chat-messages" id="chat-messages"></div>
+                        
+                        <div class="online-users-panel">
+                            <div class="online-title">Онлайн (<span id="user-count">0</span>)</div>
+                            <ul class="users-list" id="users-list"></ul>
+                        </div>
+                    </div>
+
+                    <form class="chat-input-area" id="chat-form">
+                        <input type="text" id="chat-name" placeholder="Ник" maxlength="15" required>
+                        <input type="text" id="chat-text" placeholder="Съобщение..." autocomplete="off" maxlength="200" required>
+                        <button type="submit" class="chat-btn">Прати</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- ТОП 3 СТАТИСТИКА -->
+            <div class="top3-wrapper">
+                <div class="top3-header">
+                    <span>CS 1.6 TOP 3 СТАТИСТИКА</span>
+                </div>
+                <div class="top3-servers-container">
+                    <!-- CS_FY -->
+                    <div class="top3-server-card">
+                        <div class="top3-server-title">CS_FY</div>
+                        <div class="top3-players-list">
+                            <div class="top3-player">
+                                <span class="top3-star gold">★</span>
+                                <span class="top3-player-name" id="fy-1">—</span>
+                            </div>
+                            <div class="top3-player">
+                                <span class="top3-star silver">★</span>
+                                <span class="top3-player-name" id="fy-2">—</span>
+                            </div>
+                            <div class="top3-player">
+                                <span class="top3-star bronze">★</span>
+                                <span class="top3-player-name" id="fy-3">—</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CS_DE -->
+                    <div class="top3-server-card">
+                        <div class="top3-server-title">CS_DE</div>
+                        <div class="top3-players-list">
+                            <div class="top3-player">
+                                <span class="top3-star gold">★</span>
+                                <span class="top3-player-name" id="de-1">—</span>
+                            </div>
+                            <div class="top3-player">
+                                <span class="top3-star silver">★</span>
+                                <span class="top3-player-name" id="de-2">—</span>
+                            </div>
+                            <div class="top3-player">
+                                <span class="top3-star bronze">★</span>
+                                <span class="top3-player-name" id="de-3">—</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <form class="chat-input-area" id="chat-form">
-                    <input type="text" id="chat-name" placeholder="Ник" maxlength="15" required>
-                    <input type="text" id="chat-text" placeholder="Съобщение..." autocomplete="off" maxlength="200" required>
-                    <button type="submit" class="chat-btn">Прати</button>
-                </form>
             </div>
+
         </div>
     </div>
 
-    <!-- ДИНАМИЧЕН СЕКЦИОНЕН БЛОК (СМЕНЯ СЕ САМО ТОВА ПОД ЧАТА) -->
+    <!-- ДИНАМИЧЕН СЕКЦИОНЕН БЛОК -->
     <main class="main-content">
         
         <!-- НАЧАЛЕН ИЗГЛЕД (HOME) -->
@@ -1251,43 +1515,94 @@
         </div>
     </div>
 
+    <!-- МОДАЛЕН ПРОЗОРЕЦ ЗА CS TOP 15 -->
+    <div id="top15Modal" class="modal-overlay" onclick="closeTop15ModalOnOuter(event)">
+        <div class="modal-content top15-modal-content">
+            <span class="close-modal" onclick="closeTop15Modal()">&times;</span>
+            <h2 class="downloads-title" style="margin-bottom: 15px;">COUNTER-STRIKE 1.6 TOP 15 РАНГЛИСТА</h2>
+            <div class="top15-container">
+                
+                <!-- CS_FY Server Card -->
+                <div class="top15-card">
+                    <h3>CS_FY SERVER TOP 15</h3>
+                    <table class="top15-table">
+                        <thead>
+                            <tr>
+                                <th class="top15-rank">#</th>
+                                <th style="text-align: left;">Ник</th>
+                                <th>Kills</th>
+                                <th>Deaths</th>
+                                <th>HS</th>
+                                <th>DMG</th>
+                            </tr>
+                        </thead>
+                        <tbody id="top15-tbody-cs_fy">
+                            <tr><td colspan="6">Зареждане...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- CS_DE Server Card -->
+                <div class="top15-card">
+                    <h3>CS_DE SERVER TOP 15</h3>
+                    <table class="top15-table">
+                        <thead>
+                            <tr>
+                                <th class="top15-rank">#</th>
+                                <th style="text-align: left;">Ник</th>
+                                <th>Kills</th>
+                                <th>Deaths</th>
+                                <th>HS</th>
+                                <th>DMG</th>
+                            </tr>
+                        </thead>
+                        <tbody id="top15-tbody-cs_de">
+                            <tr><td colspan="6">Зареждане...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <footer>
         &copy; 2026 BULGARIA|GaminG Zone|&trade;
     </footer>
 
-    <!-- СКРИПТ ЗА ПРЕВКЛЮЧВАНЕ НА ИЗГЛЕДИТЕ -->
+    <!-- СКРИПТ ЗА ПРЕВКЛЮЧВАНЕ НА ИЗГЛЕДИТЕ И МОДАЛНИТЕ ПРОЗОРЦИ -->
     <script>
         function switchView(viewName) {
             const homeView = document.getElementById('home-view');
             const downloadView = document.getElementById('download-view');
 
+            homeView.classList.remove('active');
+            downloadView.classList.remove('active');
+
             if (viewName === 'download') {
-                homeView.classList.remove('active');
                 downloadView.classList.add('active');
                 history.pushState(null, '', '#download');
             } else {
-                downloadView.classList.remove('active');
                 homeView.classList.add('active');
                 history.pushState(null, '', '#home');
             }
             window.scrollTo(0, 0);
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            if (window.location.hash === '#download') {
+        function handleHashChange() {
+            const hash = window.location.hash;
+            if (hash === '#download') {
                 switchView('download');
+            } else if (hash === '#top15') {
+                openTop15Modal();
+                switchView('home');
             } else {
                 switchView('home');
             }
-        });
+        }
 
-        window.addEventListener('popstate', () => {
-            if (window.location.hash === '#download') {
-                switchView('download');
-            } else {
-                switchView('home');
-            }
-        });
+        window.addEventListener('DOMContentLoaded', handleHashChange);
+        window.addEventListener('popstate', handleHashChange);
 
         function openModal() {
             document.getElementById('infoModal').style.display = 'flex';
@@ -1302,9 +1617,24 @@
                 closeModal();
             }
         }
+
+        /* ТОП 15 МОДАЛЕН ПРОЗОРЕЦ КУТИЯ */
+        function openTop15Modal() {
+            document.getElementById('top15Modal').style.display = 'flex';
+        }
+
+        function closeTop15Modal() {
+            document.getElementById('top15Modal').style.display = 'none';
+        }
+
+        function closeTop15ModalOnOuter(event) {
+            if (event.target.id === 'top15Modal') {
+                closeTop15Modal();
+            }
+        }
     </script>
 
-    <!-- Firebase Realtime SDK & Chat Logic -->
+    <!-- Firebase Realtime SDK, Chat & Top15/Top3 Logic -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { 
@@ -1324,7 +1654,8 @@
             set 
         } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        const firebaseConfig = {
+        /* CHAT FIREBASE CONFIG */
+        const chatFirebaseConfig = {
             apiKey: "AIzaSyAwAjdbV8NLL33ovLR8j3shl9tk7HaFfWk",
             authDomain: "bulgaria-gaming-zone-chat.firebaseapp.com",
             databaseURL: "https://bulgaria-gaming-zone-chat-default-rtdb.europe-west1.firebasedatabase.app",
@@ -1335,11 +1666,27 @@
             measurementId: "G-L0JMK4H302"
         };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-        const messagesRef = ref(db, 'chat_messages');
-        const presenceRef = ref(db, 'online_users');
+        const chatApp = initializeApp(chatFirebaseConfig, "chatApp");
+        const chatDb = getDatabase(chatApp);
+        const messagesRef = ref(chatDb, 'chat_messages');
+        const presenceRef = ref(chatDb, 'online_users');
 
+        /* TOP 15 / TOP 3 FIREBASE CONFIG */
+        const top15FirebaseConfig = {
+            apiKey: "AIzaSyCQSa6AS9WnZVCTSZ70Q0iKCllh5E_1GY",
+            authDomain: "cs-top-15.firebaseapp.com",
+            databaseURL: "https://cs-top-15-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "cs-top-15",
+            storageBucket: "cs-top-15.firebasestorage.app",
+            messagingSenderId: "346915126353",
+            appId: "1:346915126353:web:72fee415710b9da16c0c70",
+            measurementId: "G-K9QKTSMMQF"
+        };
+
+        const top15App = initializeApp(top15FirebaseConfig, "top15App");
+        const top15Db = getDatabase(top15App);
+
+        /* ================= CHAT LOGIC ================= */
         const form = document.getElementById('chat-form');
         const nameInput = document.getElementById('chat-name');
         const textInput = document.getElementById('chat-text');
@@ -1378,7 +1725,7 @@
             get(oldMessagesQuery).then((snapshot) => {
                 if (snapshot.exists()) {
                     snapshot.forEach((childSnapshot) => {
-                        remove(ref(db, `chat_messages/${childSnapshot.key}`));
+                        remove(ref(chatDb, `chat_messages/${childSnapshot.key}`));
                     });
                 }
             }).catch((err) => console.error("Грешка при почистване:", err));
@@ -1388,7 +1735,7 @@
 
         function updateOnlineStatus() {
             const name = nameInput.value.trim() || "Guest";
-            const connectedRef = ref(db, ".info/connected");
+            const connectedRef = ref(chatDb, ".info/connected");
 
             onValue(connectedRef, (snap) => {
                 if (snap.val() === true) {
@@ -1497,7 +1844,7 @@
         });
 
         function escapeHtml(str) {
-            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            return String(str ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
         }
 
         window.copyServerIP = function(text, element) {
@@ -1516,6 +1863,111 @@
                 console.error('Грешка при копиране: ', err);
             });
         };
+
+        /* ================= TOP 3 & TOP 15 LOGIC ================= */
+        async function fetchExternalHTML(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) return null;
+                const text = await response.text();
+                const parser = new DOMParser();
+                return parser.parseFromString(text, 'text/html');
+            } catch (error) {
+                console.error("Грешка при зареждане на външен HTML от " + url + ":", error);
+                return null;
+            }
+        }
+
+        async function loadTop3FromExternal() {
+            const doc = await fetchExternalHTML('https://bulgaria-gaming-zone.github.io/main/top3.html');
+            if (!doc) return;
+
+            const ids = ['fy-1', 'fy-2', 'fy-3', 'de-1', 'de-2', 'de-3'];
+            ids.forEach(id => {
+                const extEl = doc.getElementById(id);
+                const localEl = document.getElementById(id);
+                if (extEl && localEl) {
+                    localEl.textContent = extEl.textContent;
+                }
+            });
+        }
+
+        async function loadTop15FromExternal() {
+            const doc = await fetchExternalHTML('https://bulgaria-gaming-zone.github.io/main/top15.html');
+            if (!doc) return;
+
+            const tbodyFy = doc.getElementById('top15-tbody-cs_fy');
+            const localTbodyFy = document.getElementById('top15-tbody-cs_fy');
+            if (tbodyFy && localTbodyFy) {
+                localTbodyFy.innerHTML = tbodyFy.innerHTML;
+            }
+
+            const tbodyDe = doc.getElementById('top15-tbody-cs_de');
+            const localTbodyDe = document.getElementById('top15-tbody-cs_de');
+            if (tbodyDe && localTbodyDe) {
+                localTbodyDe.innerHTML = tbodyDe.innerHTML;
+            }
+        }
+
+        function loadStats(serverKey, prefix, tbodyId) {
+            const statsRef = ref(top15Db, `stats/${serverKey}`);
+
+            onValue(statsRef, (snapshot) => {
+                const data = snapshot.val();
+
+                if (!data) {
+                    // Ако няма данни в Firebase, зареждаме от външните HTML линкове
+                    loadTop3FromExternal();
+                    loadTop15FromExternal();
+                    return;
+                }
+
+                // Clear Top3 Elements
+                for (let i = 1; i <= 3; i++) {
+                    const el = document.getElementById(`${prefix}-${i}`);
+                    if (el) el.textContent = "—";
+                }
+
+                // Clear Top15 Table
+                const tbody = document.getElementById(tbodyId);
+                if (tbody) tbody.innerHTML = '<tr><td colspan="6">Няма данни.</td></tr>';
+
+                const players = Array.isArray(data) ? data : Object.values(data);
+
+                // Update Top3 Widget
+                for (let i = 0; i < 3; i++) {
+                    const el = document.getElementById(`${prefix}-${i + 1}`);
+                    if (el && players[i] && players[i].name) {
+                        el.textContent = players[i].name;
+                    }
+                }
+
+                // Update Top15 Subpage Table
+                if (tbody && players.length > 0) {
+                    tbody.innerHTML = '';
+                    players.slice(0, 15).forEach((player, index) => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td class="top15-rank">${index + 1}</td>
+                            <td class="top15-player">${escapeHtml(player.name)}</td>
+                            <td>${Number(player.kills ?? 0)}</td>
+                            <td>${Number(player.deaths ?? 0)}</td>
+                            <td>${Number(player.hs ?? 0)}</td>
+                            <td>${Number(player.damage ?? 0)}</td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                }
+            }, (error) => {
+                console.error("Firebase error stats:", error);
+                // При грешка се опитайте да заредите от външните линкове
+                loadTop3FromExternal();
+                loadTop15FromExternal();
+            });
+        }
+
+        loadStats("cs_fy", "fy", "top15-tbody-cs_fy");
+        loadStats("cs_de", "de", "top15-tbody-cs_de");
     </script>
 </body>
 </html>
