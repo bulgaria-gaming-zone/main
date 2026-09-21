@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-21T15:02:34.121Z",
+  "updated": "2026-09-21T15:09:36.889Z",
   "servers": {
     "cs_fy": {
       "name": "CS1.6 fy_Server",
@@ -7,7 +7,7 @@
       "players": 0,
       "maxplayers": 0,
       "map": "",
-      "error": "Gamedig.query is not a function"
+      "error": "Failed all 2 attempts"
     },
     "cs_de": {
       "name": "CS1.6 de_Server",
@@ -15,7 +15,7 @@
       "players": 0,
       "maxplayers": 0,
       "map": "",
-      "error": "Gamedig.query is not a function"
+      "error": "Failed all 2 attempts"
     },
     "hl": {
       "name": "Half-Life Server",
@@ -23,7 +23,7 @@
       "players": 0,
       "maxplayers": 0,
       "map": "",
-      "error": "Gamedig.query is not a function"
+      "error": "Failed all 2 attempts"
     }
   }
 }
