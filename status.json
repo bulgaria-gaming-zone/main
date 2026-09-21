@@ -1,13 +1,21 @@
 {
-  "updated": "2026-09-21T15:13:24.064Z",
+  "updated": "2026-09-21T15:20:31.338Z",
   "servers": {
+    "hl": {
+      "name": "Half-Life Server",
+      "online": false,
+      "players": 0,
+      "maxplayers": 0,
+      "map": "",
+      "error": "No UDP response after 10 seconds"
+    },
     "cs_fy": {
       "name": "CS1.6 fy_Server",
       "online": false,
       "players": 0,
       "maxplayers": 0,
       "map": "",
-      "error": "Failed all 2 attempts"
+      "error": "No UDP response after 10 seconds"
     },
     "cs_de": {
       "name": "CS1.6 de_Server",
@@ -15,15 +23,7 @@
       "players": 0,
       "maxplayers": 0,
       "map": "",
-      "error": "Failed all 2 attempts"
-    },
-    "hl": {
-      "name": "Half-Life Server",
-      "online": false,
-      "players": 0,
-      "maxplayers": 0,
-      "map": "",
-      "error": "Failed all 2 attempts"
+      "error": "No UDP response after 10 seconds"
     }
   }
 }
