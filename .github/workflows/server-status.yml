@@ -1,121 +1,14 @@
-name: Game Server UDP Test
+name: GitHub Network Test
 
 on:
   workflow_dispatch:
 
 jobs:
-  check-servers:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: UDP A2S diagnostic
+      - name: Show public IP
         run: |
-          cat > udp-test.js <<'EOF'
-          const dgram = require('dgram');
-
-          const servers = [
-            { name: 'Half-Life', host: '84.85.150.109', port: 27015 },
-            { name: 'CS1.6 fy', host: '84.85.150.109', port: 27016 },
-            { name: 'CS1.6 de', host: '84.85.150.109', port: 27017 }
-          ];
-
-          const query = Buffer.from(
-            'ffffffff54536f7572636520456e67696e6520517565727900',
-            'hex'
-          );
-
-          function queryServer(server) {
-            return new Promise((resolve) => {
-              const socket = dgram.createSocket('udp4');
-              let done = false;
-
-              function finish(result) {
-                if (done) return;
-                done = true;
-                try { socket.close(); } catch {}
-                resolve(result);
-              }
-
-              socket.on('message', (msg, rinfo) => {
-                console.log('');
-                console.log('================================');
-                console.log(server.name);
-                console.log('RESPONSE RECEIVED');
-                console.log(`From: ${rinfo.address}:${rinfo.port}`);
-                console.log(`Bytes: ${msg.length}`);
-                console.log(`Hex: ${msg.toString('hex')}`);
-
-                finish({
-                  online: true,
-                  bytes: msg.length,
-                  from: `${rinfo.address}:${rinfo.port}`
-                });
-              });
-
-              socket.on('error', (err) => {
-                console.log('');
-                console.log('================================');
-                console.log(server.name);
-                console.log(`SOCKET ERROR: ${err.message}`);
-
-                finish({
-                  online: false,
-                  error: err.message
-                });
-              });
-
-              socket.bind(() => {
-                const local = socket.address();
-
-                console.log('');
-                console.log('================================');
-                console.log(server.name);
-                console.log(`Sending to ${server.host}:${server.port}`);
-                console.log(`Local UDP port: ${local.port}`);
-
-                socket.send(
-                  query,
-                  server.port,
-                  server.host,
-                  (err) => {
-                    if (err) {
-                      console.log(`SEND ERROR: ${err.message}`);
-                      finish({
-                        online: false,
-                        error: err.message
-                      });
-                    } else {
-                      console.log('UDP query sent successfully.');
-                      console.log('Waiting 15 seconds...');
-                    }
-                  }
-                );
-              });
-
-              setTimeout(() => {
-                console.log('');
-                console.log('TIMEOUT - no UDP response');
-
-                finish({
-                  online: false,
-                  error: 'Timeout after 15 seconds'
-                });
-              }, 15000);
-            });
-          }
-
-          async function main() {
-            for (const server of servers) {
-              await queryServer(server);
-            }
-          }
-
-          main();
-          EOF
-
-          node udp-test.js
+          echo "GitHub Runner public IP:"
+          curl -4 https://api.ipify.org
+          echo
