@@ -1,0 +1,123 @@
+name: Game Server Status
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  check-servers:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install GameDig
+        run: npm install gamedig
+
+      - name: Check game servers
+        run: |
+          cat > check-servers.js <<'EOF'
+          const Gamedig = require('gamedig');
+          const fs = require('fs');
+
+          const servers = {
+            cs_fy: {
+              name: 'CS1.6 fy_Server',
+              type: 'counterstrike16',
+              host: '84.85.150.109',
+              port: 27016
+            },
+            cs_de: {
+              name: 'CS1.6 de_Server',
+              type: 'counterstrike16',
+              host: '84.85.150.109',
+              port: 27017
+            },
+            hl: {
+              name: 'Half-Life Server',
+              type: 'halflife',
+              host: '84.85.150.109',
+              port: 27015
+            }
+          };
+
+          async function checkServer(server) {
+            try {
+              const state = await Gamedig.query({
+                type: server.type,
+                host: server.host,
+                port: server.port,
+                socketTimeout: 5000,
+                attemptTimeout: 5000,
+                maxAttempts: 1
+              });
+
+              return {
+                name: server.name,
+                online: true,
+                players: Array.isArray(state.players) ? state.players.length : 0,
+                maxplayers: state.maxplayers || 0,
+                map: state.map || ''
+              };
+            } catch (error) {
+              return {
+                name: server.name,
+                online: false,
+                players: 0,
+                maxplayers: 0,
+                map: ''
+              };
+            }
+          }
+
+          async function main() {
+            const result = {
+              updated: new Date().toISOString(),
+              servers: {}
+            };
+
+            for (const [id, server] of Object.entries(servers)) {
+              console.log(`Checking ${server.name}...`);
+              result.servers[id] = await checkServer(server);
+              console.log(result.servers[id]);
+            }
+
+            fs.writeFileSync(
+              'status.json',
+              JSON.stringify(result, null, 2) + '\n'
+            );
+
+            console.log('status.json created.');
+          }
+
+          main().catch(error => {
+            console.error(error);
+            process.exit(1);
+          });
+          EOF
+
+          node check-servers.js
+
+      - name: Commit status.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add status.json
+
+          if git diff --cached --quiet; then
+            echo "No changes in server status."
+          else
+            git commit -m "Update game server status"
+            git push
+          fi
