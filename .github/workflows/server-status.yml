@@ -5,28 +5,22 @@ on:
     - cron: "*/5 * * * *"
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   update-status:
     runs-on: ubuntu-latest
-    timeout-minutes: 3  # Защита: спира процеса автоматично, ако забие за повече от 3 мин.
+    timeout-minutes: 2
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Get server status
+      - name: Get server status and push to Firebase
         run: |
-          mkdir -p data
-
-          # --connect-timeout 5 и --max-time 10 гарантират, че curl няма да забие
+          # 1. Теглене на данните от Gamemonitoring
           curl -fsSL --connect-timeout 5 --max-time 10 https://api.gamemonitoring.net/servers/16842836 -o /tmp/cs_fy.json || echo '{"response":{}}' > /tmp/cs_fy.json
           curl -fsSL --connect-timeout 5 --max-time 10 https://api.gamemonitoring.net/servers/16842850 -o /tmp/cs_de.json || echo '{"response":{}}' > /tmp/cs_de.json
 
+          # 2. Обработка и директен PUT към Firebase Realtime Database
           python3 - <<'PY'
           import json
+          import urllib.request
           from datetime import datetime, timezone
 
           def load_json(path):
@@ -61,20 +55,14 @@ jobs:
               }
           }
 
-          with open("data/status.json", "w") as f:
-              json.dump(status, f, ensure_ascii=False, indent=2)
+          FIREBASE_URL = "https://status-rank-default-rtdb.europe-west1.firebasedatabase.app/status.json"
+
+          data = json.dumps(status).encode("utf-8")
+          req = urllib.request.Request(FIREBASE_URL, data=data, headers={"Content-Type": "application/json"}, method="PUT")
+
+          try:
+              with urllib.request.urlopen(req) as resp:
+                  print("Firebase update successful! HTTP Code:", resp.getcode())
+          except Exception as e:
+              print("Error updating Firebase:", e)
           PY
-
-      - name: Commit status
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add data/status.json
-
-          if git diff --cached --quiet; then
-            echo "No changes."
-          else
-            git commit -m "Update server status"
-            git push
-          fi
