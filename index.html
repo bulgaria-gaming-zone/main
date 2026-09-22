@@ -661,6 +661,115 @@
             line-height: 1.4;
         }
 
+        /* СТИЛОВЕ ЗА СТАТУС ТОЧКИТЕ И TOOLTIP СЪОБЩЕНИЯТА */
+        .status-dot-container {
+            position: relative;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 8px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .status-label {
+            font-size: 8px;
+            font-weight: bold;
+            color: #ffffff;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 2px;
+            letter-spacing: 0.5px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-dot.green {
+            background-color: #00ff66;
+            box-shadow: 0 0 8px #00ff66;
+            animation: pulseGreen 1.5s infinite;
+        }
+
+        .status-dot.orange {
+            background-color: #ff9900;
+            box-shadow: 0 0 8px #ff9900;
+            animation: pulseOrange 1.5s infinite;
+        }
+
+        @keyframes pulseGreen {
+            0% {
+                transform: scale(0.9);
+                box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7);
+            }
+            70% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 8px rgba(0, 255, 102, 0);
+            }
+            100% {
+                transform: scale(0.9);
+                box-shadow: 0 0 0 0 rgba(0, 255, 102, 0);
+            }
+        }
+
+        @keyframes pulseOrange {
+            0% {
+                transform: scale(0.9);
+                box-shadow: 0 0 0 0 rgba(255, 153, 0, 0.7);
+            }
+            70% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 8px rgba(255, 153, 0, 0);
+            }
+            100% {
+                transform: scale(0.9);
+                box-shadow: 0 0 0 0 rgba(255, 153, 0, 0);
+            }
+        }
+
+        .status-dot-container .status-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            width: 240px;
+            background-color: #111111;
+            color: #ffff00;
+            border: 1px solid #ffff00;
+            text-align: center;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 11px;
+            line-height: 1.3;
+            position: absolute;
+            z-index: 100;
+            left: 50%;
+            bottom: 125%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
+            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+            pointer-events: none;
+            font-weight: normal;
+        }
+
+        .status-dot-container .status-tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #ffff00 transparent transparent transparent;
+        }
+
+        .status-dot-container:hover .status-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
         .download-icons-group {
             display: flex;
             gap: 15px;
@@ -1313,6 +1422,11 @@
                 <div class="download-box">
                     <div class="download-box-text server-list-container">
                         <div>
+                            <span class="status-dot-container">
+                                <span class="status-label">Статус</span>
+                                <span class="status-dot green"></span>
+                                <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
+                            </span>
                             Half-Life Server:
                             <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27015', this)">
                                 connect bulgaria-gaming-zone.asuscomm.com:27015
@@ -1320,6 +1434,11 @@
                             </span>
                         </div>
                         <div>
+                            <span class="status-dot-container">
+                                <span class="status-label">Статус</span>
+                                <span class="status-dot green"></span>
+                                <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
+                            </span>
                             CS1.6 fy_Server:
                             <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27016', this)">
                                 connect bulgaria-gaming-zone.asuscomm.com:27016
@@ -1327,6 +1446,11 @@
                             </span>
                         </div>
                         <div>
+                            <span class="status-dot-container">
+                                <span class="status-label">Статус</span>
+                                <span class="status-dot green"></span>
+                                <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
+                            </span>
                             CS1.6 de_Server:
                             <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27017', this)">
                                 connect bulgaria-gaming-zone.asuscomm.com:27017
@@ -1358,6 +1482,11 @@
                 <!-- RUNE 2000 Box -->
                 <div class="download-box">
                     <div class="download-box-text">
+                        <span class="status-dot-container">
+                            <span class="status-label">Статус</span>
+                            <span class="status-dot green"></span>
+                            <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
+                        </span>
                         RUNE 2000 Server:
                         <span class="copyable-link" onclick="copyServerIP('open bulgaria-gaming-zone.asuscomm.com:7777', this)">
                             open bulgaria-gaming-zone.asuscomm.com:7777
@@ -1387,6 +1516,11 @@
                 <!-- Quake II Box -->
                 <div class="download-box">
                     <div class="download-box-text">
+                        <span class="status-dot-container">
+                            <span class="status-label">Статус</span>
+                            <span class="status-dot green"></span>
+                            <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
+                        </span>
                         Quake II Server:
                         <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27910', this)">
                             connect bulgaria-gaming-zone.asuscomm.com:27910
@@ -1416,6 +1550,11 @@
                 <!-- Quake III Box -->
                 <div class="download-box">
                     <div class="download-box-text">
+                        <span class="status-dot-container">
+                            <span class="status-label">Статус</span>
+                            <span class="status-dot green"></span>
+                            <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
+                        </span>
                         Quake III Server:
                         <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27960', this)">
                             connect bulgaria-gaming-zone.asuscomm.com:27960
@@ -1445,6 +1584,11 @@
                 <!-- Serious Sam Box -->
                 <div class="download-box">
                     <div class="download-box-text">
+                        <span class="status-dot-container">
+                            <span class="status-label">Статус</span>
+                            <span class="status-dot green"></span>
+                            <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
+                        </span>
                         Serious Sam Server:
                         <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com', this)">
                             bulgaria-gaming-zone.asuscomm.com
@@ -1469,6 +1613,11 @@
                 <!-- Terraria Box -->
                 <div class="download-box">
                     <div class="download-box-text">
+                        <span class="status-dot-container">
+                            <span class="status-label">Статус</span>
+                            <span class="status-dot orange"></span>
+                            <span class="status-tooltip">Сървъра е неактивен, може да бъде пуснат с запитване в нашите Facebook и Discord групи или да се свържете лично с администраторите им.</span>
+                        </span>
                         Terraria Server:
                         <span class="copyable-link" onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)">
                             bulgaria-gaming-zone.asuscomm.com
@@ -1498,6 +1647,11 @@
                 <!-- Project Zomboid Box -->
                 <div class="download-box">
                     <div class="download-box-text">
+                        <span class="status-dot-container">
+                            <span class="status-label">Статус</span>
+                            <span class="status-dot orange"></span>
+                            <span class="status-tooltip">Сървъра е неактивен, може да бъде пуснат с запитване в нашите Facebook и Discord групи или да се свържете лично с администраторите им.</span>
+                        </span>
                         Project Zomboid Server:
                         <span class="copyable-link" onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)">
                             bulgaria-gaming-zone.asuscomm.com
@@ -1522,6 +1676,11 @@
                 <!-- Necesse Box -->
                 <div class="download-box">
                     <div class="download-box-text">
+                        <span class="status-dot-container">
+                            <span class="status-label">Статус</span>
+                            <span class="status-dot orange"></span>
+                            <span class="status-tooltip">Сървъра е неактивен, може да бъде пуснат с запитване в нашите Facebook и Discord групи или да се свържете лично с администраторите им.</span>
+                        </span>
                         Necesse Server:
                         <span class="copyable-link" onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)">
                             bulgaria-gaming-zone.asuscomm.com
