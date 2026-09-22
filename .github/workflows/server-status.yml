@@ -17,7 +17,7 @@ jobs:
           curl -fsSL --connect-timeout 5 --max-time 10 https://api.gamemonitoring.net/servers/16842836 -o /tmp/cs_fy.json || echo '{"response":{}}' > /tmp/cs_fy.json
           curl -fsSL --connect-timeout 5 --max-time 10 https://api.gamemonitoring.net/servers/16842850 -o /tmp/cs_de.json || echo '{"response":{}}' > /tmp/cs_de.json
 
-          # 2. Обработка и директен PUT към Firebase Realtime Database
+          # 2. Обработка и директен PUT към rank.json във Firebase Realtime Database
           python3 - <<'PY'
           import json
           import urllib.request
@@ -27,7 +27,6 @@ jobs:
               try:
                   with open(path) as f:
                       data = json.load(f)
-                      # Обработваме както {"response": {...}}, така и директен обект
                       return data.get("response", data) if isinstance(data, dict) else {}
               except Exception:
                   return {}
@@ -43,7 +42,6 @@ jobs:
                       "connect": ""
                   }
               
-              # GameMonitoring понякога връща 1/0 или true/false за status
               raw_status = raw_data.get("status", False)
               is_online = bool(raw_status) if raw_status is not None else False
 
@@ -67,8 +65,8 @@ jobs:
               }
           }
 
-          # Твоят актуален Firebase Database URL
-          FIREBASE_URL = "https://server-status-20342-default-rtdb.europe-west1.firebasedatabase.app/status.json"
+          # Адресът към твоята Firebase база, записващ в rank.json
+          FIREBASE_URL = "https://server-status-20342-default-rtdb.europe-west1.firebasedatabase.app/rank.json"
 
           data = json.dumps(status).encode("utf-8")
           req = urllib.request.Request(FIREBASE_URL, data=data, headers={"Content-Type": "application/json"}, method="PUT")
