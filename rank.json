@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-22T01:24:46.398041+00:00",
+  "updated": "2026-09-22T01:25:47.893367+00:00",
   "servers": {
     "cs_fy": {
       "name": "BULGARIA-GaminG-Zone CS 1.6",
@@ -14,7 +14,7 @@
       "online": true,
       "players": 0,
       "maxplayers": 20,
-      "map": "de_dust2",
+      "map": "de_nuke",
       "connect": "84.54.150.109:27017"
     }
   }
