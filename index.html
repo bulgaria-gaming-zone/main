@@ -1879,10 +1879,10 @@
             }
         }
 
-        /* СКРИПТ ЗА ИЗВЛИЧАНЕ НА СТАТУСА НА СЪРВЪРИТЕ ОТ rank.json */
+        /* СКРИПТ ЗА ИЗВЛИЧАНЕ НА СТАТУСА НА СЪРВЪРИТЕ ОТ Firebase rank.json */
         async function updateServerStatuses() {
             try {
-                const response = await fetch('https://bulgaria-gaming-zone.github.io/main/rank.json?t=' + Date.now());
+                const response = await fetch('https://server-status-20342-default-rtdb.europe-west1.firebasedatabase.app/rank.json?t=' + Date.now());
                 if (!response.ok) return;
                 const data = await response.json();
                 
@@ -1913,7 +1913,7 @@
                     });
                 }
             } catch (err) {
-                console.error("Грешка при обновяване на статуса от rank.json:", err);
+                console.error("Грешка при обновяване на статуса от Firebase rank.json:", err);
             }
         }
 
