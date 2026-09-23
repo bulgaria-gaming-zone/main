@@ -144,8 +144,8 @@
             animation: blinkBorder 1s infinite alternate;
         }
 
-        /* МИГАЩ БУТОН CS TOP 15 */
-        .top15-nav-btn {
+        /* МИГАЩ БУТОН CS1.6 TOP 10 */
+        .top10-nav-btn {
             background: #111111;
             color: #ffff00;
             font-size: 11px;
@@ -165,7 +165,7 @@
             outline: none;
         }
 
-        .top15-nav-btn:hover {
+        .top10-nav-btn:hover {
             transform: scale(1.05);
             background: #ffff00;
             color: #000000;
@@ -986,7 +986,7 @@
         }
 
         /* ТОП 15 СТИЛОВЕ В МОДАЛНИЯ ПРОЗОРЕЦ (ЕДИН ДО ДРУГ) */
-        .top15-container {
+        .top10-container {
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
@@ -996,7 +996,7 @@
             width: 100%;
         }
 
-        .top15-card {
+        .top10-card {
             background: rgba(17, 17, 17, 0.95);
             border: 1px solid #ffff00;
             border-radius: 8px;
@@ -1006,7 +1006,7 @@
             box-shadow: 0 0 15px rgba(255, 255, 0, 0.2);
         }
 
-        .top15-card h3 {
+        .top10-card h3 {
             color: #ffff00;
             border-bottom: 1px solid #ffff00;
             padding-bottom: 8px;
@@ -1016,37 +1016,37 @@
             text-transform: uppercase;
         }
 
-        .top15-table {
+        .top10-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 13px;
         }
 
-        .top15-table th, .top15-table td {
+        .top10-table th, .top10-table td {
             padding: 6px 8px;
             text-align: center;
         }
 
-        .top15-table th {
+        .top10-table th {
             background-color: #ffee00;
             color: #000000;
             font-weight: bold;
         }
 
-        .top15-table tr:nth-child(even) {
+        .top10-table tr:nth-child(even) {
             background-color: rgba(255, 255, 255, 0.05);
         }
 
-        .top15-table tr:hover {
+        .top10-table tr:hover {
             background-color: rgba(255, 255, 0, 0.15);
         }
 
-        .top15-rank {
+        .top10-rank {
             font-weight: bold;
             color: #ffee00;
         }
 
-        .top15-player {
+        .top10-player {
             text-align: left;
             font-weight: 600;
         }
@@ -1083,7 +1083,7 @@
             overflow-y: auto;
         }
 
-        .top15-modal-content {
+        .top10-modal-content {
             max-width: 1100px;
         }
 
@@ -1179,7 +1179,7 @@
                 flex-direction: column;
             }
 
-            .top15-container {
+            .top10-container {
                 flex-direction: column;
             }
 
@@ -1196,7 +1196,7 @@
                 width: 100%;
             }
 
-            .top15-nav-btn {
+            .top10-nav-btn {
                 margin-left: 0;
                 margin-top: 5px;
             }
@@ -1303,8 +1303,8 @@
                     <img src="facebook_icon.png" alt="Facebook" class="nav-icon">
                 </a>
                 <!-- МИГАЩ БУТОН ЗА TOP15 - ОТВАРЯ МОДАЛЕН ПРОЗОРЕЦ -->
-                <button type="button" onclick="openTop15Modal()" class="top15-nav-btn" title="Виж CS TOP 15 Ранглистата">
-                    CS TOP 15
+                <button type="button" onclick="openTop10Modal()" class="top10-nav-btn" title="Виж CS1.6 TOP 10 Ранглистата">
+                    CS1.6 TOP 10
                 </button>
             </div>
         </nav>
@@ -1462,7 +1462,7 @@
                         <div class="info-container">
                             <span class="info-badge">!</span>
                             <div class="info-tooltip">
-                                Всеки от Counter-Strike сървърите ни разполага със собствена ранг система. Можете лесно да проверявате статуса си за съответния сървър, като въведете в чата командите: <strong>/rank</strong>, <strong>/rankstats</strong>, <strong>/top15</strong>
+                                Всеки от Counter-Strike сървърите ни разполага със собствена ранг система. Можете лесно да проверявате статуса си за съответния сървър, като въведете в чата командите: <strong>/rank</strong>, <strong>/rankstats</strong>, <strong>/top10</strong>
                             </div>
                         </div>
                         <div class="download-password-label">
@@ -1761,20 +1761,20 @@
         </div>
     </div>
 
-    <!-- МОДАЛЕН ПРОЗОРЕЦ ЗА CS TOP 15 -->
-    <div id="top15Modal" class="modal-overlay" onclick="closeTop15ModalOnOuter(event)">
-        <div class="modal-content top15-modal-content">
-            <span class="close-modal" onclick="closeTop15Modal()">&times;</span>
-            <h2 class="downloads-title" style="margin-bottom: 15px;">COUNTER-STRIKE 1.6 TOP 15 РАНГЛИСТА</h2>
-            <div class="top15-container">
+    <!-- МОДАЛЕН ПРОЗОРЕЦ ЗА CS1.6 TOP 10 -->
+    <div id="top10Modal" class="modal-overlay" onclick="closeTop10ModalOnOuter(event)">
+        <div class="modal-content top10-modal-content">
+            <span class="close-modal" onclick="closeTop10Modal()">&times;</span>
+            <h2 class="downloads-title" style="margin-bottom: 15px;">COUNTER-STRIKE 1.6 TOP 10 РАНГЛИСТА</h2>
+            <div class="top10-container">
                 
                 <!-- CS_FY Server Card -->
-                <div class="top15-card">
-                    <h3>CS_FY SERVER TOP 15</h3>
-                    <table class="top15-table">
+                <div class="top10-card">
+                    <h3>CS_FY SERVER TOP 10</h3>
+                    <table class="top10-table">
                         <thead>
                             <tr>
-                                <th class="top15-rank">#</th>
+                                <th class="top10-rank">#</th>
                                 <th style="text-align: left;">Ник</th>
                                 <th>Kills</th>
                                 <th>Deaths</th>
@@ -1782,19 +1782,19 @@
                                 <th>DMG</th>
                             </tr>
                         </thead>
-                        <tbody id="top15-tbody-cs_fy">
+                        <tbody id="top10-tbody-cs_fy">
                             <tr><td colspan="6">Зареждане...</td></tr>
                         </tbody>
                     </table>
                 </div>
 
                 <!-- CS_DE Server Card -->
-                <div class="top15-card">
-                    <h3>CS_DE SERVER TOP 15</h3>
-                    <table class="top15-table">
+                <div class="top10-card">
+                    <h3>CS_DE SERVER TOP 10</h3>
+                    <table class="top10-table">
                         <thead>
                             <tr>
-                                <th class="top15-rank">#</th>
+                                <th class="top10-rank">#</th>
                                 <th style="text-align: left;">Ник</th>
                                 <th>Kills</th>
                                 <th>Deaths</th>
@@ -1802,7 +1802,7 @@
                                 <th>DMG</th>
                             </tr>
                         </thead>
-                        <tbody id="top15-tbody-cs_de">
+                        <tbody id="top10-tbody-cs_de">
                             <tr><td colspan="6">Зареждане...</td></tr>
                         </tbody>
                     </table>
@@ -1813,7 +1813,7 @@
     </div>
 
     <footer>
-        &copy; 2026 BULGARIA|GaminG Zone|&trade;
+        &copy; 2026 BULGARIA-GaminG-Zone|&trade;
     </footer>
 
     <!-- СКРИПТ ЗА ПРЕВКЛЮЧВАНЕ НА ИЗГЛЕДИТЕ И МОДАЛНИТЕ ПРОЗОРЦИ -->
@@ -1839,8 +1839,8 @@
             const hash = window.location.hash;
             if (hash === '#download') {
                 switchView('download');
-            } else if (hash === '#top15') {
-                openTop15Modal();
+            } else if (hash === '#top10') {
+                openTop10Modal();
                 switchView('home');
             } else {
                 switchView('home');
@@ -1865,17 +1865,17 @@
         }
 
         /* ТОП 15 МОДАЛЕН ПРОЗОРЕЦ КУТИЯ */
-        function openTop15Modal() {
-            document.getElementById('top15Modal').style.display = 'flex';
+        function openTop10Modal() {
+            document.getElementById('top10Modal').style.display = 'flex';
         }
 
-        function closeTop15Modal() {
-            document.getElementById('top15Modal').style.display = 'none';
+        function closeTop10Modal() {
+            document.getElementById('top10Modal').style.display = 'none';
         }
 
-        function closeTop15ModalOnOuter(event) {
-            if (event.target.id === 'top15Modal') {
-                closeTop15Modal();
+        function closeTop10ModalOnOuter(event) {
+            if (event.target.id === 'top10Modal') {
+                closeTop10Modal();
             }
         }
 
@@ -1923,7 +1923,7 @@
         });
     </script>
 
-    <!-- Firebase Realtime SDK, Chat & Top15/Top3 Logic -->
+    <!-- Firebase Realtime SDK, Chat & Top10/Top3 Logic -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { 
@@ -1960,8 +1960,8 @@
         const messagesRef = ref(chatDb, 'chat_messages');
         const presenceRef = ref(chatDb, 'online_users');
 
-        /* TOP 15 / TOP 3 FIREBASE CONFIG */
-        const top15FirebaseConfig = {
+        /* TOP 10 / TOP 3 FIREBASE CONFIG */
+        const top10FirebaseConfig = {
             apiKey: "AIzaSyCQSa6AS9WnZVCTSZ70Q0iKCllh5E_1GY",
             authDomain: "cs-top-15.firebaseapp.com",
             databaseURL: "https://cs-top-15-default-rtdb.europe-west1.firebasedatabase.app",
@@ -1972,8 +1972,8 @@
             measurementId: "G-K9QKTSMMQF"
         };
 
-        const top15App = initializeApp(top15FirebaseConfig, "top15App");
-        const top15Db = getDatabase(top15App);
+        const top10App = initializeApp(top10FirebaseConfig, "top10App");
+        const top10Db = getDatabase(top10App);
 
         /* ================= CHAT LOGIC ================= */
         const form = document.getElementById('chat-form');
@@ -2153,7 +2153,7 @@
             });
         };
 
-        /* ================= TOP 3 & TOP 15 LOGIC ================= */
+        /* ================= TOP 3 & TOP 10 LOGIC ================= */
         async function fetchExternalHTML(url) {
             try {
                 const response = await fetch(url);
@@ -2181,25 +2181,25 @@
             });
         }
 
-        async function loadTop15FromExternal() {
-            const doc = await fetchExternalHTML('https://bulgaria-gaming-zone.github.io/main/top15.html');
+        async function loadTop10FromExternal() {
+            const doc = await fetchExternalHTML('https://bulgaria-gaming-zone.github.io/main/top10.html');
             if (!doc) return;
 
-            const tbodyFy = doc.getElementById('top15-tbody-cs_fy');
-            const localTbodyFy = document.getElementById('top15-tbody-cs_fy');
+            const tbodyFy = doc.getElementById('top10-tbody-cs_fy');
+            const localTbodyFy = document.getElementById('top10-tbody-cs_fy');
             if (tbodyFy && localTbodyFy) {
                 localTbodyFy.innerHTML = tbodyFy.innerHTML;
             }
 
-            const tbodyDe = doc.getElementById('top15-tbody-cs_de');
-            const localTbodyDe = document.getElementById('top15-tbody-cs_de');
+            const tbodyDe = doc.getElementById('top10-tbody-cs_de');
+            const localTbodyDe = document.getElementById('top10-tbody-cs_de');
             if (tbodyDe && localTbodyDe) {
                 localTbodyDe.innerHTML = tbodyDe.innerHTML;
             }
         }
 
         function loadStats(serverKey, prefix, tbodyId) {
-            const statsRef = ref(top15Db, `stats/${serverKey}`);
+            const statsRef = ref(top10Db, `stats/${serverKey}`);
 
             onValue(statsRef, (snapshot) => {
                 const data = snapshot.val();
@@ -2207,7 +2207,7 @@
                 if (!data) {
                     // Ако няма данни в Firebase, зареждаме от външните HTML линкове
                     loadTop3FromExternal();
-                    loadTop15FromExternal();
+                    loadTop10FromExternal();
                     return;
                 }
 
@@ -2217,7 +2217,7 @@
                     if (el) el.textContent = "—";
                 }
 
-                // Clear Top15 Table
+                // Clear Top10 Table
                 const tbody = document.getElementById(tbodyId);
                 if (tbody) tbody.innerHTML = '<tr><td colspan="6">Няма данни.</td></tr>';
 
@@ -2231,14 +2231,14 @@
                     }
                 }
 
-                // Update Top15 Subpage Table
+                // Update Top10 Subpage Table
                 if (tbody && players.length > 0) {
                     tbody.innerHTML = '';
                     players.slice(0, 15).forEach((player, index) => {
                         const row = document.createElement("tr");
                         row.innerHTML = `
-                            <td class="top15-rank">${index + 1}</td>
-                            <td class="top15-player">${escapeHtml(player.name)}</td>
+                            <td class="top10-rank">${index + 1}</td>
+                            <td class="top10-player">${escapeHtml(player.name)}</td>
                             <td>${Number(player.kills ?? 0)}</td>
                             <td>${Number(player.deaths ?? 0)}</td>
                             <td>${Number(player.hs ?? 0)}</td>
@@ -2251,12 +2251,12 @@
                 console.error("Firebase error stats:", error);
                 // При грешка се опитайте да заредите от външните линкове
                 loadTop3FromExternal();
-                loadTop15FromExternal();
+                loadTop10FromExternal();
             });
         }
 
-        loadStats("cs_fy", "fy", "top15-tbody-cs_fy");
-        loadStats("cs_de", "de", "top15-tbody-cs_de");
+        loadStats("cs_fy", "fy", "top10-tbody-cs_fy");
+        loadStats("cs_de", "de", "top10-tbody-cs_de");
     </script>
 </body>
 </html>
