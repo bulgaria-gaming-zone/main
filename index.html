@@ -661,6 +661,19 @@
             line-height: 1.4;
         }
 
+        .download-box-text-column {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .download-box-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
         /* СТИЛОВЕ ЗА СТАТУС ТОЧКИТЕ И TOOLTIP СЪОБЩЕНИЯТА */
         .status-dot-container {
             position: relative;
@@ -1174,6 +1187,67 @@
             border-image: linear-gradient(to right, rgba(255, 255, 0, 0), rgba(255, 255, 0, 0.85) 20%, rgba(255, 255, 0, 1) 50%, rgba(255, 255, 0, 0.85) 80%, rgba(255, 255, 0, 0)) 1;
         }
 
+
+        /* LIVE СТАТУС ЗА QUAKE II / QUAKE III ОТ FIREBASE */
+        .quake-live-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 4px;
+            padding: 2px 7px;
+            border: 1px solid #282c34;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.55);
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .quake-status-badge {
+            font-size: 8px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .quake-status-loading {
+            color: #ffee00;
+            border: 1px solid #ffee00;
+            background: rgba(255, 238, 0, 0.08);
+        }
+
+        .quake-status-online {
+            color: #00ff66;
+            border: 1px solid #00ff66;
+            background: rgba(0, 255, 102, 0.10);
+            box-shadow: 0 0 6px rgba(0, 255, 102, 0.18);
+        }
+
+        .quake-status-offline {
+            color: #ff3333;
+            border: 1px solid #ff3333;
+            background: rgba(255, 51, 51, 0.10);
+        }
+
+        .quake-players {
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .quake-players::before {
+            content: "Хора: ";
+            color: #ffee00;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .quake-live-status {
+                margin-left: 0;
+                margin-top: 4px;
+            }
+        }
+
         @media (max-width: 768px) {
             .chat-top3-grid {
                 flex-direction: column;
@@ -1228,6 +1302,10 @@
                 font-size: 13px;
                 word-break: break-word;
                 justify-content: center;
+            }
+
+            .download-box-text-column {
+                align-items: center;
             }
 
             .download-icons-group {
@@ -1515,22 +1593,30 @@
 
                 <!-- Quake II Box -->
                 <div class="download-box">
-                    <div class="download-box-text">
-                        <span class="status-dot-container">
-                            <span class="status-label">Статус</span>
-                            <span class="status-dot green"></span>
-                            <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
-                        </span>
-                        Quake II Server:
-                        <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27910', this)">
-                            connect bulgaria-gaming-zone.asuscomm.com:27910
-                            <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
-                        </span>
-                        <span class="launcher-tooltip-container">
-                            <img src="Q2BGGZ_icon.png" alt="Quake II Launcher Icon" class="inline-text-icon-q2">
-                            <span>q2BG-GZ.exe</span>
-                            <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
-                        </span>
+                    <div class="download-box-text download-box-text-column">
+                        <div class="download-box-row">
+                            <span class="status-dot-container">
+                                <span class="status-label">Статус</span>
+                                <span class="status-dot green"></span>
+                                <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
+                            </span>
+                            Quake II Server:
+                            <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27910', this)">
+                                connect bulgaria-gaming-zone.asuscomm.com:27910
+                                <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                            </span>
+                            <span class="launcher-tooltip-container">
+                                <img src="Q2BGGZ_icon.png" alt="Quake II Launcher Icon" class="inline-text-icon-q2">
+                                <span>q2BG-GZ.exe</span>
+                                <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
+                            </span>
+                        </div>
+                        <div class="download-box-row">
+                            <span class="quake-live-status" id="quake-status-q2" data-port="27910">
+                                <span class="quake-status-badge quake-status-loading" id="quake-badge-q2">ЗАРЕЖДА...</span>
+                                <span class="quake-players" id="quake-players-q2">—/—</span>
+                            </span>
+                        </div>
                     </div>
                     <div class="download-icons-group">
                         <div class="download-password-label">
@@ -1549,22 +1635,30 @@
 
                 <!-- Quake III Box -->
                 <div class="download-box">
-                    <div class="download-box-text">
-                        <span class="status-dot-container">
-                            <span class="status-label">Статус</span>
-                            <span class="status-dot green"></span>
-                            <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
-                        </span>
-                        Quake III Server:
-                        <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27960', this)">
-                            connect bulgaria-gaming-zone.asuscomm.com:27960
-                            <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
-                        </span>
-                        <span class="launcher-tooltip-container">
-                            <img src="q3bg-gz.png" alt="Quake III Launcher Icon" class="inline-text-icon-q2">
-                            <span>q3bg-gz.exe</span>
-                            <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
-                        </span>
+                    <div class="download-box-text download-box-text-column">
+                        <div class="download-box-row">
+                            <span class="status-dot-container">
+                                <span class="status-label">Статус</span>
+                                <span class="status-dot green"></span>
+                                <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
+                            </span>
+                            Quake III Server:
+                            <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27960', this)">
+                                connect bulgaria-gaming-zone.asuscomm.com:27960
+                                <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                            </span>
+                            <span class="launcher-tooltip-container">
+                                <img src="q3bg-gz.png" alt="Quake III Launcher Icon" class="inline-text-icon-q2">
+                                <span>q3bg-gz.exe</span>
+                                <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
+                            </span>
+                        </div>
+                        <div class="download-box-row">
+                            <span class="quake-live-status" id="quake-status-q3" data-port="27960">
+                                <span class="quake-status-badge quake-status-loading" id="quake-badge-q3">ЗАРЕЖДА...</span>
+                                <span class="quake-players" id="quake-players-q3">—/—</span>
+                            </span>
+                        </div>
                     </div>
                     <div class="download-icons-group">
                         <div class="download-password-label">
@@ -2257,6 +2351,99 @@
 
         loadStats("cs_fy", "fy", "top10-tbody-cs_fy");
         loadStats("cs_de", "de", "top10-tbody-cs_de");
+    </script>
+
+    <!-- LIVE QUAKE II / QUAKE III PLAYER STATUS FROM FIREBASE -->
+    <script>
+        const QUAKE_STATUS_URL = 'https://quake-status-default-rtdb.europe-west1.firebasedatabase.app/servers.json';
+
+        function quakeValue(obj, keys) {
+            if (!obj || typeof obj !== 'object') return undefined;
+            for (const key of keys) {
+                if (obj[key] !== undefined && obj[key] !== null) return obj[key];
+            }
+            return undefined;
+        }
+
+        function quakeText(value) {
+            return String(value ?? '').toLowerCase().replace(/[^a-z0-9а-яёіїє_-]/gi, '');
+        }
+
+        function findQuakeServer(root, game, port) {
+            const wanted = game === 'q2'
+                ? ['q2', 'quake2', 'quake_2', 'quake-2', 'quake ii', 'quakeii']
+                : ['q3', 'quake3', 'quake_3', 'quake-3', 'quake iii', 'quakeiii'];
+
+            let best = null;
+        
+            function visit(value, keyHint = '') {
+                if (!value || typeof value !== 'object') return;
+
+                const textKey = quakeText(keyHint);
+                const isMatchingGame = wanted.some(w => textKey.includes(quakeText(w)));
+                const serverPort = Number(quakeValue(value, ['port', 'server_port', 'serverPort']));
+
+                if (isMatchingGame || serverPort === Number(port)) {
+                    best = value;
+                    return;
+                }
+
+                for (const k of Object.keys(value)) {
+                    visit(value[k], k);
+                    if (best) return;
+                }
+            }
+
+            visit(root);
+            return best;
+        }
+
+        async function updateQuakeStatuses() {
+            try {
+                const response = await fetch(QUAKE_STATUS_URL + '?t=' + Date.now());
+                if (!response.ok) return;
+                const data = await response.json();
+
+                ['q2', 'q3'].forEach(game => {
+                    const statusEl = document.getElementById(`quake-status-${game}`);
+                    const badgeEl = document.getElementById(`quake-badge-${game}`);
+                    const playersEl = document.getElementById(`quake-players-${game}`);
+
+                    if (!statusEl || !badgeEl || !playersEl) return;
+
+                    const port = statusEl.getAttribute('data-port');
+                    const server = findQuakeServer(data, game, port);
+
+                    if (!server) {
+                        badgeEl.textContent = 'OFFLINE';
+                        badgeEl.className = 'quake-status-badge quake-status-offline';
+                        playersEl.textContent = '0/0';
+                        return;
+                    }
+
+                    const isOnline = Boolean(quakeValue(server, ['online', 'is_online', 'active', 'status']));
+                    const players = Number(quakeValue(server, ['players', 'numplayers', 'num_players', 'online_players']) ?? 0);
+                    const maxPlayers = Number(quakeValue(server, ['maxplayers', 'max_players', 'maxPlayers']) ?? 0);
+
+                    if (isOnline) {
+                        badgeEl.textContent = 'ONLINE';
+                        badgeEl.className = 'quake-status-badge quake-status-online';
+                        playersEl.textContent = `${players}/${maxPlayers}`;
+                    } else {
+                        badgeEl.textContent = 'OFFLINE';
+                        badgeEl.className = 'quake-status-badge quake-status-offline';
+                        playersEl.textContent = '0/0';
+                    }
+                });
+            } catch (err) {
+                console.error("Грешка при обновяване на Quake статуса:", err);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateQuakeStatuses();
+            setInterval(updateQuakeStatuses, 15000);
+        });
     </script>
 </body>
 </html>
