@@ -16,6 +16,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
+
     <style>
         * {
             margin: 0;
@@ -220,7 +221,7 @@
             opacity: 0.9;
         }
 
-        /* КОНТЕЙНЕР ЗА РЕТРО ЧАТ И ТОП 3 (ЕДИН ДО ДРУГ) */
+        /* КОНТЕЙНЕР ЗА РЕТРО ЧАТ И ТОП 3 */
         .chat-top3-grid {
             width: 100%;
             max-width: 1100px;
@@ -230,7 +231,6 @@
             justify-content: space-between;
         }
 
-        /* ЧАТ НА ПОЛОВИН ШИРОЧИНА */
         .retro-chat-wrapper {
             flex: 1;
             min-width: 0;
@@ -473,7 +473,6 @@
             line-height: 1;
         }
 
-        /* СТАВКИ/СТАТУСИ ЗА СЪРВЪРА В ТОП 3 КАРТАТА */
         .server-live-status-box {
             width: 100%;
             display: flex;
@@ -558,9 +557,20 @@
             line-height: 1;
         }
 
-        .top3-star.gold { color: #FFD700; text-shadow: 0 0 5px rgba(255,215,0,0.5); }
-        .top3-star.silver { color: #C9CDD2; text-shadow: 0 0 5px rgba(220,225,230,0.4); }
-        .top3-star.bronze { color: #CD7F32; text-shadow: 0 0 5px rgba(205,127,50,0.4); }
+        .top3-star.gold {
+            color: #FFD700;
+            text-shadow: 0 0 5px rgba(255,215,0,0.5);
+        }
+
+        .top3-star.silver {
+            color: #C9CDD2;
+            text-shadow: 0 0 5px rgba(220,225,230,0.4);
+        }
+
+        .top3-star.bronze {
+            color: #CD7F32;
+            text-shadow: 0 0 5px rgba(205,127,50,0.4);
+        }
 
         .top3-player-name {
             font-size: 9px;
@@ -674,7 +684,6 @@
             flex-wrap: wrap;
         }
 
-        /* СТИЛОВЕ ЗА СТАТУС ТОЧКИТЕ И TOOLTIP СЪОБЩЕНИЯТА */
         .status-dot-container {
             position: relative;
             display: inline-flex;
@@ -803,7 +812,8 @@
             font-weight: 700;
         }
 
-        .download-item-wrapper, .game-download-card {
+        .download-item-wrapper,
+        .game-download-card {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -813,12 +823,23 @@
             cursor: pointer;
         }
 
-        .download-item-wrapper:hover, .game-download-card:hover {
+        .download-item-wrapper:hover,
+        .game-download-card:hover {
             transform: scale(1.06);
             filter: brightness(1.2);
         }
 
-        .icon-game, .icon-h3, .icon-vcmi, .icon-ra2, .icon-cncnet, .icon-terraria, .icon-rune, .icon-q2, .icon-ss, .icon-zomboid, .icon-necesse {
+        .icon-game,
+        .icon-h3,
+        .icon-vcmi,
+        .icon-ra2,
+        .icon-cncnet,
+        .icon-terraria,
+        .icon-rune,
+        .icon-q2,
+        .icon-ss,
+        .icon-zomboid,
+        .icon-necesse {
             height: 46px;
             width: auto;
             object-fit: contain;
@@ -832,7 +853,8 @@
             display: block;
         }
 
-        .download-badge, .download-tab {
+        .download-badge,
+        .download-tab {
             background-color: #ffff00;
             color: #000000;
             font-size: 10px;
@@ -865,7 +887,8 @@
             border-bottom-color: #ffffff;
         }
 
-        .copyable-link .copy-tooltip, .launcher-tooltip-container .launcher-tooltip {
+        .copyable-link .copy-tooltip,
+        .launcher-tooltip-container .launcher-tooltip {
             visibility: hidden;
             opacity: 0;
             width: 230px;
@@ -892,7 +915,8 @@
             color: #ffff00;
         }
 
-        .copyable-link .copy-tooltip::after, .launcher-tooltip-container .launcher-tooltip::after {
+        .copyable-link .copy-tooltip::after,
+        .launcher-tooltip-container .launcher-tooltip::after {
             content: "";
             position: absolute;
             top: 50%;
@@ -903,7 +927,8 @@
             border-color: transparent #ffff00 transparent transparent;
         }
 
-        .copyable-link:hover .copy-tooltip, .launcher-tooltip-container:hover .launcher-tooltip {
+        .copyable-link:hover .copy-tooltip,
+        .launcher-tooltip-container:hover .launcher-tooltip {
             visibility: visible;
             opacity: 1;
         }
@@ -998,7 +1023,7 @@
             opacity: 1;
         }
 
-        /* ТОП 15 СТИЛОВЕ В МОДАЛНИЯ ПРОЗОРЕЦ (ЕДИН ДО ДРУГ) */
+        /* ТОП 10 СТИЛОВЕ В МОДАЛНИЯ ПРОЗОРЕЦ */
         .top10-container {
             display: flex;
             flex-direction: row;
@@ -1035,7 +1060,8 @@
             font-size: 13px;
         }
 
-        .top10-table th, .top10-table td {
+        .top10-table th,
+        .top10-table td {
             padding: 6px 8px;
             text-align: center;
         }
@@ -1064,7 +1090,7 @@
             font-weight: 600;
         }
 
-        /* МОДАЛЕН ПРОЗОРЕЦ (POPUP) */
+        /* МОДАЛЕН ПРОЗОРЕЦ */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -1186,7 +1212,6 @@
             border-top: 1px solid transparent;
             border-image: linear-gradient(to right, rgba(255, 255, 0, 0), rgba(255, 255, 0, 0.85) 20%, rgba(255, 255, 0, 1) 50%, rgba(255, 255, 0, 0.85) 80%, rgba(255, 255, 0, 0)) 1;
         }
-
 
         /* LIVE СТАТУС ЗА QUAKE II / QUAKE III ОТ FIREBASE */
         .quake-live-status {
@@ -1317,13 +1342,16 @@
                 text-align: center;
             }
 
-            .copyable-link .copy-tooltip, .launcher-tooltip-container .launcher-tooltip {
+            .copyable-link .copy-tooltip,
+            .launcher-tooltip-container .launcher-tooltip {
                 left: 50%;
                 top: auto;
                 bottom: 120%;
                 transform: translateX(-50%);
             }
-            .copyable-link .copy-tooltip::after, .launcher-tooltip-container .launcher-tooltip::after {
+
+            .copyable-link .copy-tooltip::after,
+            .launcher-tooltip-container .launcher-tooltip::after {
                 top: 100%;
                 left: 50%;
                 right: auto;
@@ -1339,6 +1367,7 @@
                 bottom: 125%;
                 transform: translateX(-50%);
             }
+
             .info-tooltip::after {
                 top: 100%;
                 left: 50%;
@@ -1353,9 +1382,11 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="header-wrapper">
+
         <header class="header-container">
             <a href="#home" onclick="switchView('home'); return false;" class="header-link">
                 <img src="header_banner.png" alt="GAMING BULGARIA ZONE Header" class="header-banner">
@@ -1364,46 +1395,57 @@
 
         <nav class="nav-menu-container">
             <div class="social-links">
+
                 <button class="important-btn" onclick="openModal()" title="Кликни тук!">
                     <span class="important-btn-title">ВАЖНО!</span>
                     <span class="important-btn-sub">Искаш ли да играеш при нас?</span>
                 </button>
+
                 <a href="#home" onclick="switchView('home'); return false;" class="social-link-item" title="Начало">
                     <img src="home_icon.png" alt="Home" class="icon-home">
                 </a>
+
                 <a href="#download" onclick="switchView('download'); return false;" class="social-link-item" title="Download Menu">
                     <img src="download_icon.png" alt="Download" class="nav-icon icon-download">
                 </a>
+
                 <a href="https://discord.gg/yyG5CpQ" target="_blank" rel="noopener noreferrer" class="social-link-item" title="Discord Server">
                     <img src="discord_icon.png" alt="Discord" class="nav-icon">
                 </a>
+
                 <a href="https://www.facebook.com/groups/389530691674289/" target="_blank" rel="noopener noreferrer" class="social-link-item" title="Facebook Group">
                     <img src="facebook_icon.png" alt="Facebook" class="nav-icon">
                 </a>
-                <!-- МИГАЩ БУТОН ЗА TOP15 - ОТВАРЯ МОДАЛЕН ПРОЗОРЕЦ -->
+
                 <button type="button" onclick="openTop10Modal()" class="top10-nav-btn" title="Виж CS1.6 TOP 10 Ранглистата">
                     CS1.6 TOP 10
                 </button>
+
             </div>
         </nav>
 
-        <!-- МРЕЖА С ЧАТ И ТОП 3 (ПО 50% НА ДЕСКТОП) -->
+        <!-- МРЕЖА С ЧАТ И ТОП 3 -->
         <div class="chat-top3-grid">
-            
+
             <!-- ЛАЙВ ЧАТ -->
             <div class="retro-chat-wrapper">
                 <div class="retro-chat-container">
+
                     <div class="chat-header">
                         <span>BULGARIA GAMING ZONE - LIVE CHAT</span>
                     </div>
-                    
+
                     <div class="chat-body">
+
                         <div class="chat-messages" id="chat-messages"></div>
-                        
+
                         <div class="online-users-panel">
-                            <div class="online-title">Онлайн (<span id="user-count">0</span>)</div>
+                            <div class="online-title">
+                                Онлайн (<span id="user-count">0</span>)
+                            </div>
                             <ul class="users-list" id="users-list"></ul>
                         </div>
+
                     </div>
 
                     <form class="chat-input-area" id="chat-form">
@@ -1411,72 +1453,111 @@
                         <input type="text" id="chat-text" placeholder="Съобщение..." autocomplete="off" maxlength="200" required>
                         <button type="submit" class="chat-btn">Прати</button>
                     </form>
+
                 </div>
             </div>
 
-            <!-- ТОП 3 СТАТИСТИКА И СТАТУСИ НА СЪРВЪРИТЕ -->
+            <!-- ТОП 3 СТАТИСТИКА -->
             <div class="top3-wrapper">
+
                 <div class="top3-header">
                     <span>CS 1.6 СЪРВЪРИ И TOP 3</span>
                 </div>
+
                 <div class="top3-servers-container">
+
                     <!-- CS_FY -->
                     <div class="top3-server-card">
-                        <div class="top3-server-title">CS1.6 | CS_FY</div>
-                        
-                        <!-- ЖИВ СТАТУС, ХОРА И КАРТА -->
+
+                        <div class="top3-server-title">
+                            CS1.6 | CS_FY
+                        </div>
+
                         <div class="server-live-status-box" id="status-box-cs_fy">
+
                             <div class="status-row">
-                                <span class="status-badge status-offline" id="status-badge-cs_fy">OFFLINE</span>
-                                <span class="players-count"><span id="players-cs_fy">0</span>/<span id="maxplayers-cs_fy">0</span></span>
+                                <span class="status-badge status-offline" id="status-badge-cs_fy">
+                                    OFFLINE
+                                </span>
+
+                                <span class="players-count">
+                                    <span id="players-cs_fy">0</span>/<span id="maxplayers-cs_fy">0</span>
+                                </span>
                             </div>
-                            <div class="map-name" id="map-cs_fy">—</div>
+
+                            <div class="map-name" id="map-cs_fy">
+                                —
+                            </div>
+
                         </div>
 
                         <div class="top3-players-list">
+
                             <div class="top3-player">
                                 <span class="top3-star gold">★</span>
                                 <span class="top3-player-name" id="fy-1">—</span>
                             </div>
+
                             <div class="top3-player">
                                 <span class="top3-star silver">★</span>
                                 <span class="top3-player-name" id="fy-2">—</span>
                             </div>
+
                             <div class="top3-player">
                                 <span class="top3-star bronze">★</span>
                                 <span class="top3-player-name" id="fy-3">—</span>
                             </div>
+
                         </div>
+
                     </div>
 
                     <!-- CS_DE -->
                     <div class="top3-server-card">
-                        <div class="top3-server-title">CS1.6 | CS_DE</div>
-                        
-                        <!-- ЖИВ СТАТУС, ХОРА И КАРТА -->
+
+                        <div class="top3-server-title">
+                            CS1.6 | CS_DE
+                        </div>
+
                         <div class="server-live-status-box" id="status-box-cs_de">
+
                             <div class="status-row">
-                                <span class="status-badge status-offline" id="status-badge-cs_de">OFFLINE</span>
-                                <span class="players-count"><span id="players-cs_de">0</span>/<span id="maxplayers-cs_de">0</span></span>
+                                <span class="status-badge status-offline" id="status-badge-cs_de">
+                                    OFFLINE
+                                </span>
+
+                                <span class="players-count">
+                                    <span id="players-cs_de">0</span>/<span id="maxplayers-cs_de">0</span>
+                                </span>
                             </div>
-                            <div class="map-name" id="map-cs_de">—</div>
+
+                            <div class="map-name" id="map-cs_de">
+                                —
+                            </div>
+
                         </div>
 
                         <div class="top3-players-list">
+
                             <div class="top3-player">
                                 <span class="top3-star gold">★</span>
                                 <span class="top3-player-name" id="de-1">—</span>
                             </div>
+
                             <div class="top3-player">
                                 <span class="top3-star silver">★</span>
                                 <span class="top3-player-name" id="de-2">—</span>
                             </div>
+
                             <div class="top3-player">
                                 <span class="top3-star bronze">★</span>
                                 <span class="top3-player-name" id="de-3">—</span>
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
             </div>
 
@@ -1485,434 +1566,966 @@
 
     <!-- ДИНАМИЧЕН СЕКЦИОНЕН БЛОК -->
     <main class="main-content">
-        
-        <!-- НАЧАЛЕН ИЗГЛЕД (HOME) -->
+
+        <!-- НАЧАЛЕН ИЗГЛЕД -->
         <section id="home-view" class="view-section active">
+
             <div class="downloads-section">
-                <h2 class="downloads-title">Добре дошли и приятна игра в нашите сървъри!</h2>
-                
+
+                <h2 class="downloads-title">
+                    Добре дошли и приятна игра в нашите сървъри!
+                </h2>
+
                 <div class="section-headers">
-                    <span class="section-header-title">Влез в нашите сървъри с един клик (Копирай адреса на съответната игра)</span>
-                    <span class="section-header-title">Нямаш играта? Свали я от тук:</span>
+                    <span class="section-header-title">
+                        Влез в нашите сървъри с един клик (Копирай адреса на съответната игра)
+                    </span>
+
+                    <span class="section-header-title">
+                        Нямаш играта? Свали я от тук:
+                    </span>
                 </div>
 
-                <!-- Half-Life & Counter-Strike 1.6 Box -->
+                <!-- Half-Life & Counter-Strike 1.6 -->
                 <div class="download-box">
+
                     <div class="download-box-text server-list-container">
+
                         <div>
                             <span class="status-dot-container">
                                 <span class="status-label">Статус</span>
                                 <span class="status-dot green"></span>
-                                <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
+                                <span class="status-tooltip">
+                                    Сървъра е активен, възможните причини за да не работи е времена подръжка.
+                                </span>
                             </span>
+
                             Half-Life Server:
-                            <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27015', this)">
+
+                            <span class="copyable-link"
+                                  onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27015', this)">
                                 connect bulgaria-gaming-zone.asuscomm.com:27015
-                                <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                                <span class="copy-tooltip">
+                                    Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!
+                                </span>
                             </span>
                         </div>
+
                         <div>
                             <span class="status-dot-container">
                                 <span class="status-label">Статус</span>
                                 <span class="status-dot green"></span>
-                                <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
+                                <span class="status-tooltip">
+                                    Сървъра е активен, възможните причини за да не работи е времена подръжка.
+                                </span>
                             </span>
+
                             CS1.6 fy_Server:
-                            <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27016', this)">
+
+                            <span class="copyable-link"
+                                  onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27016', this)">
                                 connect bulgaria-gaming-zone.asuscomm.com:27016
-                                <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                                <span class="copy-tooltip">
+                                    Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!
+                                </span>
                             </span>
                         </div>
+
                         <div>
                             <span class="status-dot-container">
                                 <span class="status-label">Статус</span>
                                 <span class="status-dot green"></span>
-                                <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
+                                <span class="status-tooltip">
+                                    Сървъра е активен, възможните причини за да не работи е времена подръжка.
+                                </span>
                             </span>
+
                             CS1.6 de_Server:
-                            <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27017', this)">
+
+                            <span class="copyable-link"
+                                  onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27017', this)">
                                 connect bulgaria-gaming-zone.asuscomm.com:27017
-                                <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+                                <span class="copy-tooltip">
+                                    Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!
+                                </span>
                             </span>
                         </div>
+
                     </div>
+
                     <div class="download-icons-group">
+
                         <div class="info-container">
                             <span class="info-badge">!</span>
+
                             <div class="info-tooltip">
-                                Всеки от Counter-Strike сървърите ни разполага със собствена ранг система. Можете лесно да проверявате статуса си за съответния сървър, като въведете в чата командите: <strong>/rank</strong>, <strong>/rankstats</strong>, <strong>/top10</strong>
+                                Всеки от Counter-Strike сървърите ни разполага със собствена ранг система.
+                                Можете лесно да проверявате статуса си за съответния сървър,
+                                като въведете в чата командите:
+                                <strong>/rank</strong>,
+                                <strong>/rankstats</strong>,
+                                <strong>/top10</strong>
                             </div>
                         </div>
+
                         <div class="download-password-label">
                             Парола на инсталатора:<br>
-                            <span class="copyable-link password-value" onclick="copyServerIP('4400', this)">
+
+                            <span class="copyable-link password-value"
+                                  onclick="copyServerIP('4400', this)">
                                 4400
-                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+
+                                <span class="copy-tooltip">
+                                    Кликни тук за да копираш паролата!
+                                </span>
                             </span>
                         </div>
-                        <a href="https://drive.google.com/uc?export=download&amp;id=1rD0_ogfojVJ884n-VFlg3uP3TV0RNVi8" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Half-Life / CS 1.6">
-                            <img src="CS_HL_icon.png" alt="Download Half-Life / CS 1.6" class="icon-cshl">
-                            <span class="download-badge">Изтегли</span>
+
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1rD0_ogfojVJ884n-VFlg3uP3TV0RNVi8"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="download-item-wrapper"
+                           title="Download Half-Life / CS 1.6">
+
+                            <img src="CS_HL_icon.png"
+                                 alt="Download Half-Life / CS 1.6"
+                                 class="icon-cshl">
+
+                            <span class="download-badge">
+                                Изтегли
+                            </span>
+
                         </a>
+
                     </div>
+
                 </div>
 
-                <!-- Quake II Box -->
+                <!-- Quake II -->
                 <div class="download-box">
+
                     <div class="download-box-text download-box-text-column">
+
                         <div class="download-box-row">
+
                             <span class="status-dot-container">
                                 <span class="status-label">Статус</span>
                                 <span class="status-dot green"></span>
-                                <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
+                                <span class="status-tooltip">
+                                    Сървъра е активен, възможните причини за да не работи е времена подръжка.
+                                </span>
                             </span>
+
                             Quake II Server:
-                            <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27910', this)">
+
+                            <span class="copyable-link"
+                                  onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27910', this)">
                                 connect bulgaria-gaming-zone.asuscomm.com:27910
-                                <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+
+                                <span class="copy-tooltip">
+                                    Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!
+                                </span>
                             </span>
+
                             <span class="launcher-tooltip-container">
-                                <img src="Q2BGGZ_icon.png" alt="Quake II Launcher Icon" class="inline-text-icon-q2">
-                                <span>q2BG-GZ.exe</span>
-                                <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
+                                <img src="Q2BGGZ_icon.png"
+                                     alt="Quake II Launcher Icon"
+                                     class="inline-text-icon-q2">
+
+                                <span>q2bg-GZ.exe</span>
+
+                                <span class="launcher-tooltip">
+                                    Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!
+                                </span>
                             </span>
+
                         </div>
+
                         <div class="download-box-row">
-                            <span class="quake-live-status" id="quake-status-q2" data-port="27910">
-                                <span class="quake-status-badge quake-status-loading" id="quake-badge-q2">ЗАРЕЖДА...</span>
-                                <span class="quake-players" id="quake-players-q2">—/—</span>
+
+                            <span class="quake-live-status"
+                                  id="quake-status-q2"
+                                  data-port="27910">
+
+                                <span class="quake-status-badge quake-status-loading"
+                                      id="quake-badge-q2">
+                                    ЗАРЕЖДА...
+                                </span>
+
+                                <span class="quake-players"
+                                      id="quake-players-q2">
+                                    —/—
+                                </span>
+
                             </span>
+
                         </div>
+
                     </div>
+
                     <div class="download-icons-group">
+
                         <div class="download-password-label">
                             Парола на инсталатора:<br>
-                            <span class="copyable-link password-value" onclick="copyServerIP('1212', this)">
+
+                            <span class="copyable-link password-value"
+                                  onclick="copyServerIP('1212', this)">
                                 1212
-                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+
+                                <span class="copy-tooltip">
+                                    Кликни тук за да копираш паролата!
+                                </span>
                             </span>
                         </div>
-                        <a href="https://drive.google.com/uc?export=download&amp;id=1OwUKADjy6fxK9F4q8VXXR6Sa-NgwEgf-" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Quake II">
-                            <img src="Q2_icon.png" alt="Download Quake II" class="icon-game">
-                            <span class="download-badge">Изтегли</span>
+
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1OwUKADjy6fxK9F4q8VXXR6Sa-NgwEgf-"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="download-item-wrapper"
+                           title="Download Quake II">
+
+                            <img src="Q2_icon.png"
+                                 alt="Download Quake II"
+                                 class="icon-game">
+
+                            <span class="download-badge">
+                                Изтегли
+                            </span>
+
                         </a>
+
                     </div>
+
                 </div>
 
-                <!-- Quake III Box -->
+                <!-- Quake III -->
                 <div class="download-box">
+
                     <div class="download-box-text download-box-text-column">
+
                         <div class="download-box-row">
+
                             <span class="status-dot-container">
                                 <span class="status-label">Статус</span>
                                 <span class="status-dot green"></span>
-                                <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
+                                <span class="status-tooltip">
+                                    Сървъра е активен, възможните причини за да не работи е времена подръжка.
+                                </span>
                             </span>
+
                             Quake III Server:
-                            <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27960', this)">
+
+                            <span class="copyable-link"
+                                  onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27960', this)">
                                 connect bulgaria-gaming-zone.asuscomm.com:27960
-                                <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+
+                                <span class="copy-tooltip">
+                                    Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!
+                                </span>
                             </span>
+
                             <span class="launcher-tooltip-container">
-                                <img src="q3bg-gz.png" alt="Quake III Launcher Icon" class="inline-text-icon-q2">
+
+                                <img src="q3bg-gz.png"
+                                     alt="Quake III Launcher Icon"
+                                     class="inline-text-icon-q2">
+
                                 <span>q3bg-gz.exe</span>
-                                <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
+
+                                <span class="launcher-tooltip">
+                                    Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!
+                                </span>
+
                             </span>
+
                         </div>
+
                         <div class="download-box-row">
-                            <span class="quake-live-status" id="quake-status-q3" data-port="27960">
-                                <span class="quake-status-badge quake-status-loading" id="quake-badge-q3">ЗАРЕЖДА...</span>
-                                <span class="quake-players" id="quake-players-q3">—/—</span>
+
+                            <span class="quake-live-status"
+                                  id="quake-status-q3"
+                                  data-port="27960">
+
+                                <span class="quake-status-badge quake-status-loading"
+                                      id="quake-badge-q3">
+                                    ЗАРЕЖДА...
+                                </span>
+
+                                <span class="quake-players"
+                                      id="quake-players-q3">
+                                    —/—
+                                </span>
+
                             </span>
+
                         </div>
+
                     </div>
+
                     <div class="download-icons-group">
+
                         <div class="download-password-label">
                             Парола на инсталатора:<br>
-                            <span class="copyable-link password-value" onclick="copyServerIP('5566', this)">
+
+                            <span class="copyable-link password-value"
+                                  onclick="copyServerIP('5566', this)">
                                 5566
-                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+
+                                <span class="copy-tooltip">
+                                    Кликни тук за да копираш паролата!
+                                </span>
                             </span>
                         </div>
-                        <a href="https://drive.google.com/uc?export=download&amp;id=1ZnVaYD0ywnlAFebvSszWlCEj_aapqQX1" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Quake III">
-                            <img src="Quake3icon.png" alt="Download Quake III" class="icon-game">
-                            <span class="download-badge">Изтегли</span>
+
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1ZnVaYD0ywnlAFebvSszWlCEj_aapqQX1"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="download-item-wrapper"
+                           title="Download Quake III">
+
+                            <img src="Quake3icon.png"
+                                 alt="Download Quake III"
+                                 class="icon-game">
+
+                            <span class="download-badge">
+                                Изтегли
+                            </span>
+
                         </a>
+
                     </div>
+
                 </div>
 
-                <!-- Unreal Tournament Box -->
+                <!-- Unreal Tournament -->
                 <div class="download-box">
+
                     <div class="download-box-text download-box-text-column">
+
                         <div class="download-box-row">
+
                             <span class="status-dot-container">
                                 <span class="status-label">Статус</span>
                                 <span class="status-dot green"></span>
-                                <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е временна поддръжка.</span>
+                                <span class="status-tooltip">
+                                    Сървъра е активен, възможните причини за да не работи е временна поддръжка.
+                                </span>
                             </span>
+
                             Unreal Tournament Server:
-                            <span class="copyable-link" onclick="copyServerIP('open bulgaria-gaming-zone.asuscomm.com:8778', this)">
+
+                            <span class="copyable-link"
+                                  onclick="copyServerIP('open bulgaria-gaming-zone.asuscomm.com:8778', this)">
                                 open bulgaria-gaming-zone.asuscomm.com:8778
-                                <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+
+                                <span class="copy-tooltip">
+                                    Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!
+                                </span>
                             </span>
+
                             <span class="launcher-tooltip-container">
-                                <img src="utBG-GZ.png" alt="Unreal Tournament Launcher Icon" class="inline-text-icon">
+
+                                <img src="utBG-GZ.png"
+                                     alt="Unreal Tournament Launcher Icon"
+                                     class="inline-text-icon">
+
                                 <span>bg-gzUT99.exe</span>
-                                <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
+
+                                <span class="launcher-tooltip">
+                                    Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!
+                                </span>
+
                             </span>
+
                         </div>
+
                         <div class="download-box-row">
-                            <span class="quake-live-status" id="ut99-live-status">
-                                <span class="quake-status-badge quake-status-loading" id="ut99-badge">ЗАРЕЖДА...</span>
-                                <span class="quake-players" id="ut99-players">—/—</span>
+
+                            <span class="quake-live-status"
+                                  id="ut99-live-status">
+
+                                <span class="quake-status-badge quake-status-loading"
+                                      id="ut99-badge">
+                                    ЗАРЕЖДА...
+                                </span>
+
+                                <span class="quake-players"
+                                      id="ut99-players">
+                                    —/—
+                                </span>
+
                             </span>
+
                         </div>
+
                     </div>
+
                     <div class="download-icons-group">
+
                         <div class="download-password-label">
                             Парола на инсталатора:<br>
-                            <span class="copyable-link password-value" onclick="copyServerIP('1133', this)">
+
+                            <span class="copyable-link password-value"
+                                  onclick="copyServerIP('1133', this)">
                                 1133
-                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+
+                                <span class="copy-tooltip">
+                                    Кликни тук за да копираш паролата!
+                                </span>
                             </span>
                         </div>
-                        <a href="https://drive.google.com/uc?export=download&amp;id=1dD6oMVN8dJifUKsfy1KEFnxlfQAYyFmv" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Unreal Tournament">
-                            <img src="UT_icon.png" alt="Download Unreal Tournament" class="icon-game">
-                            <span class="download-badge">Изтегли</span>
+
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1dD6oMVN8dJifUKsfy1KEFnxlfQAYyFmv"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="download-item-wrapper"
+                           title="Download Unreal Tournament">
+
+                            <img src="UT_icon.png"
+                                 alt="Download Unreal Tournament"
+                                 class="icon-game">
+
+                            <span class="download-badge">
+                                Изтегли
+                            </span>
+
                         </a>
+
                     </div>
+
                 </div>
 
-                <!-- RUNE 2000 Box -->
+                <!-- RUNE 2000 -->
                 <div class="download-box">
+
                     <div class="download-box-text">
+
                         <span class="status-dot-container">
                             <span class="status-label">Статус</span>
                             <span class="status-dot green"></span>
-                            <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
+                            <span class="status-tooltip">
+                                Сървъра е активен, възможните причини за да не работи е времена подръжка.
+                            </span>
                         </span>
+
                         RUNE 2000 Server:
-                        <span class="copyable-link" onclick="copyServerIP('open bulgaria-gaming-zone.asuscomm.com:7777', this)">
+
+                        <span class="copyable-link"
+                              onclick="copyServerIP('open bulgaria-gaming-zone.asuscomm.com:7777', this)">
                             open bulgaria-gaming-zone.asuscomm.com:7777
-                            <span class="copy-tooltip">Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!</span>
+
+                            <span class="copy-tooltip">
+                                Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!
+                            </span>
                         </span>
+
                         <span class="launcher-tooltip-container">
-                            <img src="runeBGGZ.png" alt="Rune Launcher Icon" class="inline-text-icon">
+
+                            <img src="runeBGGZ.png"
+                                 alt="Rune Launcher Icon"
+                                 class="inline-text-icon">
+
                             <span>BULGARIA-GaminG-Zone.exe</span>
-                            <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
+
+                            <span class="launcher-tooltip">
+                                Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!
+                            </span>
+
                         </span>
+
                     </div>
+
                     <div class="download-icons-group">
+
                         <div class="download-password-label">
                             Парола на инсталатора:<br>
-                            <span class="copyable-link password-value" onclick="copyServerIP('3440', this)">
+
+                            <span class="copyable-link password-value"
+                                  onclick="copyServerIP('3440', this)">
                                 3440
-                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+
+                                <span class="copy-tooltip">
+                                    Кликни тук за да копираш паролата!
+                                </span>
                             </span>
                         </div>
-                        <a href="https://drive.google.com/uc?export=download&amp;id=1mPkB_qACfytvZ9BUPjR1U3sXhJSSYCrz" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download RUNE 2000">
-                            <img src="rune_icon.png" alt="Download RUNE 2000" class="icon-game">
-                            <span class="download-badge">Изтегли</span>
+
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1mPkB_qACfytvZ9BUPjR1U3sXhJSSYCrz"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="download-item-wrapper"
+                           title="Download RUNE 2000">
+
+                            <img src="rune_icon.png"
+                                 alt="Download RUNE 2000"
+                                 class="icon-game">
+
+                            <span class="download-badge">
+                                Изтегли
+                            </span>
+
                         </a>
+
                     </div>
+
                 </div>
 
-
-                <!-- Serious Sam Box -->
+                <!-- Serious Sam -->
                 <div class="download-box">
+
                     <div class="download-box-text">
+
                         <span class="status-dot-container">
                             <span class="status-label">Статус</span>
                             <span class="status-dot green"></span>
-                            <span class="status-tooltip">Сървъра е активен, възможните причини за да не работи е времена подръжка.</span>
+                            <span class="status-tooltip">
+                                Сървъра е активен, възможните причини за да не работи е времена подръжка.
+                            </span>
                         </span>
+
                         Serious Sam Server:
-                        <span class="copyable-link" onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com', this)">
+
+                        <span class="copyable-link"
+                              onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com', this)">
                             bulgaria-gaming-zone.asuscomm.com
-                            <span class="copy-tooltip">Кликни тук за да копираш адреса, приятна игра!</span>
+
+                            <span class="copy-tooltip">
+                                Кликни тук за да копираш адреса, приятна игра!
+                            </span>
                         </span>
+
                     </div>
+
                     <div class="download-icons-group">
+
                         <div class="download-password-label">
                             Парола на инсталатора:<br>
-                            <span class="copyable-link password-value" onclick="copyServerIP('2222', this)">
+
+                            <span class="copyable-link password-value"
+                                  onclick="copyServerIP('2222', this)">
                                 2222
-                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+
+                                <span class="copy-tooltip">
+                                    Кликни тук за да копираш паролата!
+                                </span>
                             </span>
                         </div>
-                        <a href="https://drive.google.com/uc?export=download&amp;id=1muWaaXuRCIEOnsAMYlH1W3JcoWRAPGQu" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Serious Sam">
-                            <img src="SS-icon.png" alt="Download Serious Sam" class="icon-game">
-                            <span class="download-badge">Изтегли</span>
+
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1muWaaXuRCIEOnsAMYlH1W3JcoWRAPGQu"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="download-item-wrapper"
+                           title="Download Serious Sam">
+
+                            <img src="SS-icon.png"
+                                 alt="Download Serious Sam"
+                                 class="icon-game">
+
+                            <span class="download-badge">
+                                Изтегли
+                            </span>
+
                         </a>
+
                     </div>
+
                 </div>
 
-                <!-- Terraria Box -->
+                <!-- Terraria -->
                 <div class="download-box">
+
                     <div class="download-box-text">
+
                         <span class="status-dot-container">
                             <span class="status-label">Статус</span>
                             <span class="status-dot orange"></span>
-                            <span class="status-tooltip">Сървъра е неактивен, може да бъде пуснат с запитване в нашите Facebook и Discord групи или да се свържете лично с администраторите им.</span>
+
+                            <span class="status-tooltip">
+                                Сървъра е неактивен, може да бъде пуснат с запитване в нашите Facebook и Discord групи или да се свържете лично с администраторите им.
+                            </span>
                         </span>
+
                         Terraria Server:
-                        <span class="copyable-link" onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)">
+
+                        <span class="copyable-link"
+                              onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)">
                             bulgaria-gaming-zone.asuscomm.com
-                            <span class="copy-tooltip">Кликни тук за да копираш адреса, приятна игра!</span>
-                        </span> 
-                        &nbsp;&nbsp;&nbsp;&nbsp; Порт:
-                        <span class="copyable-link" onclick="copyServerIP('7775', this)">
-                            7775
-                            <span class="copy-tooltip">Кликни тук за да копираш порта!</span>
+
+                            <span class="copy-tooltip">
+                                Кликни тук за да копираш адреса, приятна игра!
+                            </span>
                         </span>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp; Порт:
+
+                        <span class="copyable-link"
+                              onclick="copyServerIP('7775', this)">
+                            7775
+
+                            <span class="copy-tooltip">
+                                Кликни тук за да копираш порта!
+                            </span>
+                        </span>
+
                     </div>
+
                     <div class="download-icons-group">
+
                         <div class="download-password-label">
                             Парола на архива:<br>
-                            <span class="copyable-link password-value" onclick="copyServerIP('1450', this)">
+
+                            <span class="copyable-link password-value"
+                                  onclick="copyServerIP('1450', this)">
                                 1450
-                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+
+                                <span class="copy-tooltip">
+                                    Кликни тук за да копираш паролата!
+                                </span>
                             </span>
                         </div>
-                        <a href="https://drive.google.com/uc?export=download&amp;id=19wX6nEFKB-cmNL2KqIQEOE0JL8z2li1Q" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Terraria">
-                            <img src="terraria_icon.png" alt="Download Terraria" class="icon-game">
-                            <span class="download-badge">Изтегли</span>
+
+                        <a href="https://drive.google.com/uc?export=download&amp;id=19wX6nEFKB-cmNL2KqIQEOE0JL8z2li1Q"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="download-item-wrapper"
+                           title="Download Terraria">
+
+                            <img src="terraria_icon.png"
+                                 alt="Download Terraria"
+                                 class="icon-game">
+
+                            <span class="download-badge">
+                                Изтегли
+                            </span>
+
                         </a>
+
                     </div>
+
                 </div>
 
-                <!-- Project Zomboid Box -->
+                <!-- Project Zomboid -->
                 <div class="download-box">
+
                     <div class="download-box-text">
+
                         <span class="status-dot-container">
                             <span class="status-label">Статус</span>
                             <span class="status-dot orange"></span>
-                            <span class="status-tooltip">Сървъра е неактивен, може да бъде пуснат с запитване в нашите Facebook и Discord групи или да се свържете лично с администраторите им.</span>
+
+                            <span class="status-tooltip">
+                                Сървъра е неактивен, може да бъде пуснат с запитване в нашите Facebook и Discord групи или да се свържете лично с администраторите им.
+                            </span>
                         </span>
+
                         Project Zomboid Server:
-                        <span class="copyable-link" onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)">
+
+                        <span class="copyable-link"
+                              onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)">
                             bulgaria-gaming-zone.asuscomm.com
-                            <span class="copy-tooltip">Кликни тук за да копираш адреса, приятна игра!</span>
+
+                            <span class="copy-tooltip">
+                                Кликни тук за да копираш адреса!
+                            </span>
                         </span>
+
                     </div>
+
                     <div class="download-icons-group">
+
                         <div class="download-password-label">
                             Парола на инсталатора:<br>
-                            <span class="copyable-link password-value" onclick="copyServerIP('4444', this)">
+
+                            <span class="copyable-link password-value"
+                                  onclick="copyServerIP('4444', this)">
                                 4444
-                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+
+                                <span class="copy-tooltip">
+                                    Кликни тук за да копираш паролата!
+                                </span>
                             </span>
                         </div>
-                        <a href="https://drive.usercontent.google.com/download?id=1dtNA4DbLHNDephwpPByYske4gpkp2EYb&export=download&authuser=0" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Project Zomboid">
-                            <img src="project_zomboid_icon.png" alt="Download Project Zomboid" class="icon-game">
-                            <span class="download-badge">Изтегли</span>
+
+                        <a href="https://drive.usercontent.google.com/download?id=1dtNA4DbLHNDephwpPByYske4gpkp2EYb&export=download&authuser=0"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="download-item-wrapper"
+                           title="Download Project Zomboid">
+
+                            <img src="project_zomboid_icon.png"
+                                 alt="Download Project Zomboid"
+                                 class="icon-game">
+
+                            <span class="download-badge">
+                                Изтегли
+                            </span>
+
                         </a>
+
                     </div>
+
                 </div>
 
-                <!-- Necesse Box -->
+                <!-- Necesse -->
                 <div class="download-box">
+
                     <div class="download-box-text">
+
                         <span class="status-dot-container">
                             <span class="status-label">Статус</span>
                             <span class="status-dot orange"></span>
-                            <span class="status-tooltip">Сървъра е неактивен, може да бъде пуснат с запитване в нашите Facebook и Discord групи или да се свържете лично с администраторите им.</span>
+
+                            <span class="status-tooltip">
+                                Сървъра е неактивен, може да бъде пуснат с запитване в нашите Facebook и Discord групи или да се свържете лично с администраторите им.
+                            </span>
                         </span>
+
                         Necesse Server:
-                        <span class="copyable-link" onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)">
+
+                        <span class="copyable-link"
+                              onclick="copyServerIP('bulgaria-gaming-zone.asuscomm.com', this)">
                             bulgaria-gaming-zone.asuscomm.com
-                            <span class="copy-tooltip">Кликни тук за да копираш адреса, приятна игра!</span>
+
+                            <span class="copy-tooltip">
+                                Кликни тук за да копираш адреса!
+                            </span>
                         </span>
+
                     </div>
+
                     <div class="download-icons-group">
+
                         <div class="download-password-label">
                             Парола на инсталатора:<br>
-                            <span class="copyable-link password-value" onclick="copyServerIP('1122', this)">
+
+                            <span class="copyable-link password-value"
+                                  onclick="copyServerIP('1122', this)">
                                 1122
-                                <span class="copy-tooltip">Кликни тук за да копираш паролата!</span>
+
+                                <span class="copy-tooltip">
+                                    Кликни тук за да копираш паролата!
+                                </span>
                             </span>
                         </div>
-                        <a href="https://drive.google.com/uc?export=download&amp;id=1To11IqaSyQLmbJoJtjYKnyxPUdYYeuuy" target="_blank" rel="noopener noreferrer" class="download-item-wrapper" title="Download Necesse">
-                            <img src="Necesse_icon.png" alt="Download Necesse" class="icon-game">
-                            <span class="download-badge">Изтегли</span>
+
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1To11IqaSyQLmbJoJtjYKnyxPUdYYeuuy"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="download-item-wrapper"
+                           title="Download Necesse">
+
+                            <img src="Necesse_icon.png"
+                                 alt="Download Necesse"
+                                 class="icon-game">
+
+                            <span class="download-badge">
+                                Изтегли
+                            </span>
+
                         </a>
+
                     </div>
+
                 </div>
+
             </div>
         </section>
 
-        <!-- ИЗТЕГЛЯНИЯ ИЗГЛЕД (DOWNLOAD) -->
+        <!-- ИЗТЕГЛЯНИЯ -->
         <section id="download-view" class="view-section">
+
             <div class="downloads-section">
-                <h2 class="downloads-title">ДРУГИ ИГРИ ЗА ИЗТЕГЛЯНЕ</h2>
-                
-                <!-- Heroes III Box -->
+
+                <h2 class="downloads-title">
+                    ДРУГИ ИГРИ ЗА ИЗТЕГЛЯНЕ
+                </h2>
+
+                <!-- Heroes III -->
                 <div class="download-box">
-                    <span class="download-box-text">Heroes III Original Files and VCMI</span>
+
+                    <span class="download-box-text">
+                        Heroes III Original Files and VCMI
+                    </span>
+
                     <div class="download-icons-group">
-                        <a href="https://drive.google.com/uc?export=download&amp;id=1tK5Zhc8FJ5BB1vi8KgZNO5QntngwkVUD" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download Heroes III Files">
-                            <img src="heroes_icon.png" alt="Heroes III" class="icon-h3">
-                            <span class="download-tab">ИЗТЕГЛИ</span>
+
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1tK5Zhc8FJ5BB1vi8KgZNO5QntngwkVUD"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="game-download-card"
+                           title="Download Heroes III Files">
+
+                            <img src="heroes_icon.png"
+                                 alt="Heroes III"
+                                 class="icon-h3">
+
+                            <span class="download-tab">
+                                ИЗТЕГЛИ
+                            </span>
+
                         </a>
-                        <a href="https://vcmi.eu/download/" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download VCMI">
-                            <img src="vcmi_icon.png" alt="VCMI" class="icon-vcmi">
-                            <span class="download-tab">ИЗТЕГЛИ</span>
+
+                        <a href="https://vcmi.eu/download/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="game-download-card"
+                           title="Download VCMI">
+
+                            <img src="vcmi_icon.png"
+                                 alt="VCMI"
+                                 class="icon-vcmi">
+
+                            <span class="download-tab">
+                                ИЗТЕГЛИ
+                            </span>
+
                         </a>
+
                     </div>
+
                 </div>
 
-                <!-- Red Alert 2 Box -->
+                <!-- Red Alert 2 -->
                 <div class="download-box">
-                    <span class="download-box-text">Red Alert 2 Original Files and CnCNet</span>
+
+                    <span class="download-box-text">
+                        Red Alert 2 Original Files and CnCNet
+                    </span>
+
                     <div class="download-icons-group">
-                        <a href="https://drive.google.com/uc?export=download&amp;id=1D4_keMlTfIEl2B1teJ5lb71fsFSwkVry" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download Red Alert 2 Files">
-                            <img src="ra2_icon.png" alt="Red Alert 2" class="icon-ra2">
-                            <span class="download-tab">ИЗТЕГЛИ</span>
+
+                        <a href="https://drive.google.com/uc?export=download&amp;id=1D4_keMlTfIEl2B1teJ5lb71fsFSwkVry"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="game-download-card"
+                           title="Download Red Alert 2 Files">
+
+                            <img src="ra2_icon.png"
+                                 alt="Red Alert 2"
+                                 class="icon-ra2">
+
+                            <span class="download-tab">
+                                ИЗТЕГЛИ
+                            </span>
+
                         </a>
-                        <a href="https://cncnet.org/red-alert-2" target="_blank" rel="noopener noreferrer" class="game-download-card" title="Download CnCNet">
-                            <img src="cncnet_icon.png" alt="CnCNet" class="icon-cncnet">
-                            <span class="download-tab">ИЗТЕГЛИ</span>
+
+                        <a href="https://cncnet.org/red-alert-2"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="game-download-card"
+                           title="Download CnCNet">
+
+                            <img src="cncnet_icon.png"
+                                 alt="CnCNet"
+                                 class="icon-cncnet">
+
+                            <span class="download-tab">
+                                ИЗТЕГЛИ
+                            </span>
+
                         </a>
+
                     </div>
+
                 </div>
+
             </div>
         </section>
 
     </main>
 
     <!-- МОДАЛЕН ПРОЗОРЕЦ ЗА ИНСТРУКЦИИТЕ -->
-    <div id="infoModal" class="modal-overlay" onclick="closeModalOnOuter(event)">
+    <div id="infoModal"
+         class="modal-overlay"
+         onclick="closeModalOnOuter(event)">
+
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
+
+            <span class="close-modal"
+                  onclick="closeModal()">
+                &times;
+            </span>
+
             <div class="modal-text">
-                <p>Следвайте инструкциите за настройка на Windows Защита (Windows Defender), ако системата отчете фалшива тревога за вирус, както и за правилната инсталация на нашите игри:</p>
-                <p>Първо добавете изключение (папка) в Windows Защита, която да не се сканира за вируси (например <strong>D:\GAMES</strong> или където са ви игрите).</p>
-                <p>След това инсталирайте архива, като въведете правилната парола за съответния инсталатор.</p>
-                <p>В готовата инсталационна директория просто си извадете пряк път (shortcut) на самата игра или на нашия ланчър за бърза връзка, ако има такъв.</p>
-                <p><strong>Приятна игра!</strong></p>
+
+                <p>
+                    Следвайте инструкциите за настройка на Windows Защита (Windows Defender),
+                    ако системата отчете фалшива тревога за вирус, както и за правилната инсталация на нашите игри:
+                </p>
+
+                <p>
+                    Първо добавете изключение (папка) в Windows Защита,
+                    която да не се сканира за вируси
+                    (например <strong>D:\GAMES</strong> или където са ви игрите).
+                </p>
+
+                <p>
+                    След това инсталирайте архива,
+                    като въведете правилната парола за съответния инсталатор.
+                </p>
+
+                <p>
+                    В готовата инсталационна директория просто си извадете пряк път (shortcut)
+                    на самата игра или на нашия ланчър за бърза връзка, ако има такъв.
+                </p>
+
+                <p>
+                    <strong>Приятна игра!</strong>
+                </p>
+
             </div>
+
             <div class="modal-image-container">
-                <a href="WindowsDefenderExclusionGuide.jpg" target="_blank" class="zoom-btn" title="Отвори снимката в нов прозорец в пълен размер">&#128269;</a>
-                <img src="WindowsDefenderExclusionGuide.jpg" alt="Windows Defender Instructions" class="modal-image">
+
+                <a href="WindowsDefenderExclusionGuide.jpg"
+                   target="_blank"
+                   class="zoom-btn"
+                   title="Отвори снимката в нов прозорец в пълен размер">
+                    &#128269;
+                </a>
+
+                <img src="WindowsDefenderExclusionGuide.jpg"
+                     alt="Windows Defender Instructions"
+                     class="modal-image">
+
             </div>
+
         </div>
     </div>
 
     <!-- МОДАЛЕН ПРОЗОРЕЦ ЗА CS1.6 TOP 10 -->
-    <div id="top10Modal" class="modal-overlay" onclick="closeTop10ModalOnOuter(event)">
+    <div id="top10Modal"
+         class="modal-overlay"
+         onclick="closeTop10ModalOnOuter(event)">
+
         <div class="modal-content top10-modal-content">
-            <span class="close-modal" onclick="closeTop10Modal()">&times;</span>
-            <h2 class="downloads-title" style="margin-bottom: 15px;">COUNTER-STRIKE 1.6 TOP 10 РАНГЛИСТА</h2>
+
+            <span class="close-modal"
+                  onclick="closeTop10Modal()">
+                &times;
+            </span>
+
+            <h2 class="downloads-title"
+                style="margin-bottom: 15px;">
+                COUNTER-STRIKE 1.6 TOP 10 РАНГЛИСТА
+            </h2>
+
             <div class="top10-container">
-                
-                <!-- CS_FY Server Card -->
+
+                <!-- CS_FY -->
                 <div class="top10-card">
-                    <h3>CS_FY SERVER TOP 10</h3>
+
+                    <h3>
+                        CS_FY SERVER TOP 10
+                    </h3>
+
                     <table class="top10-table">
+
                         <thead>
                             <tr>
                                 <th class="top10-rank">#</th>
-                                <th>Rank</th>
+                                <th>Рейтинг</th>
                                 <th style="text-align: left;">Ник</th>
                                 <th>Kills</th>
                                 <th>Deaths</th>
@@ -1920,20 +2533,32 @@
                                 <th>DMG</th>
                             </tr>
                         </thead>
+
                         <tbody id="top10-tbody-cs_fy">
-                            <tr><td colspan="7">Зареждане...</td></tr>
+                            <tr>
+                                <td colspan="7">
+                                    Зареждане...
+                                </td>
+                            </tr>
                         </tbody>
+
                     </table>
+
                 </div>
 
-                <!-- CS_DE Server Card -->
+                <!-- CS_DE -->
                 <div class="top10-card">
-                    <h3>CS_DE SERVER TOP 10</h3>
+
+                    <h3>
+                        CS_DE SERVER TOP 10
+                    </h3>
+
                     <table class="top10-table">
+
                         <thead>
                             <tr>
                                 <th class="top10-rank">#</th>
-                                <th>Rank</th>
+                                <th>Рейтинг</th>
                                 <th style="text-align: left;">Ник</th>
                                 <th>Kills</th>
                                 <th>Deaths</th>
@@ -1941,10 +2566,17 @@
                                 <th>DMG</th>
                             </tr>
                         </thead>
+
                         <tbody id="top10-tbody-cs_de">
-                            <tr><td colspan="7">Зареждане...</td></tr>
+                            <tr>
+                                <td colspan="7">
+                                    Зареждане...
+                                </td>
+                            </tr>
                         </tbody>
+
                     </table>
+
                 </div>
 
             </div>
@@ -1955,600 +2587,1836 @@
         &copy; 2026 BULGARIA-GaminG-Zone|&trade;
     </footer>
 
-    <!-- СКРИПТ ЗА ПРЕВКЛЮЧВАНЕ НА ИЗГЛЕДИТЕ И МОДАЛНИТЕ ПРОЗОРЦИ -->
+    <!-- СКРИПТ ЗА ПРЕВКЛЮЧВАНЕ НА ИЗГЛЕДИТЕ -->
     <script>
+
         function switchView(viewName) {
-            const homeView = document.getElementById('home-view');
-            const downloadView = document.getElementById('download-view');
+
+            const homeView =
+                document.getElementById('home-view');
+
+            const downloadView =
+                document.getElementById('download-view');
 
             homeView.classList.remove('active');
             downloadView.classList.remove('active');
 
             if (viewName === 'download') {
+
                 downloadView.classList.add('active');
-                history.pushState(null, '', '#download');
+
+                history.pushState(
+                    null,
+                    '',
+                    '#download'
+                );
+
             } else {
+
                 homeView.classList.add('active');
-                history.pushState(null, '', '#home');
+
+                history.pushState(
+                    null,
+                    '',
+                    '#home'
+                );
             }
+
             window.scrollTo(0, 0);
         }
 
+
         function handleHashChange() {
-            const hash = window.location.hash;
+
+            const hash =
+                window.location.hash;
+
             if (hash === '#download') {
+
                 switchView('download');
+
             } else if (hash === '#top10') {
+
                 openTop10Modal();
                 switchView('home');
+
             } else {
+
                 switchView('home');
+
             }
         }
 
-        window.addEventListener('DOMContentLoaded', handleHashChange);
-        window.addEventListener('popstate', handleHashChange);
+
+        window.addEventListener(
+            'DOMContentLoaded',
+            handleHashChange
+        );
+
+        window.addEventListener(
+            'popstate',
+            handleHashChange
+        );
+
 
         function openModal() {
-            document.getElementById('infoModal').style.display = 'flex';
+
+            document.getElementById(
+                'infoModal'
+            ).style.display = 'flex';
         }
+
 
         function closeModal() {
-            document.getElementById('infoModal').style.display = 'none';
+
+            document.getElementById(
+                'infoModal'
+            ).style.display = 'none';
         }
 
+
         function closeModalOnOuter(event) {
+
             if (event.target.id === 'infoModal') {
                 closeModal();
             }
         }
 
-        /* ТОП 15 МОДАЛЕН ПРОЗОРЕЦ КУТИЯ */
+
         function openTop10Modal() {
-            document.getElementById('top10Modal').style.display = 'flex';
+
+            document.getElementById(
+                'top10Modal'
+            ).style.display = 'flex';
         }
+
 
         function closeTop10Modal() {
-            document.getElementById('top10Modal').style.display = 'none';
+
+            document.getElementById(
+                'top10Modal'
+            ).style.display = 'none';
         }
 
+
         function closeTop10ModalOnOuter(event) {
+
             if (event.target.id === 'top10Modal') {
                 closeTop10Modal();
             }
         }
 
-        /* LIVE CS 1.6 STATUS FROM OUR OWN FIREBASE
-           Data is written by the personal GameMonitoring -> Firebase updater.
-           Firebase project: quake-status
-        */
+
+        /* LIVE CS 1.6 STATUS */
+
         const CS_STATUS_URL =
             'https://quake-status-default-rtdb.europe-west1.firebasedatabase.app/servers/';
 
+
         const CS_SERVERS = {
+
             cs_fy: 'cs_fy_server',
+
             cs_de: 'cs_de_server'
+
         };
 
+
         async function updateServerStatuses() {
+
             await Promise.all(
-                Object.entries(CS_SERVERS).map(async ([key, firebaseId]) => {
-                    const badgeEl = document.getElementById(`status-badge-${key}`);
-                    const playersEl = document.getElementById(`players-${key}`);
-                    const maxplayersEl = document.getElementById(`maxplayers-${key}`);
-                    const mapEl = document.getElementById(`map-${key}`);
 
-                    try {
-                        const response = await fetch(
-                            `${CS_STATUS_URL}${firebaseId}.json?t=${Date.now()}`,
-                            { cache: 'no-store' }
-                        );
+                Object.entries(CS_SERVERS).map(
+                    async ([key, firebaseId]) => {
 
-                        if (!response.ok) {
-                            throw new Error(`Firebase HTTP ${response.status}`);
+                        const badgeEl =
+                            document.getElementById(
+                                `status-badge-${key}`
+                            );
+
+                        const playersEl =
+                            document.getElementById(
+                                `players-${key}`
+                            );
+
+                        const maxplayersEl =
+                            document.getElementById(
+                                `maxplayers-${key}`
+                            );
+
+                        const mapEl =
+                            document.getElementById(
+                                `map-${key}`
+                            );
+
+
+                        try {
+
+                            const response =
+                                await fetch(
+                                    `${CS_STATUS_URL}${firebaseId}.json?t=${Date.now()}`,
+                                    {
+                                        cache: 'no-store'
+                                    }
+                                );
+
+
+                            if (!response.ok) {
+                                throw new Error(
+                                    `Firebase HTTP ${response.status}`
+                                );
+                            }
+
+
+                            const srv =
+                                await response.json();
+
+
+                            if (!srv) {
+                                throw new Error(
+                                    'Няма данни за сървъра'
+                                );
+                            }
+
+
+                            const online =
+                                srv.online === true;
+
+
+                            if (badgeEl) {
+
+                                badgeEl.textContent =
+                                    online
+                                        ? 'ONLINE'
+                                        : 'OFFLINE';
+
+                                badgeEl.className =
+                                    online
+                                        ? 'status-badge status-online'
+                                        : 'status-badge status-offline';
+                            }
+
+
+                            if (playersEl) {
+
+                                playersEl.textContent =
+                                    Number(srv.players) || 0;
+                            }
+
+
+                            if (maxplayersEl) {
+
+                                maxplayersEl.textContent =
+                                    Number(srv.maxPlayers) || 0;
+                            }
+
+
+                            if (mapEl) {
+
+                                mapEl.textContent =
+                                    srv.map || '—';
+                            }
+
+
+                        } catch (err) {
+
+                            if (badgeEl) {
+
+                                badgeEl.textContent =
+                                    'OFFLINE';
+
+                                badgeEl.className =
+                                    'status-badge status-offline';
+                            }
+
+
+                            if (playersEl)
+                                playersEl.textContent = '0';
+
+
+                            if (maxplayersEl)
+                                maxplayersEl.textContent = '0';
+
+
+                            if (mapEl)
+                                mapEl.textContent = '—';
+
+
+                            console.error(
+                                `[CS1.6 ${key}] Грешка при Firebase статуса:`,
+                                err.message
+                            );
                         }
 
-                        const srv = await response.json();
-
-                        if (!srv) {
-                            throw new Error('Няма данни за сървъра');
-                        }
-
-                        const online = srv.online === true;
-
-                        if (badgeEl) {
-                            badgeEl.textContent = online ? 'ONLINE' : 'OFFLINE';
-                            badgeEl.className = online
-                                ? 'status-badge status-online'
-                                : 'status-badge status-offline';
-                        }
-
-                        if (playersEl) {
-                            playersEl.textContent = Number(srv.players) || 0;
-                        }
-
-                        if (maxplayersEl) {
-                            maxplayersEl.textContent = Number(srv.maxPlayers) || 0;
-                        }
-
-                        if (mapEl) {
-                            mapEl.textContent = srv.map || '—';
-                        }
-
-                    } catch (err) {
-                        if (badgeEl) {
-                            badgeEl.textContent = 'OFFLINE';
-                            badgeEl.className = 'status-badge status-offline';
-                        }
-
-                        if (playersEl) playersEl.textContent = '0';
-                        if (maxplayersEl) maxplayersEl.textContent = '0';
-                        if (mapEl) mapEl.textContent = '—';
-
-                        console.error(
-                            `[CS1.6 ${key}] Грешка при Firebase статуса:`,
-                            err.message
-                        );
                     }
-                })
+                )
             );
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            updateServerStatuses();
 
-            // Firebase се обновява от личния updater на всеки 60 секунди.
-            // Четем по-често, за да се появява новият статус веднага след записа.
-            setInterval(updateServerStatuses, 15000);
-        });
+        window.addEventListener(
+            'DOMContentLoaded',
+            () => {
+
+                updateServerStatuses();
+
+                setInterval(
+                    updateServerStatuses,
+                    15000
+                );
+
+            }
+        );
+
     </script>
 
-    <!-- Firebase Realtime SDK, Chat & Top10/Top3 Logic -->
+
+    <!-- FIREBASE / CHAT / TOP 10 -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { 
-            getDatabase, 
-            ref, 
-            push, 
-            onChildAdded, 
-            onChildRemoved, 
-            remove, 
-            query, 
-            limitToLast, 
-            orderByChild, 
-            endAt, 
-            get, 
-            onValue, 
-            onDisconnect, 
-            set 
+
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+
+
+        import {
+
+            getDatabase,
+
+            ref,
+
+            push,
+
+            onChildAdded,
+
+            onChildRemoved,
+
+            remove,
+
+            query,
+
+            limitToLast,
+
+            orderByChild,
+
+            endAt,
+
+            get,
+
+            onValue,
+
+            onDisconnect,
+
+            set
+
         } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        /* CHAT FIREBASE CONFIG */
+
+        /* CHAT FIREBASE */
+
         const chatFirebaseConfig = {
-            apiKey: "AIzaSyAwAjdbV8NLL33ovLR8j3shl9tk7HaFfWk",
-            authDomain: "bulgaria-gaming-zone-chat.firebaseapp.com",
-            databaseURL: "https://bulgaria-gaming-zone-chat-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "bulgaria-gaming-zone-chat",
-            storageBucket: "bulgaria-gaming-zone-chat.firebasestorage.app",
-            messagingSenderId: "183397526491",
-            appId: "1:183397526491:web:c7c0c2a23693494e3fd5fe",
-            measurementId: "G-L0JMK4H302"
+
+            apiKey:
+                "AIzaSyAwAjdbV8NLL33ovLR8j3shl9tk7HaFfWk",
+
+            authDomain:
+                "bulgaria-gaming-zone-chat.firebaseapp.com",
+
+            databaseURL:
+                "https://bulgaria-gaming-zone-chat-default-rtdb.europe-west1.firebasedatabase.app",
+
+            projectId:
+                "bulgaria-gaming-zone-chat",
+
+            storageBucket:
+                "bulgaria-gaming-zone-chat.firebasestorage.app",
+
+            messagingSenderId:
+                "183397526491",
+
+            appId:
+                "1:183397526491:web:c7c0c2a23693494e3fd5fe",
+
+            measurementId:
+                "G-L0JMK4H302"
+
         };
 
-        const chatApp = initializeApp(chatFirebaseConfig, "chatApp");
-        const chatDb = getDatabase(chatApp);
-        const messagesRef = ref(chatDb, 'chat_messages');
-        const presenceRef = ref(chatDb, 'online_users');
 
-        /* TOP 10 / TOP 3 FIREBASE CONFIG */
+        const chatApp =
+            initializeApp(
+                chatFirebaseConfig,
+                "chatApp"
+            );
+
+
+        const chatDb =
+            getDatabase(chatApp);
+
+
+        const messagesRef =
+            ref(
+                chatDb,
+                'chat_messages'
+            );
+
+
+        const presenceRef =
+            ref(
+                chatDb,
+                'online_users'
+            );
+
+
+        /* CS RANK FIREBASE */
+
         const top10FirebaseConfig = {
-            apiKey: "AIzaSyCQSa6AS9WnZVCTSZ70Q0iKCllh5E_1GY",
-            authDomain: "cs-top-15.firebaseapp.com",
-            databaseURL: "https://cs-top-15-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "cs-top-15",
-            storageBucket: "cs-top-15.firebasestorage.app",
-            messagingSenderId: "346915126353",
-            appId: "1:346915126353:web:72fee415710b9da16c0c70",
-            measurementId: "G-K9QKTSMMQF"
+
+            apiKey:
+                "AIzaSyCQSa6AS9WnZVCTSZ70Q0iKCllh5E_1GY",
+
+            authDomain:
+                "cs-top-15.firebaseapp.com",
+
+            databaseURL:
+                "https://cs-top-15-default-rtdb.europe-west1.firebasedatabase.app",
+
+            projectId:
+                "cs-top-15",
+
+            storageBucket:
+                "cs-top-15.firebasestorage.app",
+
+            messagingSenderId:
+                "346915126353",
+
+            appId:
+                "1:346915126353:web:72fee415710b9da16c0c70",
+
+            measurementId:
+                "G-K9QKTSMMQF"
+
         };
 
-        const top10App = initializeApp(top10FirebaseConfig, "top10App");
-        const top10Db = getDatabase(top10App);
+
+        const top10App =
+            initializeApp(
+                top10FirebaseConfig,
+                "top10App"
+            );
+
+
+        const top10Db =
+            getDatabase(top10App);
+
 
         /* ================= CHAT LOGIC ================= */
-        const form = document.getElementById('chat-form');
-        const nameInput = document.getElementById('chat-name');
-        const textInput = document.getElementById('chat-text');
-        const messagesDiv = document.getElementById('chat-messages');
-        const usersListDiv = document.getElementById('users-list');
-        const userCountSpan = document.getElementById('user-count');
+
+        const form =
+            document.getElementById(
+                'chat-form'
+            );
+
+
+        const nameInput =
+            document.getElementById(
+                'chat-name'
+            );
+
+
+        const textInput =
+            document.getElementById(
+                'chat-text'
+            );
+
+
+        const messagesDiv =
+            document.getElementById(
+                'chat-messages'
+            );
+
+
+        const usersListDiv =
+            document.getElementById(
+                'users-list'
+            );
+
+
+        const userCountSpan =
+            document.getElementById(
+                'user-count'
+            );
+
 
         let myPresenceRef = null;
+
         let lastMessageTime = 0;
+
         let lastMessageText = "";
+
         const COOLDOWN_MS = 2500;
 
+
         const BANNED_WORDS = [
-            "кур", "копеле", "курва", "пичка", "педераст", "патка", "кучка", "гей", "педал", "хуй", "хуя"
+
+            "кур",
+            "копеле",
+            "курва",
+            "пичка",
+            "педераст",
+            "патка",
+            "кучка",
+            "гей",
+            "педал",
+            "хуй",
+            "хуя"
+
         ];
 
+
         function censorText(text) {
+
             let cleanText = text;
+
             BANNED_WORDS.forEach(word => {
-                const regex = new RegExp(word, "gi");
-                cleanText = cleanText.replace(regex, "***");
+
+                const regex =
+                    new RegExp(
+                        word,
+                        "gi"
+                    );
+
+                cleanText =
+                    cleanText.replace(
+                        regex,
+                        "***"
+                    );
             });
+
             return cleanText;
         }
 
-        if (localStorage.getItem('chat_nickname')) {
-            nameInput.value = localStorage.getItem('chat_nickname');
+
+        if (
+            localStorage.getItem(
+                'chat_nickname'
+            )
+        ) {
+
+            nameInput.value =
+                localStorage.getItem(
+                    'chat_nickname'
+                );
+
         } else {
-            nameInput.value = "Guest_" + Math.floor(Math.random() * 8999 + 1000);
+
+            nameInput.value =
+                "Guest_" +
+                Math.floor(
+                    Math.random() * 8999 + 1000
+                );
         }
 
+
         function cleanOldMessages() {
-            const twentyFourHoursAgo = Date.now() - (24 * 60 * 60 * 1000);
-            const oldMessagesQuery = query(messagesRef, orderByChild('timestamp'), endAt(twentyFourHoursAgo));
-            
-            get(oldMessagesQuery).then((snapshot) => {
-                if (snapshot.exists()) {
-                    snapshot.forEach((childSnapshot) => {
-                        remove(ref(chatDb, `chat_messages/${childSnapshot.key}`));
-                    });
-                }
-            }).catch((err) => console.error("Грешка при почистване:", err));
+
+            const twentyFourHoursAgo =
+                Date.now() -
+                (24 * 60 * 60 * 1000);
+
+
+            const oldMessagesQuery =
+                query(
+                    messagesRef,
+                    orderByChild('timestamp'),
+                    endAt(twentyFourHoursAgo)
+                );
+
+
+            get(oldMessagesQuery)
+                .then(snapshot => {
+
+                    if (snapshot.exists()) {
+
+                        snapshot.forEach(
+                            childSnapshot => {
+
+                                remove(
+                                    ref(
+                                        chatDb,
+                                        `chat_messages/${childSnapshot.key}`
+                                    )
+                                );
+
+                            }
+                        );
+                    }
+
+                })
+                .catch(
+                    err =>
+                        console.error(
+                            "Грешка при почистване:",
+                            err
+                        )
+                );
         }
+
 
         cleanOldMessages();
 
-        function updateOnlineStatus() {
-            const name = nameInput.value.trim() || "Guest";
-            const connectedRef = ref(chatDb, ".info/connected");
 
-            onValue(connectedRef, (snap) => {
-                if (snap.val() === true) {
-                    if (myPresenceRef) {
-                        remove(myPresenceRef);
+        function updateOnlineStatus() {
+
+            const name =
+                nameInput.value.trim() ||
+                "Guest";
+
+
+            const connectedRef =
+                ref(
+                    chatDb,
+                    ".info/connected"
+                );
+
+
+            onValue(
+                connectedRef,
+                snap => {
+
+                    if (snap.val() === true) {
+
+                        if (myPresenceRef) {
+
+                            remove(
+                                myPresenceRef
+                            );
+                        }
+
+
+                        myPresenceRef =
+                            push(
+                                presenceRef
+                            );
+
+
+                        onDisconnect(
+                            myPresenceRef
+                        ).remove();
+
+
+                        set(
+                            myPresenceRef,
+                            {
+                                username: name
+                            }
+                        );
                     }
-                    myPresenceRef = push(presenceRef);
-                    onDisconnect(myPresenceRef).remove();
-                    set(myPresenceRef, { username: name });
+
                 }
-            });
+            );
         }
+
 
         updateOnlineStatus();
 
-        nameInput.addEventListener('change', () => {
-            const newName = nameInput.value.trim();
-            if (newName) {
-                localStorage.setItem('chat_nickname', newName);
-                if (myPresenceRef) {
-                    set(myPresenceRef, { username: newName });
+
+        nameInput.addEventListener(
+            'change',
+            () => {
+
+                const newName =
+                    nameInput.value.trim();
+
+
+                if (newName) {
+
+                    localStorage.setItem(
+                        'chat_nickname',
+                        newName
+                    );
+
+
+                    if (myPresenceRef) {
+
+                        set(
+                            myPresenceRef,
+                            {
+                                username: newName
+                            }
+                        );
+                    }
                 }
+
             }
-        });
+        );
 
-        onValue(presenceRef, (snapshot) => {
-            usersListDiv.innerHTML = '';
-            const users = snapshot.val();
-            if (users) {
-                const keys = Object.keys(users);
-                userCountSpan.textContent = keys.length;
-                keys.forEach(key => {
-                    const li = document.createElement('li');
-                    li.className = 'user-item';
-                    li.textContent = users[key].username;
-                    usersListDiv.appendChild(li);
-                });
-            } else {
-                userCountSpan.textContent = '0';
+
+        onValue(
+            presenceRef,
+            snapshot => {
+
+                usersListDiv.innerHTML = '';
+
+                const users =
+                    snapshot.val();
+
+
+                if (users) {
+
+                    const keys =
+                        Object.keys(users);
+
+
+                    userCountSpan.textContent =
+                        keys.length;
+
+
+                    keys.forEach(key => {
+
+                        const li =
+                            document.createElement(
+                                'li'
+                            );
+
+
+                        li.className =
+                            'user-item';
+
+
+                        li.textContent =
+                            users[key].username;
+
+
+                        usersListDiv.appendChild(
+                            li
+                        );
+
+                    });
+
+                } else {
+
+                    userCountSpan.textContent =
+                        '0';
+
+                }
+
             }
-        });
+        );
 
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = nameInput.value.trim();
-            const text = textInput.value.trim();
-            const now = Date.now();
 
-            if (!name || !text) return;
+        form.addEventListener(
+            'submit',
+            e => {
 
-            if (now - lastMessageTime < COOLDOWN_MS) {
-                const waitSec = Math.ceil((COOLDOWN_MS - (now - lastMessageTime)) / 1000);
-                alert(`Моля, изчакай ${waitSec} сек. преди следващото съобщение!`);
-                return;
+                e.preventDefault();
+
+
+                const name =
+                    nameInput.value.trim();
+
+
+                const text =
+                    textInput.value.trim();
+
+
+                const now =
+                    Date.now();
+
+
+                if (!name || !text)
+                    return;
+
+
+                if (
+                    now -
+                    lastMessageTime <
+                    COOLDOWN_MS
+                ) {
+
+                    const waitSec =
+                        Math.ceil(
+                            (
+                                COOLDOWN_MS -
+                                (
+                                    now -
+                                    lastMessageTime
+                                )
+                            ) / 1000
+                        );
+
+
+                    alert(
+                        `Моля, изчакай ${waitSec} сек. преди следващото съобщение!`
+                    );
+
+
+                    return;
+                }
+
+
+                if (
+                    text ===
+                    lastMessageText
+                ) {
+
+                    alert(
+                        "Не можеш да изпращаш същото съобщение повторно!"
+                    );
+
+
+                    return;
+                }
+
+
+                if (text.length > 200) {
+
+                    alert(
+                        "Съобщението е прекалено дълго (максимум 200 символа)!"
+                    );
+
+
+                    return;
+                }
+
+
+                const cleanText =
+                    censorText(text);
+
+
+                lastMessageTime =
+                    now;
+
+
+                lastMessageText =
+                    text;
+
+
+                localStorage.setItem(
+                    'chat_nickname',
+                    name
+                );
+
+
+                push(
+                    messagesRef,
+                    {
+                        username: name,
+                        text: cleanText,
+                        timestamp: now
+                    }
+                );
+
+
+                textInput.value = '';
+
             }
+        );
 
-            if (text === lastMessageText) {
-                alert("Не можеш да изпращаш същото съобщение повторно!");
-                return;
+
+        const recentMessagesQuery =
+            query(
+                messagesRef,
+                limitToLast(50)
+            );
+
+
+        onChildAdded(
+            recentMessagesQuery,
+            snapshot => {
+
+                const data =
+                    snapshot.val();
+
+
+                const key =
+                    snapshot.key;
+
+
+                if (!data)
+                    return;
+
+
+                const time =
+                    new Date(
+                        data.timestamp
+                    ).toLocaleTimeString(
+                        [],
+                        {
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        }
+                    );
+
+
+                const msgEl =
+                    document.createElement(
+                        'div'
+                    );
+
+
+                msgEl.className =
+                    'chat-msg';
+
+
+                msgEl.id =
+                    `msg-${key}`;
+
+
+                msgEl.innerHTML = `
+
+                    <span class="time">
+                        [${time}]
+                    </span>
+
+                    <span class="username">
+                        &lt;${escapeHtml(data.username)}&gt;:
+                    </span>
+
+                    <span class="text">
+                        ${escapeHtml(data.text)}
+                    </span>
+
+                `;
+
+
+                messagesDiv.appendChild(
+                    msgEl
+                );
+
+
+                messagesDiv.scrollTop =
+                    messagesDiv.scrollHeight;
+
             }
+        );
 
-            if (text.length > 200) {
-                alert("Съобщението е прекалено дълго (максимум 200 символа)!");
-                return;
+
+        onChildRemoved(
+            messagesRef,
+            snapshot => {
+
+                const deletedEl =
+                    document.getElementById(
+                        `msg-${snapshot.key}`
+                    );
+
+
+                if (deletedEl) {
+
+                    deletedEl.remove();
+
+                }
+
             }
+        );
 
-            const cleanText = censorText(text);
-
-            lastMessageTime = now;
-            lastMessageText = text;
-
-            localStorage.setItem('chat_nickname', name);
-            push(messagesRef, {
-                username: name,
-                text: cleanText,
-                timestamp: now
-            });
-            textInput.value = '';
-        });
-
-        const recentMessagesQuery = query(messagesRef, limitToLast(50));
-        onChildAdded(recentMessagesQuery, (snapshot) => {
-            const data = snapshot.val();
-            const key = snapshot.key;
-            if (!data) return;
-            const time = new Date(data.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-            const msgEl = document.createElement('div');
-            msgEl.className = 'chat-msg';
-            msgEl.id = `msg-${key}`;
-            msgEl.innerHTML = `
-                <span class="time">[${time}]</span>
-                <span class="username">&lt;${escapeHtml(data.username)}&gt;:</span>
-                <span class="text">${escapeHtml(data.text)}</span>
-            `;
-
-            messagesDiv.appendChild(msgEl);
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-        });
-
-        onChildRemoved(messagesRef, (snapshot) => {
-            const deletedEl = document.getElementById(`msg-${snapshot.key}`);
-            if (deletedEl) {
-                deletedEl.remove();
-            }
-        });
 
         function escapeHtml(str) {
-            return String(str ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+
+            return String(
+                str ?? ""
+            )
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
         }
 
-        window.copyServerIP = function(text, element) {
-            navigator.clipboard.writeText(text).then(() => {
-                let tooltip = element.querySelector('.copy-tooltip');
-                if (tooltip) {
-                    let originalText = tooltip.innerText;
-                    tooltip.innerText = 'Копирано!';
-                    tooltip.style.color = '#ffff00';
-                    setTimeout(() => {
-                        tooltip.innerText = originalText;
-                        tooltip.style.color = '';
-                    }, 2000);
-                }
-            }).catch(err => {
-                console.error('Грешка при копиране: ', err);
-            });
-        };
 
-        /* ================= TOP 3 & TOP 10 LOGIC ================= */
-        function loadStats(serverKey, prefix, tbodyId) {
-            const statsRef = ref(top10Db, `stats/${serverKey}`);
+        window.copyServerIP =
+            function(text, element) {
 
-            onValue(statsRef, (snapshot) => {
-                const data = snapshot.val();
+                navigator.clipboard
+                    .writeText(text)
+                    .then(() => {
 
-                if (!data) {
-                    const tbody = document.getElementById(tbodyId);
-                    if (tbody) {
-                        tbody.innerHTML = '<tr><td colspan="7">Няма данни.</td></tr>';
-                    }
-                    return;
-                }
-
-                // Clear Top3 Elements
-                for (let i = 1; i <= 3; i++) {
-                    const el = document.getElementById(`${prefix}-${i}`);
-                    if (el) el.textContent = "—";
-                }
-
-                // Clear Top10 Table
-                const tbody = document.getElementById(tbodyId);
-                if (tbody) tbody.innerHTML = '<tr><td colspan="7">Няма данни.</td></tr>';
-
-                const players = Array.isArray(data) ? data : Object.values(data);
-
-                // Update Top3 Widget
-                for (let i = 0; i < 3; i++) {
-                    const el = document.getElementById(`${prefix}-${i + 1}`);
-                    if (el && players[i] && players[i].name) {
-                        el.textContent = players[i].name;
-                    }
-                }
-
-                // Update Top10 Subpage Table
-                if (tbody && players.length > 0) {
-                    tbody.innerHTML = '';
-                    players.slice(0, 15).forEach((player, index) => {
-                        const row = document.createElement("tr");
-                        const kills = Number(player.kills ?? 0);
-                        const deaths = Number(player.deaths ?? 0);
-                        const total = kills + deaths;
-
-                        // CSRank rating x10 = Kills^2 * 10 / (Kills + Deaths)
-                        // Math.floor() matches Pawn integer division used in-game.
-                        const rating10 = (kills > 0 && total > 0)
-                            ? Math.floor((kills * kills * 10) / total)
-                            : 0;
-                        const rating = `${Math.floor(rating10 / 10)}.${rating10 % 10}`;
-
-                        row.innerHTML = `
-                            <td class="top10-rank">${index + 1}</td>
-                            <td>${rating}</td>
-                            <td class="top10-player">${escapeHtml(player.name)}</td>
-                            <td>${kills}</td>
-                            <td>${deaths}</td>
-                            <td>${Number(player.hs ?? 0)}</td>
-                            <td>${Number(player.damage ?? 0)}</td>
-                        `;
-                        tbody.appendChild(row);
-                    });
-                }
-            }, (error) => {
-                console.error("Firebase error stats:", error);
-                const tbody = document.getElementById(tbodyId);
-                if (tbody) {
-                    tbody.innerHTML = '<tr><td colspan="7">Грешка при зареждане.</td></tr>';
-                }
-            });
-        }
-
-        loadStats("cs_fy", "fy", "top10-tbody-cs_fy");
-        loadStats("cs_de", "de", "top10-tbody-cs_de");
-    </script>
+                        let tooltip =
+                            element.querySelector(
+                                '.copy-tooltip'
+                            );
 
 
-    <!-- LIVE UNREAL TOURNAMENT 99 PLAYER STATUS FROM FIREBASE -->
-    <script>
-        const UT99_STATUS_URL = 'https://quake-status-default-rtdb.europe-west1.firebasedatabase.app/servers/ut99_server.json';
+                        if (tooltip) {
 
-        function ut99Value(obj, keys) {
-            if (!obj || typeof obj !== 'object') return undefined;
-            for (const key of keys) {
-                if (obj[key] !== undefined && obj[key] !== null) return obj[key];
-            }
-            return undefined;
-        }
+                            let originalText =
+                                tooltip.innerText;
 
-        async function updateUT99Status() {
-            const badgeEl = document.getElementById('ut99-badge');
-            const playersEl = document.getElementById('ut99-players');
-            if (!badgeEl || !playersEl) return;
 
-            try {
-                const response = await fetch(UT99_STATUS_URL + '?t=' + Date.now(), { cache: 'no-store' });
-                if (!response.ok) throw new Error('HTTP ' + response.status);
+                            tooltip.innerText =
+                                'Копирано!';
 
-                const server = await response.json();
-                const isOnline = Boolean(ut99Value(server, ['online', 'is_online', 'active', 'status']));
-                const players = Number(ut99Value(server, ['players', 'numplayers', 'num_players', 'online_players']) ?? 0);
-                const maxPlayers = Number(ut99Value(server, ['maxPlayers', 'maxplayers', 'max_players', 'max_players_count']) ?? 0);
-                if (isOnline) {
-                    badgeEl.textContent = 'ONLINE';
-                    badgeEl.className = 'quake-status-badge quake-status-online';
-                    playersEl.textContent = `${players}/${maxPlayers}`;
-                } else {
-                    badgeEl.textContent = 'OFFLINE';
-                    badgeEl.className = 'quake-status-badge quake-status-offline';
-                    playersEl.textContent = '0/0';
-                }
-            } catch (err) {
-                badgeEl.textContent = 'OFFLINE';
-                badgeEl.className = 'quake-status-badge quake-status-offline';
-                playersEl.textContent = '0/0';
-                console.error('Грешка при обновяване на Unreal Tournament статуса:', err);
-            }
-        }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            updateUT99Status();
-            setInterval(updateUT99Status, 15000);
-        });
-    </script>
+                            tooltip.style.color =
+                                '#ffff00';
 
-    <!-- LIVE QUAKE II / QUAKE III PLAYER STATUS FROM FIREBASE -->
-    <script>
-        const QUAKE_STATUS_URL = 'https://quake-status-default-rtdb.europe-west1.firebasedatabase.app/servers.json';
 
-        function quakeValue(obj, keys) {
-            if (!obj || typeof obj !== 'object') return undefined;
-            for (const key of keys) {
-                if (obj[key] !== undefined && obj[key] !== null) return obj[key];
-            }
-            return undefined;
-        }
+                            setTimeout(
+                                () => {
 
-        function quakeText(value) {
-            return String(value ?? '').toLowerCase().replace(/[^a-z0-9а-яёіїє_-]/gi, '');
-        }
+                                    tooltip.innerText =
+                                        originalText;
 
-        function findQuakeServer(root, game, port) {
-            const wanted = game === 'q2'
-                ? ['q2', 'quake2', 'quake_2', 'quake-2', 'quake ii', 'quakeii']
-                : ['q3', 'quake3', 'quake_3', 'quake-3', 'quake iii', 'quakeiii'];
+                                    tooltip.style.color =
+                                        '';
 
-            let best = null;
-        
-            function visit(value, keyHint = '') {
-                if (!value || typeof value !== 'object') return;
+                                },
+                                2000
+                            );
+                        }
 
-                const textKey = quakeText(keyHint);
-                const isMatchingGame = wanted.some(w => textKey.includes(quakeText(w)));
-                const serverPort = Number(quakeValue(value, ['port', 'server_port', 'serverPort']));
+                    })
+                    .catch(
+                        err =>
+                            console.error(
+                                'Грешка при копиране: ',
+                                err
+                            )
+                    );
+            };
 
-                if (isMatchingGame || serverPort === Number(port)) {
-                    best = value;
-                    return;
-                }
 
-                for (const k of Object.keys(value)) {
-                    visit(value[k], k);
-                    if (best) return;
-                }
-            }
+        /* ================= TOP 3 & TOP 10 ================= */
 
-            visit(root);
-            return best;
-        }
+        function loadStats(
+            serverKey,
+            prefix,
+            tbodyId
+        ) {
 
-        async function updateQuakeStatuses() {
-            try {
-                const response = await fetch(QUAKE_STATUS_URL + '?t=' + Date.now());
-                if (!response.ok) return;
-                const data = await response.json();
+            const statsRef =
+                ref(
+                    top10Db,
+                    `stats/${serverKey}`
+                );
 
-                ['q2', 'q3'].forEach(game => {
-                    const statusEl = document.getElementById(`quake-status-${game}`);
-                    const badgeEl = document.getElementById(`quake-badge-${game}`);
-                    const playersEl = document.getElementById(`quake-players-${game}`);
 
-                    if (!statusEl || !badgeEl || !playersEl) return;
+            onValue(
+                statsRef,
+                snapshot => {
 
-                    const port = statusEl.getAttribute('data-port');
-                    const server = findQuakeServer(data, game, port);
+                    const data =
+                        snapshot.val();
 
-                    if (!server) {
-                        badgeEl.textContent = 'OFFLINE';
-                        badgeEl.className = 'quake-status-badge quake-status-offline';
-                        playersEl.textContent = '0/0';
+
+                    if (!data) {
+
+                        const tbody =
+                            document.getElementById(
+                                tbodyId
+                            );
+
+
+                        if (tbody) {
+
+                            tbody.innerHTML =
+                                '<tr><td colspan="7">Няма данни.</td></tr>';
+
+                        }
+
                         return;
                     }
 
-                    const isOnline = Boolean(quakeValue(server, ['online', 'is_online', 'active', 'status']));
-                    const players = Number(quakeValue(server, ['players', 'numplayers', 'num_players', 'online_players']) ?? 0);
-                    const maxPlayers = Number(quakeValue(server, ['maxplayers', 'max_players', 'maxPlayers']) ?? 0);
 
-                    if (isOnline) {
-                        badgeEl.textContent = 'ONLINE';
-                        badgeEl.className = 'quake-status-badge quake-status-online';
-                        playersEl.textContent = `${players}/${maxPlayers}`;
-                    } else {
-                        badgeEl.textContent = 'OFFLINE';
-                        badgeEl.className = 'quake-status-badge quake-status-offline';
-                        playersEl.textContent = '0/0';
+                    /* Изчистваме Top 3 */
+
+                    for (
+                        let i = 1;
+                        i <= 3;
+                        i++
+                    ) {
+
+                        const el =
+                            document.getElementById(
+                                `${prefix}-${i}`
+                            );
+
+
+                        if (el) {
+
+                            el.textContent =
+                                "—";
+
+                        }
+
                     }
-                });
-            } catch (err) {
-                console.error("Грешка при обновяване на Quake статуса:", err);
-            }
+
+
+                    /* Изчистваме TOP 10 */
+
+                    const tbody =
+                        document.getElementById(
+                            tbodyId
+                        );
+
+
+                    if (tbody) {
+
+                        tbody.innerHTML =
+                            '<tr><td colspan="7">Няма данни.</td></tr>';
+
+                    }
+
+
+                    /*
+                     * Firebase може да върне:
+                     * - масив
+                     * - обект
+                     */
+
+                    const players =
+                        Array.isArray(data)
+                            ? data
+                            : Object.values(data);
+
+
+                    /*
+                     * ВАЖНО:
+                     *
+                     * НЯМА ИЗЧИСЛЯВАНЕ НА РЕЙТИНГ ТУК.
+                     *
+                     * Tracker -> rankstat.txt
+                     * Python -> Firebase
+                     * Firebase -> този код
+                     *
+                     * player.rating10 е готовият рейтинг.
+                     */
+
+
+                    /* TOP 3 */
+
+                    for (
+                        let i = 0;
+                        i < 3;
+                        i++
+                    ) {
+
+                        const el =
+                            document.getElementById(
+                                `${prefix}-${i + 1}`
+                            );
+
+
+                        if (
+                            el &&
+                            players[i] &&
+                            players[i].name
+                        ) {
+
+                            el.textContent =
+                                players[i].name;
+
+                        }
+
+                    }
+
+
+                    /* TOP 10 */
+
+                    if (
+                        tbody &&
+                        players.length > 0
+                    ) {
+
+                        tbody.innerHTML = '';
+
+
+                        players
+                            .slice(0, 10)
+                            .forEach(
+                                (player, index) => {
+
+                                    const row =
+                                        document.createElement(
+                                            "tr"
+                                        );
+
+
+                                    const kills =
+                                        Number(
+                                            player.kills ?? 0
+                                        );
+
+
+                                    const deaths =
+                                        Number(
+                                            player.deaths ?? 0
+                                        );
+
+
+                                    /*
+                                     * ГОТОВ РЕЙТИНГ ОТ FIREBASE
+                                     *
+                                     * rating10:
+                                     * 0   = 0.0
+                                     * 500 = 50.0
+                                     * 700 = 70.0
+                                     * 900 = 90.0
+                                     * 999 = 99.9
+                                     */
+
+                                    const rating10 =
+                                        Number(
+                                            player.rating10 ?? 0
+                                        );
+
+
+                                    /*
+                                     * Защита от грешни стойности.
+                                     * Тук НЕ се изчислява рейтинг.
+                                     */
+
+                                    const safeRating10 =
+                                        Math.max(
+                                            0,
+                                            Math.min(
+                                                999,
+                                                Math.trunc(
+                                                    rating10
+                                                )
+                                            )
+                                        );
+
+
+                                    const rating =
+                                        `${Math.floor(
+                                            safeRating10 / 10
+                                        )}.${safeRating10 % 10}`;
+
+
+                                    row.innerHTML = `
+
+                                        <td class="top10-rank">
+                                            ${index + 1}
+                                        </td>
+
+                                        <td>
+                                            ${rating}
+                                        </td>
+
+                                        <td class="top10-player">
+                                            ${escapeHtml(
+                                                player.name
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${kills}
+                                        </td>
+
+                                        <td>
+                                            ${deaths}
+                                        </td>
+
+                                        <td>
+                                            ${Number(
+                                                player.hs ?? 0
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${Number(
+                                                player.damage ?? 0
+                                            )}
+                                        </td>
+
+                                    `;
+
+
+                                    tbody.appendChild(
+                                        row
+                                    );
+
+                                }
+                            );
+                    }
+
+                },
+                error => {
+
+                    console.error(
+                        "Firebase error stats:",
+                        error
+                    );
+
+
+                    const tbody =
+                        document.getElementById(
+                            tbodyId
+                        );
+
+
+                    if (tbody) {
+
+                        tbody.innerHTML =
+                            '<tr><td colspan="7">Грешка при зареждане.</td></tr>';
+
+                    }
+
+                }
+            );
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            updateQuakeStatuses();
-            setInterval(updateQuakeStatuses, 15000);
-        });
+
+        loadStats(
+            "cs_fy",
+            "fy",
+            "top10-tbody-cs_fy"
+        );
+
+
+        loadStats(
+            "cs_de",
+            "de",
+            "top10-tbody-cs_de"
+        );
+
     </script>
+
+
+    <!-- LIVE UNREAL TOURNAMENT 99 -->
+    <script>
+
+        const UT99_STATUS_URL =
+            'https://quake-status-default-rtdb.europe-west1.firebasedatabase.app/servers/ut99_server.json';
+
+
+        function ut99Value(obj, keys) {
+
+            if (
+                !obj ||
+                typeof obj !== 'object'
+            ) {
+                return undefined;
+            }
+
+
+            for (const key of keys) {
+
+                if (
+                    obj[key] !== undefined &&
+                    obj[key] !== null
+                ) {
+
+                    return obj[key];
+
+                }
+
+            }
+
+
+            return undefined;
+        }
+
+
+        async function updateUT99Status() {
+
+            const badgeEl =
+                document.getElementById(
+                    'ut99-badge'
+                );
+
+
+            const playersEl =
+                document.getElementById(
+                    'ut99-players'
+                );
+
+
+            if (
+                !badgeEl ||
+                !playersEl
+            ) {
+                return;
+            }
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        UT99_STATUS_URL +
+                        '?t=' +
+                        Date.now(),
+                        {
+                            cache: 'no-store'
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        'HTTP ' +
+                        response.status
+                    );
+
+                }
+
+
+                const server =
+                    await response.json();
+
+
+                const isOnline =
+                    Boolean(
+                        ut99Value(
+                            server,
+                            [
+                                'online',
+                                'is_online',
+                                'active',
+                                'status'
+                            ]
+                        )
+                    );
+
+
+                const players =
+                    Number(
+                        ut99Value(
+                            server,
+                            [
+                                'players',
+                                'numplayers',
+                                'num_players',
+                                'online_players'
+                            ]
+                        ) ?? 0
+                    );
+
+
+                const maxPlayers =
+                    Number(
+                        ut99Value(
+                            server,
+                            [
+                                'maxPlayers',
+                                'maxplayers',
+                                'max_players',
+                                'max_players_count'
+                            ]
+                        ) ?? 0
+                    );
+
+
+                if (isOnline) {
+
+                    badgeEl.textContent =
+                        'ONLINE';
+
+
+                    badgeEl.className =
+                        'quake-status-badge quake-status-online';
+
+
+                    playersEl.textContent =
+                        `${players}/${maxPlayers}`;
+
+                } else {
+
+                    badgeEl.textContent =
+                        'OFFLINE';
+
+
+                    badgeEl.className =
+                        'quake-status-badge quake-status-offline';
+
+
+                    playersEl.textContent =
+                        '0/0';
+
+                }
+
+            } catch (err) {
+
+                badgeEl.textContent =
+                    'OFFLINE';
+
+
+                badgeEl.className =
+                    'quake-status-badge quake-status-offline';
+
+
+                playersEl.textContent =
+                    '0/0';
+
+
+                console.error(
+                    'Грешка при обновяване на Unreal Tournament статуса:',
+                    err
+                );
+
+            }
+
+        }
+
+
+        window.addEventListener(
+            'DOMContentLoaded',
+            () => {
+
+                updateUT99Status();
+
+                setInterval(
+                    updateUT99Status,
+                    15000
+                );
+
+            }
+        );
+
+    </script>
+
+
+    <!-- LIVE QUAKE II / QUAKE III -->
+    <script>
+
+        const QUAKE_STATUS_URL =
+            'https://quake-status-default-rtdb.europe-west1.firebasedatabase.app/servers.json';
+
+
+        function quakeValue(obj, keys) {
+
+            if (
+                !obj ||
+                typeof obj !== 'object'
+            ) {
+                return undefined;
+            }
+
+
+            for (const key of keys) {
+
+                if (
+                    obj[key] !== undefined &&
+                    obj[key] !== null
+                ) {
+
+                    return obj[key];
+
+                }
+
+            }
+
+
+            return undefined;
+        }
+
+
+        function quakeText(value) {
+
+            return String(
+                value ?? ''
+            )
+            .toLowerCase()
+            .replace(
+                /[^a-z0-9а-яёіїє_-]/gi,
+                ''
+            );
+        }
+
+
+        function findQuakeServer(
+            root,
+            game,
+            port
+        ) {
+
+            const wanted =
+                game === 'q2'
+                    ? [
+                        'q2',
+                        'quake2',
+                        'quake_2',
+                        'quake-2',
+                        'quake ii',
+                        'quakeii'
+                    ]
+                    : [
+                        'q3',
+                        'quake3',
+                        'quake_3',
+                        'quake-3',
+                        'quake iii',
+                        'quakeiii'
+                    ];
+
+
+            let best = null;
+
+
+            function visit(
+                value,
+                keyHint = ''
+            ) {
+
+                if (
+                    !value ||
+                    typeof value !== 'object'
+                ) {
+                    return;
+                }
+
+
+                const textKey =
+                    quakeText(keyHint);
+
+
+                const isMatchingGame =
+                    wanted.some(
+                        w =>
+                            textKey.includes(
+                                quakeText(w)
+                            )
+                    );
+
+
+                const serverPort =
+                    Number(
+                        quakeValue(
+                            value,
+                            [
+                                'port',
+                                'server_port',
+                                'serverPort'
+                            ]
+                        )
+                    );
+
+
+                if (
+                    isMatchingGame ||
+                    serverPort === Number(port)
+                ) {
+
+                    best = value;
+
+                    return;
+                }
+
+
+                for (
+                    const k of Object.keys(value)
+                ) {
+
+                    visit(
+                        value[k],
+                        k
+                    );
+
+
+                    if (best)
+                        return;
+
+                }
+
+            }
+
+
+            visit(root);
+
+            return best;
+        }
+
+
+        async function updateQuakeStatuses() {
+
+            try {
+
+                const response =
+                    await fetch(
+                        QUAKE_STATUS_URL +
+                        '?t=' +
+                        Date.now()
+                    );
+
+
+                if (!response.ok)
+                    return;
+
+
+                const data =
+                    await response.json();
+
+
+                ['q2', 'q3'].forEach(
+                    game => {
+
+                        const statusEl =
+                            document.getElementById(
+                                `quake-status-${game}`
+                            );
+
+
+                        const badgeEl =
+                            document.getElementById(
+                                `quake-badge-${game}`
+                            );
+
+
+                        const playersEl =
+                            document.getElementById(
+                                `quake-players-${game}`
+                            );
+
+
+                        if (
+                            !statusEl ||
+                            !badgeEl ||
+                            !playersEl
+                        ) {
+                            return;
+                        }
+
+
+                        const port =
+                            statusEl.getAttribute(
+                                'data-port'
+                            );
+
+
+                        const server =
+                            findQuakeServer(
+                                data,
+                                game,
+                                port
+                            );
+
+
+                        if (!server) {
+
+                            badgeEl.textContent =
+                                'OFFLINE';
+
+
+                            badgeEl.className =
+                                'quake-status-badge quake-status-offline';
+
+
+                            playersEl.textContent =
+                                '0/0';
+
+
+                            return;
+                        }
+
+
+                        const isOnline =
+                            Boolean(
+                                quakeValue(
+                                    server,
+                                    [
+                                        'online',
+                                        'is_online',
+                                        'active',
+                                        'status'
+                                    ]
+                                )
+                            );
+
+
+                        const players =
+                            Number(
+                                quakeValue(
+                                    server,
+                                    [
+                                        'players',
+                                        'numplayers',
+                                        'num_players',
+                                        'online_players'
+                                    ]
+                                ) ?? 0
+                            );
+
+
+                        const maxPlayers =
+                            Number(
+                                quakeValue(
+                                    server,
+                                    [
+                                        'maxplayers',
+                                        'max_players',
+                                        'maxPlayers'
+                                    ]
+                                ) ?? 0
+                            );
+
+
+                        if (isOnline) {
+
+                            badgeEl.textContent =
+                                'ONLINE';
+
+
+                            badgeEl.className =
+                                'quake-status-badge quake-status-online';
+
+
+                            playersEl.textContent =
+                                `${players}/${maxPlayers}`;
+
+                        } else {
+
+                            badgeEl.textContent =
+                                'OFFLINE';
+
+
+                            badgeEl.className =
+                                'quake-status-badge quake-status-offline';
+
+
+                            playersEl.textContent =
+                                '0/0';
+
+                        }
+
+                    }
+                );
+
+            } catch (err) {
+
+                console.error(
+                    "Грешка при обновяване на Quake статуса:",
+                    err
+                );
+
+            }
+
+        }
+
+
+        window.addEventListener(
+            'DOMContentLoaded',
+            () => {
+
+                updateQuakeStatuses();
+
+                setInterval(
+                    updateQuakeStatuses,
+                    15000
+                );
+
+            }
+        );
+
+    </script>
+
 </body>
 </html>
