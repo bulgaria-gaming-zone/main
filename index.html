@@ -1422,7 +1422,7 @@
                 <div class="top3-servers-container">
                     <!-- CS_FY -->
                     <div class="top3-server-card">
-                        <div class="top3-server-title">CS_FY</div>
+                        <div class="top3-server-title">CS1.6 | CS_FY</div>
                         
                         <!-- ЖИВ СТАТУС, ХОРА И КАРТА -->
                         <div class="server-live-status-box" id="status-box-cs_fy">
@@ -1451,7 +1451,7 @@
 
                     <!-- CS_DE -->
                     <div class="top3-server-card">
-                        <div class="top3-server-title">CS_DE</div>
+                        <div class="top3-server-title">CS1.6 | CS_DE</div>
                         
                         <!-- ЖИВ СТАТУС, ХОРА И КАРТА -->
                         <div class="server-live-status-box" id="status-box-cs_de">
@@ -2018,47 +2018,88 @@
             }
         }
 
-        /* СКРИПТ ЗА ИЗВЛИЧАНЕ НА СТАТУСА НА СЪРВЪРИТЕ ОТ Firebase rank.json */
+        /* LIVE CS 1.6 STATUS FROM OUR OWN FIREBASE
+           Data is written by the personal GameMonitoring -> Firebase updater.
+           Firebase project: quake-status
+        */
+        const CS_STATUS_URL =
+            'https://quake-status-default-rtdb.europe-west1.firebasedatabase.app/servers/';
+
+        const CS_SERVERS = {
+            cs_fy: 'cs_fy_server',
+            cs_de: 'cs_de_server'
+        };
+
         async function updateServerStatuses() {
-            try {
-                const response = await fetch('https://server-status-20342-default-rtdb.europe-west1.firebasedatabase.app/rank.json?t=' + Date.now());
-                if (!response.ok) return;
-                const data = await response.json();
-                
-                if (data && data.servers) {
-                    const keys = ['cs_fy', 'cs_de'];
-                    keys.forEach(key => {
-                        const srv = data.servers[key];
-                        if (!srv) return;
+            await Promise.all(
+                Object.entries(CS_SERVERS).map(async ([key, firebaseId]) => {
+                    const badgeEl = document.getElementById(`status-badge-${key}`);
+                    const playersEl = document.getElementById(`players-${key}`);
+                    const maxplayersEl = document.getElementById(`maxplayers-${key}`);
+                    const mapEl = document.getElementById(`map-${key}`);
 
-                        const badgeEl = document.getElementById(`status-badge-${key}`);
-                        const playersEl = document.getElementById(`players-${key}`);
-                        const maxplayersEl = document.getElementById(`maxplayers-${key}`);
-                        const mapEl = document.getElementById(`map-${key}`);
+                    try {
+                        const response = await fetch(
+                            `${CS_STATUS_URL}${firebaseId}.json?t=${Date.now()}`,
+                            { cache: 'no-store' }
+                        );
 
-                        if (badgeEl) {
-                            if (srv.online) {
-                                badgeEl.textContent = 'ONLINE';
-                                badgeEl.className = 'status-badge status-online';
-                            } else {
-                                badgeEl.textContent = 'OFFLINE';
-                                badgeEl.className = 'status-badge status-offline';
-                            }
+                        if (!response.ok) {
+                            throw new Error(`Firebase HTTP ${response.status}`);
                         }
 
-                        if (playersEl) playersEl.textContent = srv.players ?? 0;
-                        if (maxplayersEl) maxplayersEl.textContent = srv.maxplayers ?? 0;
-                        if (mapEl) mapEl.textContent = srv.map || '—';
-                    });
-                }
-            } catch (err) {
-                console.error("Грешка при обновяване на статуса от Firebase rank.json:", err);
-            }
+                        const srv = await response.json();
+
+                        if (!srv) {
+                            throw new Error('Няма данни за сървъра');
+                        }
+
+                        const online = srv.online === true;
+
+                        if (badgeEl) {
+                            badgeEl.textContent = online ? 'ONLINE' : 'OFFLINE';
+                            badgeEl.className = online
+                                ? 'status-badge status-online'
+                                : 'status-badge status-offline';
+                        }
+
+                        if (playersEl) {
+                            playersEl.textContent = Number(srv.players) || 0;
+                        }
+
+                        if (maxplayersEl) {
+                            maxplayersEl.textContent = Number(srv.maxPlayers) || 0;
+                        }
+
+                        if (mapEl) {
+                            mapEl.textContent = srv.map || '—';
+                        }
+
+                    } catch (err) {
+                        if (badgeEl) {
+                            badgeEl.textContent = 'OFFLINE';
+                            badgeEl.className = 'status-badge status-offline';
+                        }
+
+                        if (playersEl) playersEl.textContent = '0';
+                        if (maxplayersEl) maxplayersEl.textContent = '0';
+                        if (mapEl) mapEl.textContent = '—';
+
+                        console.error(
+                            `[CS1.6 ${key}] Грешка при Firebase статуса:`,
+                            err.message
+                        );
+                    }
+                })
+            );
         }
 
         window.addEventListener('DOMContentLoaded', () => {
             updateServerStatuses();
-            setInterval(updateServerStatuses, 30000);
+
+            // Firebase се обновява от личния updater на всеки 60 секунди.
+            // Четем по-често, за да се появява новият статус веднага след записа.
+            setInterval(updateServerStatuses, 15000);
         });
     </script>
 
@@ -2293,50 +2334,6 @@
         };
 
         /* ================= TOP 3 & TOP 10 LOGIC ================= */
-        async function fetchExternalHTML(url) {
-            try {
-                const response = await fetch(url);
-                if (!response.ok) return null;
-                const text = await response.text();
-                const parser = new DOMParser();
-                return parser.parseFromString(text, 'text/html');
-            } catch (error) {
-                console.error("Грешка при зареждане на външен HTML от " + url + ":", error);
-                return null;
-            }
-        }
-
-        async function loadTop3FromExternal() {
-            const doc = await fetchExternalHTML('https://bulgaria-gaming-zone.github.io/main/top3.html');
-            if (!doc) return;
-
-            const ids = ['fy-1', 'fy-2', 'fy-3', 'de-1', 'de-2', 'de-3'];
-            ids.forEach(id => {
-                const extEl = doc.getElementById(id);
-                const localEl = document.getElementById(id);
-                if (extEl && localEl) {
-                    localEl.textContent = extEl.textContent;
-                }
-            });
-        }
-
-        async function loadTop10FromExternal() {
-            const doc = await fetchExternalHTML('https://bulgaria-gaming-zone.github.io/main/top10.html');
-            if (!doc) return;
-
-            const tbodyFy = doc.getElementById('top10-tbody-cs_fy');
-            const localTbodyFy = document.getElementById('top10-tbody-cs_fy');
-            if (tbodyFy && localTbodyFy) {
-                localTbodyFy.innerHTML = tbodyFy.innerHTML;
-            }
-
-            const tbodyDe = doc.getElementById('top10-tbody-cs_de');
-            const localTbodyDe = document.getElementById('top10-tbody-cs_de');
-            if (tbodyDe && localTbodyDe) {
-                localTbodyDe.innerHTML = tbodyDe.innerHTML;
-            }
-        }
-
         function loadStats(serverKey, prefix, tbodyId) {
             const statsRef = ref(top10Db, `stats/${serverKey}`);
 
@@ -2344,9 +2341,10 @@
                 const data = snapshot.val();
 
                 if (!data) {
-                    // Ако няма данни в Firebase, зареждаме от външните HTML линкове
-                    loadTop3FromExternal();
-                    loadTop10FromExternal();
+                    const tbody = document.getElementById(tbodyId);
+                    if (tbody) {
+                        tbody.innerHTML = '<tr><td colspan="7">Няма данни.</td></tr>';
+                    }
                     return;
                 }
 
@@ -2358,7 +2356,7 @@
 
                 // Clear Top10 Table
                 const tbody = document.getElementById(tbodyId);
-                if (tbody) tbody.innerHTML = '<tr><td colspan="6">Няма данни.</td></tr>';
+                if (tbody) tbody.innerHTML = '<tr><td colspan="7">Няма данни.</td></tr>';
 
                 const players = Array.isArray(data) ? data : Object.values(data);
 
@@ -2400,9 +2398,10 @@
                 }
             }, (error) => {
                 console.error("Firebase error stats:", error);
-                // При грешка се опитайте да заредите от външните линкове
-                loadTop3FromExternal();
-                loadTop10FromExternal();
+                const tbody = document.getElementById(tbodyId);
+                if (tbody) {
+                    tbody.innerHTML = '<tr><td colspan="7">Грешка при зареждане.</td></tr>';
+                }
             });
         }
 
