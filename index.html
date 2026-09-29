@@ -1657,7 +1657,7 @@
                             </span>
                             <span class="launcher-tooltip-container">
                                 <img src="utBG-GZ.png" alt="Unreal Tournament Launcher Icon" class="inline-text-icon">
-                                <span>bg-gzUT99.exe</span>
+                                <span>BULGARIA-GaminG-Zone.exe</span>
                                 <span class="launcher-tooltip">Ползвайте ланчъра ни в папката на играта за инстантна връзка със сървъра, приятна игра!</span>
                             </span>
                         </div>
@@ -1912,6 +1912,7 @@
                         <thead>
                             <tr>
                                 <th class="top10-rank">#</th>
+                                <th>Rank</th>
                                 <th style="text-align: left;">Ник</th>
                                 <th>Kills</th>
                                 <th>Deaths</th>
@@ -1920,7 +1921,7 @@
                             </tr>
                         </thead>
                         <tbody id="top10-tbody-cs_fy">
-                            <tr><td colspan="6">Зареждане...</td></tr>
+                            <tr><td colspan="7">Зареждане...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -1932,6 +1933,7 @@
                         <thead>
                             <tr>
                                 <th class="top10-rank">#</th>
+                                <th>Rank</th>
                                 <th style="text-align: left;">Ник</th>
                                 <th>Kills</th>
                                 <th>Deaths</th>
@@ -1940,7 +1942,7 @@
                             </tr>
                         </thead>
                         <tbody id="top10-tbody-cs_de">
-                            <tr><td colspan="6">Зареждане...</td></tr>
+                            <tr><td colspan="7">Зареждане...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -2373,11 +2375,23 @@
                     tbody.innerHTML = '';
                     players.slice(0, 15).forEach((player, index) => {
                         const row = document.createElement("tr");
+                        const kills = Number(player.kills ?? 0);
+                        const deaths = Number(player.deaths ?? 0);
+                        const total = kills + deaths;
+
+                        // CSRank rating x10 = Kills^2 * 10 / (Kills + Deaths)
+                        // Math.floor() matches Pawn integer division used in-game.
+                        const rating10 = (kills > 0 && total > 0)
+                            ? Math.floor((kills * kills * 10) / total)
+                            : 0;
+                        const rating = `${Math.floor(rating10 / 10)}.${rating10 % 10}`;
+
                         row.innerHTML = `
                             <td class="top10-rank">${index + 1}</td>
+                            <td>${rating}</td>
                             <td class="top10-player">${escapeHtml(player.name)}</td>
-                            <td>${Number(player.kills ?? 0)}</td>
-                            <td>${Number(player.deaths ?? 0)}</td>
+                            <td>${kills}</td>
+                            <td>${deaths}</td>
                             <td>${Number(player.hs ?? 0)}</td>
                             <td>${Number(player.damage ?? 0)}</td>
                         `;
