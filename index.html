@@ -870,7 +870,14 @@
         .server-list-container {
             display: flex;
             flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
             gap: 6px;
+        }
+
+        .server-list-container > div {
+            width: 100%;
+            text-align: left;
         }
 
         .copyable-link {
@@ -1647,6 +1654,28 @@
                                 connect bulgaria-gaming-zone.asuscomm.com:27017
                                 <span class="copy-tooltip">
                                     Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!
+                                </span>
+                            </span>
+                        </div>
+
+                        <div>
+                            <span class="status-dot-container">
+                                <span class="status-label">Статус</span>
+                                <span class="status-dot green"></span>
+                                <span class="status-tooltip">
+                                    Сървърът е обозначен като активен. Възможно е да има временна поддръжка.
+                                </span>
+                            </span>
+
+                            
+
+                            WANTED Server:
+
+                            <span class="copyable-link"
+                                  onclick="copyServerIP('connect bulgaria-gaming-zone.asuscomm.com:27020', this)">
+                                connect bulgaria-gaming-zone.asuscomm.com:27020
+                                <span class="copy-tooltip">
+                                    Кликни тук, за да копираш адреса и да го поставиш в конзолата на играта. Приятна игра!
                                 </span>
                             </span>
                         </div>
