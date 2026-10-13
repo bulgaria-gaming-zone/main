@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BULGARIA | GaminG Zone - Изисква парола за достъп</title>
+    
+    <!-- Забраняваме на ботовете да индексират страницата -->
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            background-image: url('bgz_background_top02.jpg');
+            background-repeat: repeat;
+            background-position: center top;
+            background-attachment: fixed;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            background-color: rgba(17, 17, 17, 0.95);
+            border: 2px solid #ffff00;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            color: #ffff00;
+            font-size: 24px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        #auth-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        #auth-box p {
+            color: #ffff00;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        #passInput {
+            background: #000;
+            border: 2px solid #ffff00;
+            color: #fff;
+            padding: 10px 15px;
+            font-size: 18px;
+            border-radius: 4px;
+            outline: none;
+            text-align: center;
+            width: 250px;
+        }
+
+        #passInput:focus {
+            box-shadow: 0 0 10px #ffff00;
+        }
+
+        .auth-btn {
+            background: #ffff00;
+            color: #000;
+            border: none;
+            padding: 10px 25px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .auth-btn:hover {
+            background: #fff;
+            transform: scale(1.05);
+        }
+
+        #errorMsg {
+            color: #ff3333;
+            font-size: 14px;
+            font-weight: bold;
+            height: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .downloads-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .game-row {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #ffff00;
+            border-radius: 4px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .game-row:hover {
+            border-color: #ffffff;
+            transform: scale(1.01);
+        }
+
+        .game-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .game-icon {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .game-title {
+            color: #ffff00;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .download-btn-green {
+            background-color: #00ff66;
+            color: #000000;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 13px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-transform: uppercase;
+            box-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .download-btn-green:hover {
+            background-color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #ffff00;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Изисква парола за достъп</h1>
+
+        <!-- ФОРМА ЗА ВЪВЕЖДАНЕ НА ПАРОЛА -->
+        <div id="auth-box">
+            <p>Моля, въведете паролата за достъп до архивите:</p>
+            <input type="password" id="passInput" placeholder="Парола..." autocomplete="off">
+            <button class="auth-btn" onclick="checkPassword()">Влез</button>
+            <div id="errorMsg"></div>
+        </div>
+
+        <!-- КЪДЕ ДА СЕ ЗАРЕЖДАТ ЛИНКОВЕТЕ И ИКОНКИТЕ -->
+        <div id="download-box" class="hidden">
+            <p style="color: #00ff66; margin-bottom: 15px; font-weight: bold;">Достъпът е разрешен! Изберете игра за изтегляне:</p>
+            <div class="downloads-list" id="linksContainer"></div>
+        </div>
+
+        <br>
+        <a href="index.html" class="back-link">&#8592 Обратно към началната страница</a>
+    </div>
+
+    <script>
+        function getLink(id) {
+            const p1 = "https://drive.google.com/uc?export=download&id=";
+            const p2 = "https://drive.usercontent.google.com/download?id=";
+            
+            const links = {
+                hl_cs: p1 + "1rD0_ogfojVJ884n-VFlg3uP3TV0RNVi8",
+                q2: p1 + "1OwUKADjy6fxK9F4q8VXXR6Sa-NgwEgf-",
+                q3: p1 + "1ZnVaYD0ywnlAFebvSszWlCEj_aapqQX1",
+                ut: p1 + "1dD6oMVN8dJifUKsfy1KEFnxlfQAYyFmv",
+                rune: p1 + "1mPkB_qACfytvZ9BUPjR1U3sXhJSSYCrz",
+                ss: p1 + "1muWaaXuRCIEOnsAMYlH1W3JcoWRAPGQu",
+                terraria: p1 + "19wX6nEFKB-cmNL2KqIQEOE0JL8z2li1Q",
+                zomboid: p2 + "1dtNA4DbLHNDephwpPByYske4gpkp2EYb&export=download&authuser=0",
+                necesse: p1 + "1To11IqaSyQLmbJoJtjYKnyxPUdYYeuuy",
+                heroes: p1 + "1tK5Zhc8FJ5BB1vi8KgZNO5QntngwkVUD",
+                vcmi: "https://vcmi.eu/download/",
+                ra2: p1 + "1D4_keMlTfIEl2B1teJ5lb71fsFSwkVry",
+                cncnet: "https://cncnet.org/red-alert-2"
+            };
+            return links[id] || "#";
+        }
+
+        const gamesList = [
+            { title: "Half-Life / CS 1.6 (Инсталатор)", key: "hl_cs", icon: "CS_HL_icon.png" },
+            { title: "Quake II (Инсталатор)", key: "q2", icon: "Q2_icon.png" },
+            { title: "Quake III (Инсталатор)", key: "q3", icon: "Quake3icon.png" },
+            { title: "Unreal Tournament (Инсталатор)", key: "ut", icon: "UT_icon.png" },
+            { title: "RUNE 2000 (Инсталатор)", key: "rune", icon: "rune_icon.png" },
+            { title: "Serious Sam (Инсталатор)", key: "ss", icon: "SS-icon.png" },
+            { title: "Terraria (Архив)", key: "terraria", icon: "terraria_icon.png" },
+            { title: "Project Zomboid (Инсталатор)", key: "zomboid", icon: "project_zomboid_icon.png" },
+            { title: "Necesse (Инсталатор)", key: "necesse", icon: "Necesse_icon.png" },
+            { title: "Heroes III Original Files", key: "heroes", icon: "heroes_icon.png" },
+            { title: "VCMI (Heroes III Client)", key: "vcmi", icon: "vcmi_icon.png" },
+            { title: "Red Alert 2 Original Files", key: "ra2", icon: "ra2_icon.png" },
+            { title: "CnCNet (Red Alert 2 Client)", key: "cncnet", icon: "cncnet_icon.png" }
+        ];
+
+        function checkPassword() {
+            var val = document.getElementById("passInput").value;
+            var err = document.getElementById("errorMsg");
+
+            // Паролата е сглобена на парчета, за да не се чете като цяла дума в сорс кода
+            var part1 = "bggz";
+            var part2 = "681";
+            var correctPass = part1 + part2;
+
+            if (val === correctPass) {
+                document.getElementById("auth-box").style.display = "none";
+                var container = document.getElementById("linksContainer");
+                container.innerHTML = "";
+
+                gamesList.forEach(function(game) {
+                    var realUrl = getLink(game.key);
+                    var row = document.createElement("div");
+                    row.className = "game-row";
+                    row.innerHTML = '<div class="game-info">' +
+                                    '<img src="' + game.icon + '" alt="" class="game-icon">' +
+                                    '<span class="game-title">' + game.title + '</span>' +
+                                    '</div>' +
+                                    '<a href="' + realUrl + '" target="_blank" rel="noopener noreferrer" class="download-btn-green">' +
+                                    'Изтегли &#8681;</a>';
+                    container.appendChild(row);
+                });
+
+                document.getElementById("download-box").style.display = "block";
+            } else {
+                err.innerText = "Грешна парола! Опитайте отново.";
+                document.getElementById("passInput").value = "";
+            }
+        }
+
+        document.getElementById("passInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+    </script>
+
+</body>
+</html>
