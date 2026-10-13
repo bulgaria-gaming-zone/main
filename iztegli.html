@@ -41,6 +41,29 @@
             margin-top: 40px;
             box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
             text-align: center;
+            position: relative; /* Нужно за позиционирането на хикса */
+        }
+
+        /* СТИЛ ЗА ХИКСА ГОРЕ В ДЯСНО */
+        .close-tab-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #ffff00;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s, transform 0.2s;
+            background: none;
+            border: none;
+            outline: none;
+            z-index: 10;
+        }
+
+        .close-tab-btn:hover {
+            color: #ff3333;
+            transform: scale(1.1);
         }
 
         h1 {
@@ -174,28 +197,47 @@
             transform: scale(1.05);
         }
 
-        .back-link {
-            display: inline-block;
-            margin-top: 25px;
+        /* МИГАЩ ЖЪЛТ ЕФЕКТ ЗА ИНФО НАДПИСА */
+        .blink-info {
             color: #ffff00;
-            text-decoration: none;
             font-size: 14px;
             font-weight: bold;
+            margin-top: 25px;
+            text-transform: uppercase;
+            animation: blinkText 1s infinite alternate;
         }
 
-        .back-link:hover {
+        .blink-info a {
+            color: #ffff00;
             text-decoration: underline;
+        }
+
+        .blink-info a:hover {
+            color: #ffffff;
+        }
+
+        @keyframes blinkText {
+            0% {
+                opacity: 1;
+                text-shadow: 0 0 8px rgba(255, 255, 0, 0.8);
+            }
+            100% {
+                opacity: 0.3;
+                text-shadow: 0 0 0px transparent;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <!-- БУТОН ХИКС ЗА ЗАТВАРЯНЕ НА ТАБА -->
+        <button class="close-tab-btn" onclick="closePage()" title="Затвори страницата">&times;</button>
+
         <h1>Изисква парола за достъп</h1>
 
         <!-- ФОРМА ЗА ВЪВЕЖДАНЕ НА ПАРОЛА -->
         <div id="auth-box">
-            <p>СВЪРЖИ СЕ С НАС В DISCORD ИЛИ FACEBOOK.<p>
             <p>Моля, въведете паролата за достъп до архивите:</p>
             <input type="password" id="passInput" placeholder="Парола..." autocomplete="off">
             <button class="auth-btn" onclick="checkPassword()">Влез</button>
@@ -208,11 +250,25 @@
             <div class="downloads-list" id="linksContainer"></div>
         </div>
 
-        <br>
-        
+        <!-- МИГАЩ И КОРЕГИРАН ИНФО НАДПИС С ЛИНКОВЕ -->
+        <div class="blink-info">
+            За повече информация, свържете се с нас в 
+            <a href="https://discord.gg/yyG5CpQ" target="_blank" rel="noopener noreferrer">DISCORD</a> 
+            или 
+            <a href="https://www.facebook.com/groups/389530691674289/" target="_blank" rel="noopener noreferrer">FACEBOOK</a>.
+        </div>
     </div>
 
     <script>
+        // Функция за затваряне на таба или връщане назад
+        function closePage() {
+            window.close();
+            // Ако браузърът блокира window.close(), го препращаме към главната страница като алтернатива
+            setTimeout(function() {
+                window.location.href = "index.html";
+            }, 100);
+        }
+
         function getLink(id) {
             const p1 = "https://drive.google.com/uc?export=download&id=";
             const p2 = "https://drive.usercontent.google.com/download?id=";
@@ -255,7 +311,6 @@
             var val = document.getElementById("passInput").value;
             var err = document.getElementById("errorMsg");
 
-            // Паролата е сглобена на парчета, за да не се чете като цяла дума в сорс кода
             var part1 = "bggz";
             var part2 = "681";
             var correctPass = part1 + part2;
