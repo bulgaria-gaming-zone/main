@@ -1403,11 +1403,6 @@
         <nav class="nav-menu-container">
             <div class="social-links">
 
-                <button class="important-btn" onclick="openModal()" title="Кликни тук!">
-                    <span class="important-btn-title">ВАЖНО!</span>
-                    <span class="important-btn-sub">Искаш ли да играеш при нас?</span>
-                </button>
-
                 <a href="#home" onclick="switchView('home'); return false;" class="social-link-item" title="Начало">
                     <img src="home_icon.png" alt="Home" class="icon-home">
                 </a>
@@ -2139,64 +2134,7 @@
 
     </main>
 
-    <!-- МОДАЛЕН ПРОЗОРЕЦ ЗА ИНСТРУКЦИИТЕ -->
-    <div id="infoModal"
-         class="modal-overlay"
-         onclick="closeModalOnOuter(event)">
-
-        <div class="modal-content">
-
-            <span class="close-modal"
-                  onclick="closeModal()">
-                &times;
-            </span>
-
-            <div class="modal-text">
-
-                <p>
-                    Следвайте инструкциите за настройка на Windows Защита (Windows Defender),
-                    ако системата отчете фалшива тревога за вирус, както и за правилната инсталация на нашите игри:
-                </p>
-
-                <p>
-                    Първо добавете изключение (папка) в Windows Защита,
-                    която да не се сканира за вируси
-                    (например <strong>D:\GAMES</strong> или където са ви игрите).
-                </p>
-
-                <p>
-                    След това инсталирайте архива.
-                </p>
-
-                <p>
-                    В готовата инсталационна директория просто си извадете пряк път (shortcut)
-                    на самата игра или на нашия ланчър за бърза връзка, ако има такъв.
-                </p>
-
-                <p>
-                    <strong>Приятна игра!</strong>
-                </p>
-
-            </div>
-
-            <div class="modal-image-container">
-
-                <a href="WindowsDefenderExclusionGuide.jpg"
-                   target="_blank"
-                   class="zoom-btn"
-                   title="Отвори снимката в нов прозорец в пълен размер">
-                    &#128269;
-                </a>
-
-                <img src="WindowsDefenderExclusionGuide.jpg"
-                     alt="Windows Defender Instructions"
-                     class="modal-image">
-
-            </div>
-
-        </div>
-    </div>
-
+   
     <!-- МОДАЛЕН ПРОЗОРЕЦ ЗА CS1.6 TOP 10 -->
     <div id="top10Modal"
          class="modal-overlay"
