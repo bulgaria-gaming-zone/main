@@ -1273,6 +1273,242 @@
             font-weight: 600;
         }
 
+
+        /* Малко Twitch мониторче в центъра на CS1.6 картите */
+        .mini-stream-monitor {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            margin: 2px auto;
+            width: 58px;
+            min-height: 43px;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .mini-stream-monitor:hover {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 6px rgba(255, 238, 0, 0.65));
+        }
+
+        .monitor-screen {
+            width: 48px;
+            height: 29px;
+            border: 2px solid #ffee00;
+            border-radius: 4px;
+            background: linear-gradient(145deg, #202020, #050505);
+            box-shadow: inset 0 0 8px rgba(255, 238, 0, 0.12), 0 0 5px rgba(255, 238, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            position: relative;
+        }
+
+        .monitor-play {
+            color: #ffee00;
+            font-size: 13px;
+            line-height: 1;
+        }
+
+        .monitor-live {
+            color: #ff4545;
+            font-size: 8px;
+            font-weight: 900;
+            letter-spacing: 0.3px;
+        }
+
+        .monitor-stand {
+            width: 16px;
+            height: 5px;
+            border-bottom: 2px solid #ffee00;
+            border-left: 2px solid #ffee00;
+            border-right: 2px solid #ffee00;
+            position: relative;
+        }
+
+        .monitor-stand::after {
+            content: "";
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background: #ffee00;
+            left: -6px;
+            bottom: -4px;
+        }
+
+        .stream-monitor-button {
+            border: 0;
+            padding: 0;
+            background: transparent;
+            cursor: pointer;
+            color: inherit;
+            font: inherit;
+        }
+
+        .monitor-screen {
+            overflow: hidden;
+        }
+
+        .monitor-preview {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: #050505;
+        }
+
+        .monitor-state {
+            position: absolute;
+            z-index: 2;
+            left: 2px;
+            bottom: 2px;
+            padding: 1px 3px;
+            border-radius: 2px;
+            font-size: 7px;
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: .3px;
+            background: rgba(0,0,0,.88);
+            color: #ff4545;
+        }
+
+        .monitor-state-offline {
+            color: #aaa;
+            background: rgba(0,0,0,.9);
+        }
+
+        .monitor-screen.monitor-offline {
+            background: radial-gradient(ellipse at center, #262626 0%, #080808 75%);
+            box-shadow: inset 0 0 8px rgba(255,255,255,.06);
+        }
+
+        .monitor-screen.monitor-offline .monitor-preview {
+            display: none;
+        }
+
+        .stream-modal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            inset: 0;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            background: rgba(0,0,0,.88);
+        }
+
+        .stream-modal-content {
+            position: relative;
+            width: min(960px, 96vw);
+            background: #101010;
+            border: 2px solid #ffee00;
+            border-radius: 6px;
+            padding: 42px 12px 12px;
+            box-shadow: 0 0 30px rgba(255,238,0,.22);
+        }
+
+        .stream-modal-title {
+            position: absolute;
+            top: 12px;
+            left: 14px;
+            color: #ffee00;
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        .stream-modal-close {
+            position: absolute;
+            top: 6px;
+            right: 8px;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ff4444;
+            border-radius: 4px;
+            background: #260707;
+            color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .stream-embed-wrap {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+        }
+
+        .stream-embed-wrap iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .stream-modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 10px;
+        }
+
+        .stream-twitch-link {
+            display: inline-block;
+            padding: 8px 13px;
+            border-radius: 4px;
+            background: #9147ff;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        /* Компактен CS статус: височина близка до Quake статуса, картата е отделен ред. */
+        .server-live-status-inline {
+            display: flex;
+            width: fit-content;
+            max-width: 100%;
+            flex-direction: row;
+            align-items: center;
+            gap: 9px;
+            margin: 3px 0 3px 0;
+            padding: 2px 6px;
+            vertical-align: middle;
+        }
+
+        .server-live-status-inline .status-row {
+            display: contents;
+        }
+
+        .server-live-status-inline .map-name {
+            font-size: 9px;
+            line-height: 1.1;
+            max-width: 130px;
+            text-align: left;
+        }
+
+        .server-live-status-inline .players-count {
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .server-live-status-inline {
+                max-width: 100%;
+            }
+
+            .stream-modal {
+                padding: 8px;
+            }
+
+            .stream-modal-content {
+                width: 100%;
+                padding: 38px 6px 8px;
+            }
+        }
+
         @media (max-width: 768px) {
             .quake-live-status {
                 margin-left: 0;
@@ -1474,24 +1710,14 @@
                         <div class="top3-server-title">
                             CS1.6 | CS_FY
                         </div>
+                        <a class="mini-stream-monitor stream-monitor-button" href="https://www.twitch.tv/bggz_cs1" target="_blank" rel="noopener noreferrer" data-channel="bggz_cs1" data-server="cs_fy" aria-label="Отвори Twitch стрийма за CS_FY" title="Виж стрийма">
+                            <span class="monitor-screen" id="monitor-screen-cs_fy">
+                                <img class="monitor-preview" id="monitor-preview-cs_fy" src="https://static-cdn.jtvnw.net/previews-ttv/live_user_bggz_cs1-320x180.jpg" alt="" onload="setMonitorState('cs_fy', true)" onerror="setMonitorState('cs_fy', false)">
+                                <span class="monitor-state monitor-state-live" id="monitor-state-cs_fy"></span>
+                            </span>
+                            <span class="monitor-stand"></span>
+                        </a>
 
-                        <div class="server-live-status-box" id="status-box-cs_fy">
-
-                            <div class="status-row">
-                                <span class="status-badge status-offline" id="status-badge-cs_fy">
-                                    OFFLINE
-                                </span>
-
-                                <span class="players-count">
-                                    <span id="players-cs_fy">0</span>/<span id="maxplayers-cs_fy">0</span>
-                                </span>
-                            </div>
-
-                            <div class="map-name" id="map-cs_fy">
-                                —
-                            </div>
-
-                        </div>
 
                         <div class="top3-players-list">
 
@@ -1520,24 +1746,14 @@
                         <div class="top3-server-title">
                             CS1.6 | CS_DE
                         </div>
+                        <a class="mini-stream-monitor stream-monitor-button" href="https://www.twitch.tv/bggz_" target="_blank" rel="noopener noreferrer" data-channel="bggz_" data-server="cs_de" aria-label="Отвори Twitch стрийма за CS_DE" title="Виж стрийма">
+                            <span class="monitor-screen" id="monitor-screen-cs_de">
+                                <img class="monitor-preview" id="monitor-preview-cs_de" src="https://static-cdn.jtvnw.net/previews-ttv/live_user_bggz_-320x180.jpg" alt="" onload="setMonitorState('cs_de', true)" onerror="setMonitorState('cs_de', false)">
+                                <span class="monitor-state monitor-state-live" id="monitor-state-cs_de"></span>
+                            </span>
+                            <span class="monitor-stand"></span>
+                        </a>
 
-                        <div class="server-live-status-box" id="status-box-cs_de">
-
-                            <div class="status-row">
-                                <span class="status-badge status-offline" id="status-badge-cs_de">
-                                    OFFLINE
-                                </span>
-
-                                <span class="players-count">
-                                    <span id="players-cs_de">0</span>/<span id="maxplayers-cs_de">0</span>
-                                </span>
-                            </div>
-
-                            <div class="map-name" id="map-cs_de">
-                                —
-                            </div>
-
-                        </div>
 
                         <div class="top3-players-list">
 
@@ -1614,14 +1830,13 @@
                         </div>
 
                         <div>
-                            <span class="status-dot-container">
+                            
+
+                            <span class="status-dot-container" title="Статус на сървъра">
                                 <span class="status-label">Статус</span>
                                 <span class="status-dot green"></span>
-                                <span class="status-tooltip">
-                                    Сървъра е активен, възможните причини за да не работи е времена подръжка.
-                                </span>
+                                <span class="status-tooltip">Сървърът е активен; възможна е временна поддръжка.</span>
                             </span>
-
                             CS1.6 fy_Server:
 
                             <span class="copyable-link"
@@ -1631,17 +1846,23 @@
                                     Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!
                                 </span>
                             </span>
+                            <div class="server-live-status-box server-live-status-inline" id="status-box-cs_fy">
+                                <div class="status-row">
+                                    <span class="status-badge status-offline" id="status-badge-cs_fy">OFFLINE</span>
+                                    <span class="map-name" id="map-cs_fy">—</span>
+                                    <span class="players-count"><span id="players-cs_fy">0</span>/<span id="maxplayers-cs_fy">0</span> играчи</span>
+                                </div>
+                            </div>
                         </div>
 
                         <div>
-                            <span class="status-dot-container">
+                            
+
+                            <span class="status-dot-container" title="Статус на сървъра">
                                 <span class="status-label">Статус</span>
                                 <span class="status-dot green"></span>
-                                <span class="status-tooltip">
-                                    Сървъра е активен, възможните причини за да не работи е времена подръжка.
-                                </span>
+                                <span class="status-tooltip">Сървърът е активен; възможна е временна поддръжка.</span>
                             </span>
-
                             CS1.6 de_Server:
 
                             <span class="copyable-link"
@@ -1651,6 +1872,13 @@
                                     Кликни тук за да копираш адреса и после го постави в конзолата на играта, приятна игра!
                                 </span>
                             </span>
+                            <div class="server-live-status-box server-live-status-inline" id="status-box-cs_de">
+                                <div class="status-row">
+                                    <span class="status-badge status-offline" id="status-badge-cs_de">OFFLINE</span>
+                                    <span class="map-name" id="map-cs_de">—</span>
+                                    <span class="players-count"><span id="players-cs_de">0</span>/<span id="maxplayers-cs_de">0</span> играчи</span>
+                                </div>
+                            </div>
                         </div>
 
                         <div>
@@ -2239,6 +2467,18 @@
         &copy; 2026 BULGARIA-GaminG-Zone|&trade;
     </footer>
 
+    <!-- TWITCH STREAM MODAL -->
+    <div class="stream-modal" id="streamModal" role="dialog" aria-modal="true" aria-label="Twitch стрийм" onclick="closeStreamModalOnOuter(event)">
+        <div class="stream-modal-content">
+            <div class="stream-modal-title" id="streamModalTitle">BULGARIA GAMING ZONE — LIVE</div>
+            <button type="button" class="stream-modal-close" aria-label="Затвори" onclick="closeStreamModal()">×</button>
+            <div class="stream-embed-wrap" id="streamEmbedWrap"></div>
+            <div class="stream-modal-footer">
+                <a class="stream-twitch-link" id="streamTwitchLink" href="https://www.twitch.tv/bggz_cs1" target="_blank" rel="noopener noreferrer">Отвори в Twitch ↗</a>
+            </div>
+        </div>
+    </div>
+
     <!-- СКРИПТ ЗА ПРЕВКЛЮЧВАНЕ НА ИЗГЛЕДИТЕ -->
     <script>
 
@@ -2335,6 +2575,72 @@
             }
         }
 
+
+        const TWITCH_PARENT = 'bulgaria-gaming-zone.github.io';
+        const TWITCH_CHANNELS = {
+            cs_fy: { channel: 'bggz_cs1', title: 'CS1.6 | CS_FY' },
+            cs_de: { channel: 'bggz_', title: 'CS1.6 | CS_DE' }
+        };
+
+        function setMonitorState(key, isLive) {
+            const screen = document.getElementById(`monitor-screen-${key}`);
+            const state = document.getElementById(`monitor-state-${key}`);
+            if (!screen || !state) return;
+            screen.classList.toggle('monitor-offline', !isLive);
+            state.textContent = isLive ? '' : 'OFFLINE';
+            state.classList.toggle('monitor-state-offline', !isLive);
+            state.style.display = isLive ? 'none' : 'inline-block';
+        }
+
+        function refreshStreamPreviews() {
+            Object.entries(TWITCH_CHANNELS).forEach(([key, info]) => {
+                const img = document.getElementById(`monitor-preview-${key}`);
+                if (!img) return;
+                img.src = `https://static-cdn.jtvnw.net/previews-ttv/live_user_${info.channel}-320x180.jpg?t=${Date.now()}`;
+            });
+        }
+
+        function openStreamModal(channel, key) {
+            const info = TWITCH_CHANNELS[key];
+            if (!info) return;
+            const modal = document.getElementById('streamModal');
+            const wrap = document.getElementById('streamEmbedWrap');
+            const title = document.getElementById('streamModalTitle');
+            const link = document.getElementById('streamTwitchLink');
+            title.textContent = `${info.title} — TWITCH`;
+            link.href = `https://www.twitch.tv/${channel}`;
+            wrap.innerHTML = '';
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://player.twitch.tv/?channel=${encodeURIComponent(channel)}&parent=${encodeURIComponent(TWITCH_PARENT)}&autoplay=true&muted=true`;
+            iframe.referrerPolicy = 'origin';
+            iframe.allow = 'autoplay; fullscreen';
+            iframe.allowFullscreen = true;
+            iframe.title = `${info.title} Twitch stream`;
+            wrap.appendChild(iframe);
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeStreamModal() {
+            const modal = document.getElementById('streamModal');
+            const wrap = document.getElementById('streamEmbedWrap');
+            if (modal) modal.style.display = 'none';
+            if (wrap) wrap.innerHTML = '';
+            document.body.style.overflow = '';
+        }
+
+        function closeStreamModalOnOuter(event) {
+            if (event.target && event.target.id === 'streamModal') closeStreamModal();
+        }
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') closeStreamModal();
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            refreshStreamPreviews();
+            setInterval(refreshStreamPreviews, 60000);
+        });
 
         /* LIVE CS 1.6 STATUS */
 
